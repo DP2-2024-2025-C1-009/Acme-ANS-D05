@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
+- Hugo Borrego Angulo (hugborang@alum.us.es)
+- Ricardo Carreño Mariño (riccarmar@alum.us.es)
+- Carlos Gallero Rodríguez (cargalrod2@alum.us.es)
+- Jaime Gomez Marín (jaigommar1@alum.us.es)
+- Jesús Martín de Acuña (jesmarde2@alum.us.es)
