@@ -21,8 +21,10 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-jaigommar1" action="https://www.porsche.com/spain"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-hugborang" action="https://www.cardmarket.com/es/Magic"/>
-			<acme:menu-suboption code="master.menu.anonymous.favoutite-link-jesmarde2" action="https://www.realmadrid.com/es-ES"/>
-			<acme:menu-suboption code="master.menu.anonymous.favoutite-link-riccarmar" action="https://www.formula1.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link-cargalrod2" action="https://www.bet365.es/#/HO/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link-jesmarde2" action="https://www.realmadrid.com/es-ES"/>
+      <acme:menu-suboption code="master.menu.anonymous.favoutite-link-riccarmar" action="https://www.formula1.com/"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
@@ -53,4 +55,3 @@
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
-
