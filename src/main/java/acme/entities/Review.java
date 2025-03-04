@@ -3,14 +3,17 @@ package acme.entities;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.client.components.basis.AbstractEntity;
 import lombok.Getter;
@@ -26,28 +29,28 @@ public class Review extends AbstractEntity {
 
 	// Attributes 
 
-	@Column(nullable = false, length = 50)
-	@Size(max = 50, message = "The alias must contain at most 50 characters")
+	@NotBlank
+	@Length(max = 50)
 	private String				alias;
 
-	@Column(nullable = false)
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past(message = "The moment must be in the past")
+	@Past
 	private LocalDateTime		moment;
 
-	@Column(nullable = false, length = 50)
-	@Size(max = 50, message = "The subject must contain at most 50 characters")
+	@NotBlank
+	@Length(max = 50)
 	private String				subject;
 
-	@Column(nullable = false, length = 255)
-	@Size(max = 255, message = "The text must contain at most 255 characters")
+	@NotBlank
+	@Length(max = 255)
 	private String				text;
 
-	@Column(nullable = true)
-	@DecimalMin(value = "0.0", message = "Score must be at least 0")
-	@DecimalMax(value = "10.0", message = "Score must be at most 10")
+	@Digits(integer = 2, fraction = 2)
+	@Min(0)
+	@Max(10)
 	private Double				score;
 
-	@Column(nullable = false)
+	@NotNull
 	private Boolean				recommended;
 }
