@@ -9,6 +9,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Optional;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Aircraft {
+public class Aircraft extends AbstractEntity {
 
 	@Size(max = 50)
 	@Column(nullable = false)
