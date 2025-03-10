@@ -1,17 +1,21 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,35 +24,37 @@ import lombok.Setter;
 @Setter
 public class Leg extends AbstractEntity {
 
-	@Column(unique = true, nullable = false)
+	@ValidString
 	@Pattern(regexp = "^[A-Z]{3}\\d{6}$", message = "Flight number must consist of the airline's IATA code followed by four digits")
-	private String			flightNumber;
+	private String	flightNumber;
 
-	@Column(nullable = false)
-	private LocalDateTime	scheduledDeparture;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date	scheduledDeparture;
 
-	@Column(nullable = false)
-	private LocalDateTime	scheduledArrival;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date	scheduledArrival;
 
 	@Column(nullable = false)
 	@Min(value = 0, message = "Duration must be at least 0 hours")
-	private int				duration;
+	private int		duration;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private Status			status;
+	private Status	status;
 
-	@Column(nullable = false, length = 100)
-	private String			departureAirport;
+	@ValidString
+	private String	departureAirport;
 
-	@Column(nullable = false, length = 100)
-	private String			arrivalAirport;
+	@ValidString
+	private String	arrivalAirport;
 
-	@Column(nullable = false, length = 100)
-	private String			aircraft;
+	@ValidString
+	private String	aircraft;
 
 	@ManyToOne(optional = false)
-	private Flight			flight;
+	private Flight	flight;
 
 
 	public enum Status {
