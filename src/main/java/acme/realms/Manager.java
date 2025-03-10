@@ -1,7 +1,7 @@
 
 package acme.realms;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
@@ -10,7 +10,6 @@ import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
@@ -33,15 +32,12 @@ public class Manager extends AbstractRole {
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Identifier number must have 2 or 3 uppercase letters followed by 6 digits")
 	private String				identifierNumber;
 
-	@Mandatory
 	@ValidNumber
 	@Min(value = 0, message = "Years of experience must be at least 0")
 	private Integer				yearsOfExperience;
 
-	@Mandatory
-	@ValidMoment
 	@Past(message = "Date of birth date must be in the past")
-	private LocalDate			dateOfBirth;
+	private Date				dateOfBirth;
 
 	@ValidUrl
 	private String				pictureLink;

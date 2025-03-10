@@ -7,4 +7,4 @@ user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза 
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-manager-01,true,"UserIdentity{name: 'Hagas', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'hagas@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Charles', surname: 'AirManager', email: 'charles@acme.com'}",manager2,manager2
-user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', email: 'acme:password@lorem-ipsum.org'}",manager3,manager3
+user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
