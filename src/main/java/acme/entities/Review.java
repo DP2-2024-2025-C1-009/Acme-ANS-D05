@@ -1,7 +1,7 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Digits;
@@ -34,7 +34,7 @@ public class Review extends AbstractEntity {
 	@NotNull
 	//@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private LocalDateTime		moment;
+	private Date				moment;
 
 	@NotBlank
 	@Length(max = 50)
