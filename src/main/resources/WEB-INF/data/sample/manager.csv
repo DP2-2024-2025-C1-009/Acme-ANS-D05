@@ -1,0 +1,4 @@
+key,key:userAccount,indentifierNumber,yearsOfExperience,dateOfBirth,pictureLink
+manager-01,user-account-manager-01,ABC123456,1,1980-05-20,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+manager-03,user-account-manager-03,DEF234567,3,1987-08-20,http://www.lorem-ipsum.org/dolor/sit.html
+manager-02,user-account-manager-02,GHI345678,0,1992-05-24,""
