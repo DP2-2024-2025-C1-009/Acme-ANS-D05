@@ -4,13 +4,23 @@ package acme.entities;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidUrl;
 
 public class Airport extends AbstractEntity {
 
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
+
+	// Attributes 
+
+	@Mandatory
 	@Column(nullable = false, length = 50)
 	private String				airportName;
 
@@ -20,23 +30,29 @@ public class Airport extends AbstractEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
+	@Automapped
 	private OperationalScope	operationalScope;
 
 	@Column(nullable = false, length = 50)
+	@Automapped
 	private String				city;
 
 	@Column(nullable = false, length = 50)
+	@Automapped
 	private String				country;
 
 	@Column(nullable = true, length = 100)
+	@ValidUrl
 	private String				website;
 
 	@Column(nullable = true, length = 100)
-	@Email(message = "Email should be valid")
+	@ValidEmail
+	@Automapped
 	private String				email;
 
-	@Column(nullable = true)
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
+	@Optional
+	//@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
+	@Automapped
 	private String				contactPhoneNumber;
 
 

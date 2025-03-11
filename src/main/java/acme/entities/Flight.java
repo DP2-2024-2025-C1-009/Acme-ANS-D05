@@ -14,6 +14,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.ValidMoney;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,37 +26,59 @@ import lombok.Setter;
 @Setter
 public class Flight extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
+
 	@Column(nullable = false, length = 50)
-	private String		tag;
+	private String				tag;
+
+	@Mandatory
+	@Automapped
+	private boolean				selfTransfer;
 
 	@Column(nullable = false)
-	private boolean		selfTransfer;
-
-	@Column(nullable = false)
-	@Min(value = 0, message = "Cost must be at least 0")
-	private double		cost;
+	@ValidMoney(min = 0)
+	private Money				cost;
 
 	@Column(nullable = true, length = 255)
-	private String		description;
+	private String				description;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		scheduledDeparture;
+	private Date				scheduledDeparture;
+
+	// Los vuelos son gestionados por un manager
+	// Hay que crear un repositorio // FlightRepository extends AbstractRepository
+
+	// ATRIBUTOS DERIVADOS DE LEG con transient CAMBIAR
+
+	//	@Transient
+	//	public String getArrivalCity() {
+	//		String result;
+	//		FlightRepository repository;
+	//
+	//		repository = SpringHelper.getBean(FlighRepository.class);
+	//		result = repository.computedArrivalCityByFlight(this.getId());
+	//
+	//	}
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		scheduledArrival;
+	private Date				scheduledArrival;
 
 	@Column(nullable = false, length = 100)
-	private String		originCity;
+	private String				originCity;
 
 	@Column(nullable = false, length = 100)
-	private String		destinationCity;
+	private String				destinationCity;
 
 	@Column(nullable = false)
 	@Min(value = 0, message = "Number of layovers must be at least 0")
-	private int			numberOfLayovers;
+	private int					numberOfLayovers;
 
 	@OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Leg>	legs;
+	private List<Leg>			legs;
 }

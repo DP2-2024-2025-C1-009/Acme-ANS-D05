@@ -1,19 +1,23 @@
 
 package acme.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.URL;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,32 +26,43 @@ import lombok.Setter;
 @Setter
 public class Airline extends AbstractEntity {
 
-	@Column(nullable = false, length = 50)
-	private String		name;
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
 
-	@Column(unique = true, nullable = false, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be exactly three uppercase letters")
-	private String		iataCode;
+	// Attributes 
 
-	@URL(message = "Website should be a valid URL")
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Automapped
+	private String				name;
+
+	@Mandatory
+	@ValidString(pattern = "^[A-Z]{3}$")
+	private String				iataCode;
+
+	@Mandatory
+	@ValidUrl
 	@Column(nullable = true)
-	private String		website;
+	private String				website;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private AirlineType	type;
+	private AirlineType			type;
 
-	@Column(nullable = false)
-	@Past(message = "Foundation date must be in the past")
-	private LocalDate	foundationMoment;
+	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				foundationMoment;
 
-	@Email(message = "Email should be valid")
-	@Column(nullable = true)
-	private String		email;
+	@Optional
+	@ValidEmail
+	@Automapped
+	private String				email;
 
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
-	@Column(nullable = true)
-	private String		phoneNumber;
+	@Optional
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@Automapped
+	private String				phoneNumber;
 
 
 	public enum AirlineType {

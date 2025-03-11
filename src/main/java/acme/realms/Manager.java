@@ -3,13 +3,15 @@ package acme.realms;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
@@ -28,15 +30,19 @@ public class Manager extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Identifier number must have 2 or 3 uppercase letters followed by 6 digits")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	//IMPLEMENTAR CUSTOM RESTRICTION, las dos primeras seguro que coinciden
+	//Si no coinciden super.state(context, correctIdentifierNumber, "identifiernumber", "acme.valida...
+	@Column(unique = true)
 	private String				identifierNumber;
 
-	@ValidNumber
-	@Min(value = 0, message = "Years of experience must be at least 0")
+	@Mandatory
+	@ValidNumber(min = 0, max = 120)
+	@Automapped
 	private Integer				yearsOfExperience;
 
-	@Past(message = "Date of birth date must be in the past")
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dateOfBirth;
 
 	@ValidUrl
