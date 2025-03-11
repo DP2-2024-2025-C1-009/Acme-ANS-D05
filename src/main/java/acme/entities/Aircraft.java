@@ -3,7 +3,6 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -43,10 +42,11 @@ public class Aircraft extends AbstractEntity {
 	@Mandatory
 	private Integer				loadWeight;
 
-	@Mandatory
-	@Valid
-	@Automapped
-	private AircraftState		state;
+	// REVISAR ESTO PARA QUE NO DE PROBLEMAS
+	//	@Mandatory
+	//	@Valid
+	//	@Automapped
+	//	private AircraftState		state;
 
 	@Optional
 	@ValidString(min = 0, max = 255)
