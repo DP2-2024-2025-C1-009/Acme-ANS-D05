@@ -1,0 +1,22 @@
+# validation-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.agent.employee-code-pattern = El código de empleado debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
+acme.validation.agent.employee-code-initials = El código debe ser tus iniciales, primero de apellido(s) y luego nombre.
+acme.validation.agent.spoken-languages-length = La lista de idiomas no debe superar los 255 caracteres.
+acme.validation.agent.start-working-date = El inicio de trabajo debe ser una fecha en el pasado.
+acme.validation.agent.bio-length = La biografía no debe superar los 255 caracteres.
+
+acme.validation.claim.registration-moment-date = La fecha del registro del claim debe ser una fecha en el pasado.
+acme.validation.claim.description-length = La descripción no debe superar los 255 caracteres.
+acme.validation.claim.passenger-email-correct = Introduce una diorección de correo válida.
+
+acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
+acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
