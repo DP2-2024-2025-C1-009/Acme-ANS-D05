@@ -1,18 +1,15 @@
 
 package acme.entities.maintenance;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.Length;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,27 +18,26 @@ import lombok.Setter;
 @Setter
 public class Task extends AbstractEntity {
 
-	// Serialisation identifier -----------------------------------------------
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes -------------------------------------------------------------
-
-	@NotBlank
+	@Mandatory
 	@Enumerated(EnumType.STRING)
+	@Automapped
 	private TaskType			type;
 
-	@NotBlank
-	@Length(max = 255)
-	@Column(length = 255)
+	@Mandatory
+	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				description;
 
-	@NotBlank
-	@Min(0)
-	@Max(10)
+	@Mandatory
+	@ValidNumber(min = 0, max = 10)
+	@Automapped
 	private int					priority;
 
-	@NotBlank
-	@DecimalMin("0.0")
+	@Mandatory
+	@ValidNumber(min = 0, fraction = 2)
+	@Automapped
 	private double				estimatedDuration;
 
 

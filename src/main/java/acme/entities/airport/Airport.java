@@ -4,14 +4,16 @@ package acme.entities.airport;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIATACode;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,11 +28,13 @@ public class Airport extends AbstractEntity {
 	// Attributes 
 
 	@Mandatory
-	@Column(nullable = false, length = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				airportName;
 
-	@Column(unique = true, nullable = false, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be exactly three uppercase letters")
+	@Mandatory
+	@ValidIATACode
+	@Column(unique = true)
 	private String				iataCode;
 
 	@Mandatory
@@ -38,25 +42,28 @@ public class Airport extends AbstractEntity {
 	@Automapped
 	private OperationalScope	operationalScope;
 
-	@Column(nullable = false, length = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				city;
 
-	@Column(nullable = false, length = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				country;
 
-	@Column(nullable = true, length = 100)
+	@Optional
 	@ValidUrl
+	@Automapped
 	private String				website;
 
-	@Column(nullable = true, length = 100)
+	@Optional
 	@ValidEmail
 	@Automapped
 	private String				email;
 
 	@Optional
-	//@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
+	@ValidPhoneNumber
 	@Automapped
 	private String				contactPhoneNumber;
 
