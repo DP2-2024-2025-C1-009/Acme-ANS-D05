@@ -32,16 +32,16 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment(past = true, message = "acme.validation.claim.registration-moment-date")
+	@ValidMoment(past = true, message = "{acme.validation.claim.registration-moment-date}")
 	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidEmail(message = "acme.validation.claim.passenger-email-correct")
+	@ValidEmail(message = "{acme.validation.claim.passenger-email-correct}")
 	@Automapped
 	private String				passengerEmail;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255, message = "acme.validation.claim.description-length")
+	@ValidString(min = 1, max = 255, message = "{acme.validation.claim.description-length}")
 	@Automapped
 	private String				description;
 
@@ -52,7 +52,7 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				isAccepted;
+	private boolean				cIsAccepted;
 
 	// Relationships ----------------------------------------------------------
 
@@ -60,6 +60,11 @@ public class Claim extends AbstractEntity {
 	@Valid
 	@Mandatory
 	private AssistanceAgent		registeredBy;
+
+	//	@ManyToOne(optional = false)
+	//	@Valid
+	//	@Mandatory
+	//	private Leg					leg;
 
 	// Claim Type -------------------------------------------------------------
 

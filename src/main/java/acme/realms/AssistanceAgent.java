@@ -19,7 +19,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constrains.ValidAgentCode;
+import acme.constraints.ValidAgentCode;
 import acme.entities.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,21 +38,21 @@ public class AssistanceAgent extends AbstractRole {
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "acme.validation.agent.employee-code-pattern")
+	@ValidString(min = 8, max = 9, pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.agent.employee-code-pattern}")
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255, message = "acme.validation.agent.spoken-languages-length")
+	@ValidString(min = 1, max = 255, message = "{acme.validation.agent.spoken-languages-length}")
 	@Automapped
 	private String				spokenLanguages;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment(past = true, message = "acme.validation.agent.start-working-date")
+	@ValidMoment(past = true, message = "{acme.validation.agent.start-working-date}")
 	private Date				startWorking;
 
 	@Optional
-	@ValidString(min = 0, max = 255, message = "acme.validation.agent.bio-length")
+	@ValidString(min = 0, max = 255, message = "{acme.validation.agent.bio-length}")
 	@Automapped
 	private String				bio;
 
