@@ -10,13 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,28 +26,34 @@ import lombok.Setter;
 @Setter
 public class MaintenanceRecord extends AbstractEntity {
 
-	// Serialisation identifier -----------------------------------------------
+	// Serialisation identifier
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes -------------------------------------------------------------
+	// Attributes
 
-	@NotBlank
+	@Mandatory
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@NotBlank
+	@Mandatory
 	@Enumerated(EnumType.STRING)
+	@Automapped
 	private Status				status;
 
-	@NotBlank
+	@Mandatory
+	@ValidMoment(past = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				nextInspectionDueDate;
 
-	@NotBlank
-	@Min(0)
+	@Mandatory
+	@ValidNumber(min = 0, fraction = 2)
+	@Automapped
 	private double				estimatedCost;
 
-	@Length(max = 255)
+	@Optional
+	@ValidString(max = 255)
+	@Automapped
 	private String				notes;
 
 
@@ -54,10 +61,12 @@ public class MaintenanceRecord extends AbstractEntity {
 		PENDING, IN_PROGRESS, COMPLETED
 	}
 
+	// Relationships
 
-	// Relationships ----------------------------------------------------------
-	@NotNull
+
+	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
+
 	private Task task;
 }

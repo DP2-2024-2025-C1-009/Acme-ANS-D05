@@ -1,0 +1,20 @@
+key,alias,moment,subject,text,score,recommended
+# alias
+review-01,A,2000/01/01 10:00,Subject Minimal,This is a review text.,9.50,true
+review-02,AliasWithExactlyFiftyCharactersXXXXXXXXXXYYYYYYYY,2000/01/01 10:00,Subject Long,This is another review text.,8.00,false
+# moment
+review-03,User03,2000/01/01 10:00,Flight Feedback,Excellent service!,7.00,true
+review-04,User04,2022/07/29 10:00,Delayed Flight,Flight was delayed.,5.00,false
+# subject
+review-05,User05,2000/01/01 10:00,S,Short subject review.,6.50,true
+review-06,User06,2000/01/01 10:00,This subject has exactly fifty characters length!!,Detailed review text.,7.50,false
+# text
+review-07,User07,2000/01/01 10:00,Flight Issues,A,9.00,true
+review-08,User08,2000/01/01 10:00,Service Issues,"Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",8.00,true
+# score
+review-09,User09,2000/01/01 10:00,Quality,Review text for quality,0.00,false
+review-10,User10,2000/01/01 10:00,Service,Review text for service,10.00,true
+review-11,User11,2000/01/01 10:00,Experience,Review text for experience,5.00,false
+# recommended
+review-12,User12,2000/01/01 10:00,Service,Review text,7.00,true
+review-13,User13,2000/01/01 10:00,Experience,Review text,7.00,false
