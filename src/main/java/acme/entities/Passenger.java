@@ -3,16 +3,17 @@ package acme.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,25 +23,36 @@ import lombok.Setter;
 
 public class Passenger extends AbstractEntity {
 
-	@Column(nullable = false)
-	@Size(max = 255)
-	private String	fullName;
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
 
-	@Column(nullable = false)
-	private String	email;
+	//Attributes
 
+	@Mandatory
+	@ValidString(max = 255)
+	@Automapped
+	private String				fullName;
+
+	@Mandatory
+	@ValidString
+	@Automapped
+	private String				email;
+
+	@Mandatory
 	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
-	@Column(nullable = false)
-	private String	pasport;
+	@ValidString
+	@Automapped
+	private String				pasport;
 
+	@Mandatory
 	@Temporal(TemporalType.DATE)
-	@Past
-	@Column(nullable = false)
-	private Date	birthDate;
+	@ValidMoment(past = true)
+	@Automapped
+	private Date				birthDate;
 
 	@Optional
-	@Size(max = 50)
-	@Column(nullable = true)
-	private String	specialNeeds;
+	@ValidString(max = 50)
+	@Automapped
+	private String				specialNeeds;
 
 }

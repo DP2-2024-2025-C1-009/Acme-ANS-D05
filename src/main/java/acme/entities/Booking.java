@@ -9,12 +9,16 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,26 +27,40 @@ import lombok.Setter;
 @Setter
 public class Booking extends AbstractEntity {
 
-	@Size(min = 6, max = 8)
-	@Column(nullable = false)
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes
+
+	@Mandatory
+	@ValidString(min = 6, max = 8)
 	@Pattern(regexp = "^[A-Z0-9]{6,8}$")
-	private String		locatorCode;
+	@Column(unique = true)
+	@Automapped
+	private String				locatorCode;
 
-	@Column(nullable = false)
+	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	private Date		purchaseTime;
+	@ValidMoment(past = true)
+	@Automapped
+	private Date				purchaseTime;
 
+	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private FlightClass	flightClass;
+	@Automapped
+	private FlightClass			flightClass;
 
-	@Column(nullable = false)
-	private Double		prize;
+	@Mandatory
+	@ValidNumber
+	@Automapped
+	private Double				prize;
 
 	@Optional
-	@Column(nullable = true, length = 4)
-	private Integer		lastNibble;
+	@ValidNumber
+	@Pattern(regexp = "^\\d{4}$", message = "El valor debe tener exactamente 4 dígitos numéricos")
+	@Digits(integer = 4, fraction = 0, message = "Debe ser un número entero de 4 dígitos")
+	@Automapped
+	private Integer				lastNibble;
 
 
 	public enum FlightClass {
