@@ -4,16 +4,17 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-
-import org.hibernate.validator.constraints.Length;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,28 +28,33 @@ public class Review extends AbstractEntity {
 
 	// Attributes 
 
-	@NotBlank
-	@Length(max = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				alias;
 
-	@NotNull
-	//@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@NotBlank
-	@Length(max = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				subject;
 
-	@NotBlank
-	@Length(max = 255)
+	@Mandatory
+	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				text;
 
-	@Digits(integer = 2, fraction = 2)
-	@Min(0)
-	@Max(10)
+	@Optional
+	@ValidNumber(min = 0, max = 10, fraction = 2)
+	@Automapped
 	private Double				score;
 
-	@NotNull
+	@Optional
+	@Valid
+	@Automapped
 	private Boolean				recommended;
 }
