@@ -5,7 +5,7 @@ claim-02,2000/01/01 00:01,acme@lorem-ipsum.org,Lorem Ipsum,FLIGHT_ISSUES,true,ag
 claim-03,2022/07/29 23:59,acme@lorem-ipsum.org,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-01
 claim-04,2022/07/30 00:00,acme@lorem-ipsum.org,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-01
 # passenger email
-claim-05,2012/07/02 00:00,acme:password@lorem-ipsum.org,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-01
+claim-05,2012/07/02 00:00,acmepassword@lorem-ipsum.org,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-01
 claim-06,2012/07/02 00:00,a@b.e,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-01
 claim-07,2012/07/02 00:00,a@b.es,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-02
 claim-08,2012/07/02 00:00,a@b.esx,Lorem Ipsum,FLIGHT_ISSUES,true,agent-01,leg-02
