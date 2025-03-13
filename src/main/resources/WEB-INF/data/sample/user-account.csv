@@ -3,7 +3,11 @@ user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', 
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
+<<<<<<< HEAD
 user-account-provider-02,true,"UserIdentity{name: 'Carlos', surname: 'Acme', email: 'agent1@acme.com'}",provider2,provider2
+=======
+user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+>>>>>>> 162da5c5c020459622f2ee9bd58b36469937aa3f
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-technician-01,true,"UserIdentity{name: 'Jaime', surname: 'Technician', email: 'jaime@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Luis', surname: 'Technician', email: 'luis@acme.com'}",technician2,technician2
@@ -13,6 +17,7 @@ user-account-administrator-03,true,"UserIdentity{name: 'Daniel', surname: 'טי�
 user-account-manager-01,true,"UserIdentity{name: 'Hagas', surname: 'Bんい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'hagas@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Charles', surname: 'AirManager', email: 'charles@acme.com'}",manager2,manager2
 <<<<<<< HEAD
+<<<<<<< HEAD
 user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: 'Cよ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
 =======
 user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
@@ -20,3 +25,6 @@ user-account-agent-02,true,"UserIdentity{name: 'Agent2', surname: 'Acme', email:
 user-account-agent-03,true,"UserIdentity{name: 'Agent3', surname: 'Acme', email: 'agent3@acme.com'}",agent3,agent3
 user-account-agent-01,true,"UserIdentity{name: 'Agent1', surname: 'Acme', email: 'agent1@acme.com'}",agent1,agent1
 >>>>>>> e2f00f82ed61c657e3b4ea6560f0d77b1d7812d2
+=======
+user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: 'Cよ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
+>>>>>>> 162da5c5c020459622f2ee9bd58b36469937aa3f
