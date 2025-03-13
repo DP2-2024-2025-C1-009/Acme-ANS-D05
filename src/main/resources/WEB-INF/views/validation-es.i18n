@@ -1,0 +1,55 @@
+# validation-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.service.name-length = La longitud del nombre no debe superar los 50 caracteres.
+acme.validation.service.photo-link-valid = Introduce una URL válida
+acme.validation.service.promotion-code-year = Los dos últimos dígitos se deben corresponder con el año actual.
+acme.validation.service.promotion-code-pattern = El código promocional debe estar compuesto por 4 letras mayúsculas, un guión y dos dígitos, estos últimos correspondientes con el año actual.
+
+acme.validation.airport.airport-name-length = La logitud del nombre del aeropuerto no debe superar los 50 caracteres.
+acme.validation.airport.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas.
+acme.validation.airport.city-length = La longitud de la ciudad no debe superar los 50 caracteres.
+acme.validation.airport.country-length = La longitud del país no debe superar los 50 caracteres.
+acme.validation.airport.phone-number-pattern = El número de teléfono debe contener entre 6 y 15 dígitos, empezando opcionalmente con '+'.
+acme.validation.airport.website-valid = Introduce una URL válida. 
+acme.validation.airport.email-valid = Introduce una dirección de correo válida.
+
+acme.validation.airline.name-lenght = La longitud del nombre de la aerolínea no debe superar los 50 caracteres.
+acme.validation.airline.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas.
+acme.validation.airline.iata-code-last-letter = El último caracter del código IATA debe ser una X.
+acme.validation.airline.website-valid = Introduce una URL válida.
+acme.validation.airline.foundation-moment-past = La fecha de fundacion de la aerolínea debe ser una fecha en el pasado.
+acme.validation.airline.email-valid = Introduce una dirección de correo válida.
+acme.validation.airline.phone-number-pattern = El número de teléfono debe contener entre 6 y 15 dígitos, empezando opcionalmente con '+'.
+
+acme.validation.aircraft.model-length = La logitud del modelo de avión no debe superar los 50 caracteres.
+acme-validation.aircraft.number-registration-length = El número de registro debe ser único y no debe superar los 50 caracteres.
+acme.validation.aircraft.load-weigth-range = La carga del avión de ser un valor entre 2.000 y 50.000 kilogramos.
+acme.validation.aircraft.optional-details-length = La longitud de los detalles opcionales no debe superar los 255 caracteres.
+acme.validation.aircraft.number-passengers-range = El número de pasajeros debe ser entre 1 y 255.
+
+acme.validation.review.alias-length = La longitud del nombre/alias no debe superar los 50 caracteres.
+acme.validation.review.moment-past = La fecha de la reseña debe ser una fecha en el pasado.
+acme.validation.review.subject-length = La logitud del tema de la reseña no debe superar los 50 caracteres.
+acme.validation.review.text-length = La longitud del texto de la reseña no debe superar los 255 caracteres.
+acme.validation.review.score-range = La puntuación debe ser un valor en 0 y 10.
+
+acme.validation.agent.employee-code-pattern = El código de empleado debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
+acme.validation.agent.employee-code-initials = El código debe ser tus iniciales, primero de apellido(s) y luego nombre.
+acme.validation.agent.spoken-languages-length = La lista de idiomas no debe superar los 255 caracteres.
+acme.validation.agent.start-working-date = El inicio de trabajo debe ser una fecha en el pasado.
+acme.validation.agent.bio-length = La biografía no debe superar los 255 caracteres.
+
+acme.validation.claim.registration-moment-date = La fecha del registro del claim debe ser una fecha en el pasado.
+acme.validation.claim.description-length = La descripción no debe superar los 255 caracteres.
+acme.validation.claim.passenger-email-correct = Introduce una diorección de correo válida.
+
+acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
+acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
