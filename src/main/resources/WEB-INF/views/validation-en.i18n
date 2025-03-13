@@ -41,3 +41,17 @@ acme.validation.review.moment-past = The review date must be in the past.
 acme.validation.review.subject-length = The review subject length must not exceed 50 characters.
 acme.validation.review.text-length = The review text length must not exceed 255 characters.
 acme.validation.review.score-range = The score must be a value between 0 and 10.
+
+acme.validation.agent.employee-code-pattern = The employee code must have 2 or 3 uppercase letters followed by 6 digits.
+acme.validation.agent.employee-code-initials = The code must be your initials, first from your last name(s) and then from your first name.
+
+acme.validation.agent.spoken-languages-length = The list of languages must not exceed 255 characters.
+acme.validation.agent.start-working-date = The start working date must be in the past.
+acme.validation.agent.bio-length = The biography must not exceed 255 characters.
+
+acme.validation.claim.registration-moment-date = The claim registration date must be in the past.
+acme.validation.claim.description-length = The description must not exceed 255 characters.
+acme.validation.claim.passenger-email-correct = Enter a valid email address.
+
+acme.validation.tracking-log.steps-length = The steps carried out must not exceed 50 characters.
+acme.validation.tracking-log.resolution-length = The resolution must not exceed 255 characters.

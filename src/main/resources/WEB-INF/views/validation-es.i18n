@@ -40,3 +40,16 @@ acme.validation.review.moment-past = La fecha de la reseña debe ser una fecha e
 acme.validation.review.subject-length = La logitud del tema de la reseña no debe superar los 50 caracteres.
 acme.validation.review.text-length = La longitud del texto de la reseña no debe superar los 255 caracteres.
 acme.validation.review.score-range = La puntuación debe ser un valor en 0 y 10.
+
+acme.validation.agent.employee-code-pattern = El código de empleado debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
+acme.validation.agent.employee-code-initials = El código debe ser tus iniciales, primero de apellido(s) y luego nombre.
+acme.validation.agent.spoken-languages-length = La lista de idiomas no debe superar los 255 caracteres.
+acme.validation.agent.start-working-date = El inicio de trabajo debe ser una fecha en el pasado.
+acme.validation.agent.bio-length = La biografía no debe superar los 255 caracteres.
+
+acme.validation.claim.registration-moment-date = La fecha del registro del claim debe ser una fecha en el pasado.
+acme.validation.claim.description-length = La descripción no debe superar los 255 caracteres.
+acme.validation.claim.passenger-email-correct = Introduce una diorección de correo válida.
+
+acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
+acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
