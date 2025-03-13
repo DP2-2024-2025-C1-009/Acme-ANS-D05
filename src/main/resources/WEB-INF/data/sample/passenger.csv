@@ -1,26 +1,33 @@
 key, fullName, email, passport, birthDate, specialNeeds
 #fullName
-"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
-"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
-"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
-"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ana.martin@example.com","JKL321987",1988-04-14,"No"
+passenger-01,"J","juan.perez@example.com","ABC123456",2001-05-15,null
+passenger-02,"Maria Lopez","maria.lopez@example.com","DEF987654",2001-08-22,"Especial"
+passenger-03,"โลเร็ม อิปซัม","carlos.garcia@example.com","GHI654321",2001-12-10,null
+passenger-04,"洛伦·伊普森","roberto.garcia@example.com","GNI659821",2001-12-10,null
+passenger-05,"<marquee>Hacked</marquee>","marquee.garcia@example.com","ABT453821",2001-12-10,null
+passenger-06,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ana.martin@example.com","JKL321987",2001-04-14,"No"
+passenger-07,"<script>alert(‘Hacked!’);</script>","hacked.garcia@example.com","ASF343821",2001-12-10,null
+passenger-08,"' or 'A' = 'A","marquee.garcia@example.com","ABT453821",2001-12-10,null
 #email
-"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
-"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
-"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
-"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+passenger-09,"Juan Pérez","ลเร็ม อิปซัมลเร็ม อิปซัม","ABC123456",2001-05-15,null
+passenger-10,"Maria Lopez","maria.lopez@example.com","DEF987654",2001-08-22,"Especial"
+passenger-11,"Carlos García","洛伦·伊普森洛伦·伊普森洛伦·伊普森洛伦·伊普森","GHI654321",2001-12-10,null
+passenger-12,"Ana Martí","<script>alert(‘Hacked!’);</script>","JKL321987",2001-04-14,"No"
+passenger-13,"Anais Martín","<marquee>Hacked</marquee>","JPL321987",2001-04-14,"No"
+passenger-14,"Anabel Martín","' or 'A' = 'A","JKM321987",2001-04-14,"No"
 #pasport
-"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
-"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
-"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
-"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+passenger-,"Juan Pérez","juan.perez@example.com","ABC123456",2001-05-15,null
+passenger-,"Maria Lopez","maria.lopez@example.com","DEF987654",2001-08-22,"Especial"
+passenger-,"Carlos García","carlos.garcia@example.com","GWI654321",2001-12-10,null
+passenger-,"Ana Martín","ana.martin@example.com","JKL321987",2001-04-14,"No"
 #birthDate
-"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
-"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
-"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
-"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+passenger-,"Juan Pérez","juan.perez@example.com","ABC123456",2025-03-13,null
+passenger-,"Maria Lopez","maria.lopez@example.com","DEF987654",2001-08-22,"Especial"
+passenger-,"Carlos García","carlos.garcia@example.com","GZI654321",2001-12-10,null
+passenger-,"Ana Martín","ana.martin@example.com","JKL321987",2001-04-14,"No"
 #specialNeeds
-"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
-"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
-"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
-"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+passenger-,"Juan Pérez","juan.perez@example.com","ABC123456",2001-05-15,null
+passenger-,"Maria Lopez","maria.lopez@example.com","DEF987654",2001-08-22,"洛伦·伊普森l"
+passenger-,"Carlos García","carlos.garcia@example.com","GPI654321",2001-12-10,"โลเร็ม อิปซัม"
+passenger-,"Carlos García","carlos.garcia@example.com","GLI654321",2001-12-10,"A"
+passenger-,"Ana Martín","ana.martin@example.com","JKL321987",2001-04-14,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
