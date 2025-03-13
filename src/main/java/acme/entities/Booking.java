@@ -9,12 +9,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,25 +26,33 @@ import lombok.Setter;
 @Setter
 public class Booking extends AbstractEntity {
 
-	@Size(min = 6, max = 8)
-	@Column(nullable = false)
+	@Mandatory
+	@ValidString(min = 6, max = 8)
 	@Pattern(regexp = "^[A-Z0-9]{6,8}$")
+	@Column(unique = true)
+	@Automapped
 	private String		locatorCode;
 
-	@Column(nullable = false)
+	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@ValidMoment(past = true)
+	@Automapped
 	private Date		purchaseTime;
 
+	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Automapped
 	private FlightClass	flightClass;
 
-	@Column(nullable = false)
+	@Mandatory
+	@ValidNumber
+	@Automapped
 	private Double		prize;
 
 	@Optional
-	@Column(nullable = true, length = 4)
+	@Column(length = 4)
+	@ValidNumber
+	@Automapped
 	private Integer		lastNibble;
 
 
