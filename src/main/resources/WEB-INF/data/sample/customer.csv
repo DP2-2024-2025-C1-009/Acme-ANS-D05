@@ -1,4 +1,0 @@
-username,password,name,email,purchase_history
-customer1,customer1,Carlos Pérez,customer1@example.com,"producto1, producto2"
-customer2,customer2,María González,customer2@example.com,"producto3, producto4"
-customer3,customer3,Ana Rodríguez,customer3@example.com,""

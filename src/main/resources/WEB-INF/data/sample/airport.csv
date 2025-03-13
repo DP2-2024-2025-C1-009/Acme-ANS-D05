@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 key,airport-name,iata-code,operational-scope,city,country,website,email,contact-phone-number
 #name
 airport-01,"L","HBA","INTERNATIONAL","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com","acme@lorem-ipsum.org","6841355208"
@@ -75,47 +74,3 @@ airport-64,"Quis nostrud exercitation ullamco","FFL","INTERNATIONAL","Lorem ipsu
 airport-65,"Quis nostrud exercitation ullamco","FFM","INTERNATIONAL","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com","acme@lorem-ipsum.org","999999999999998"
 airport-66,"Quis nostrud exercitation ullamco","FFN","INTERNATIONAL","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com","acme@lorem-ipsum.org","999999999999999"
 airport-67,"Quis nostrud exercitation ullamco","FFO","INTERNATIONAL","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com","acme@lorem-ipsum.org","+36539234674677"
-=======
-key,airport-name,iata-code,operational-scope,city,country,website,email,address,contact-phone-number
-airport-01,Acme International Airport,ACX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-02,A,ADX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-03,Ab,AEX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,AFX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,AGX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-06,Acme International Airport,AHX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-07,Acme International Airport,AIX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-08,<script>alert('Hacked!');</script>,AJX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-09,Acme International Airport,AKX,INTERNATIONAL,A,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-10,Acme International Airport,ALX,INTERNATIONAL,Ab,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-11,Acme International Airport,AMX,INTERNATIONAL,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-12,Acme International Airport,ANX,INTERNATIONAL,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-13,Acme International Airport,AOX,INTERNATIONAL,Metropolis,A,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-14,Acme International Airport,APX,INTERNATIONAL,Metropolis,Ab,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-15,Acme International Airport,AQX,INTERNATIONAL,Metropolis,"Lorem ipsum dolor sit amet, consectetur adipiscin",http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-16,Acme International Airport,ARX,INTERNATIONAL,Metropolis,"Lorem ipsum dolor sit amet, consectetur adipiscing",http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-17,Acme International Airport,ASX,INTERNATIONAL,โลเร็ม,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-18,Acme International Airport,ATX,INTERNATIONAL,<script>alert('Hacked!');</script>,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-19,Acme International Airport,CAX,DOMESTIC,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-20,Acme International Airport,CPX,REGIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-21,Acme International Airport,PSX,INTERNATIONAL,Metropolis,Freedonia,ftp://a,airport@lorem.com,123 Main St,+11234567890
-airport-22,Acme International Airport,CRX,INTERNATIONAL,Metropolis,Freedonia,ftp://a.b,airport@lorem.com,123 Main St,+11234567890
-airport-23,Acme International Airport,CSX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,a@b.e,123 Main St,+11234567890
-airport-24,Acme International Airport,CCX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,a@b.es,123 Main St,+11234567890
-airport-25,Acme International Airport,AUX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,A,+11234567890
-airport-26,Acme International Airport,AVX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,AB,+11234567890
-airport-27,Acme International Airport,AWX,INTERNATIONAL,Metropolis,Freedonia,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut.enim.ad.minim.veniam.quis.nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-28,Acme International Airport,AXX,INTERNATIONAL,Metropolis,Freedonia,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut.enim.ad.minim.veniam.quis.nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/*",airport@lorem-ipsum.org,123 Main St,+11234567890
-airport-29,Acme International Airport,AYX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,a@b.e,123 Main St,+11234567890
-airport-30,Acme International Airport,AZX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,a@b.es,123 Main St,+11234567890
-airport-31,Acme International Airport,BBX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,123 Main St,+11234567890
-airport-32,Acme International Airport,BCX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,123 Main St,+11234567890
-airport-33,Acme International Airport,BDX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,A,+11234567890
-airport-34,Acme International Airport,BEX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,AB,+11234567890
-airport-35,Acme International Airport,BFX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",+11234567890
-airport-36,Acme International Airport,BGX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",+11234567890
-airport-37,Acme International Airport,BHX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+123456
-airport-38,Acme International Airport,BIX,INTERNATIONAL,Metropolis,Freedonia,http://lorem.com/ipsum,airport@lorem-ipsum.org,123 Main St,+123456789012345
-airport-39,Skyport International,SIX,INTERNATIONAL,New York,USA,http://skyport.com,contact@skyport.com,JFK Terminal 4,+12125551234
-airport-40,Regional Airfield,RAX,REGIONAL,Smalltown,Utopia,http://regional-airfield.org,info@regional-airfield.org,Runway 2,+18005550123
-airport-41,Domestic Hub,DHX,DOMESTIC,Capital,Freedonia,http://domestichub.net,support@domestichub.net,123 Hub Blvd,+19998887766
->>>>>>> e2f00f82ed61c657e3b4ea6560f0d77b1d7812d2

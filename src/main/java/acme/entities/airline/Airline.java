@@ -17,6 +17,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIATACode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,23 +26,25 @@ import lombok.Setter;
 @Setter
 public class Airline extends AbstractEntity {
 
-	// Serialisation identifier
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes 
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidString(min = 1, max = 50, message = "{acme.validation.airline.name-lenght}")
 	@Automapped
 	private String				name;
 
-	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
+	@Mandatory
+	@ValidString(min = 1, max = 3, pattern = "^[A-Z]{3}$", message = "{acme.validation.airline.iata-code-pattern}")
+	@ValidIATACode
 	private String				iataCode;
 
 	@Mandatory
-	@ValidUrl
+	@ValidUrl(message = "{acme.validation.airline.website-valid}")
 	@Automapped
 	private String				website;
 
@@ -51,18 +54,24 @@ public class Airline extends AbstractEntity {
 	private AirlineType			type;
 
 	@Mandatory
-	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true, message = "{acme.validation.airline.foundation-moment-past}")
 	private Date				foundationMoment;
 
 	@Optional
-	@ValidEmail
+	@ValidEmail(message = "{acme.validation.airline.email-valid}")
 	@Automapped
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.airline.phone-number-pattern}")
 	@Automapped
 	private String				phoneNumber;
 
+	// Airline Type Enum  -------------------------------------------------------------
+
+
+	public enum AirlineType {
+		LUXURY, STANDARD, LOW_COST
+	}
 }
