@@ -4,16 +4,16 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-
-import org.hibernate.validator.constraints.Length;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,33 +22,38 @@ import lombok.Setter;
 @Setter
 public class Review extends AbstractEntity {
 
-	// Serialisation identifier
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes 
+	// Attributes -------------------------------------------------------------
 
-	@NotBlank
-	@Length(max = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.review.alias-length}")
+	@Automapped
 	private String				alias;
 
-	@NotNull
-	//@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@Mandatory
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true, message = "{acme.validation.review.moment-past}")
 	private Date				moment;
 
-	@NotBlank
-	@Length(max = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.review.subject-length}")
+	@Automapped
 	private String				subject;
 
-	@NotBlank
-	@Length(max = 255)
+	@Mandatory
+	@ValidString(min = 1, max = 255, message = "{acme.validation.review.text-length}")
+	@Automapped
 	private String				text;
 
-	@Digits(integer = 2, fraction = 2)
-	@Min(0)
-	@Max(10)
+	@Optional
+	@ValidNumber(min = 0, max = 10, message = "{acme.validation.review.score-range}")
+	@Automapped
 	private Double				score;
 
-	@NotNull
-	private Boolean				recommended;
+	@Optional
+	@Automapped
+	private Boolean				isRecommended;
 }

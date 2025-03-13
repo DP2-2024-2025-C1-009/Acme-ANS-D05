@@ -1,19 +1,23 @@
 
 package acme.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.URL;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIATACode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,32 +26,49 @@ import lombok.Setter;
 @Setter
 public class Airline extends AbstractEntity {
 
-	@Column(nullable = false, length = 50)
-	private String		name;
+	// Serialisation version --------------------------------------------------
 
-	@Column(unique = true, nullable = false, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be exactly three uppercase letters")
-	private String		iataCode;
+	private static final long	serialVersionUID	= 1L;
 
-	@URL(message = "Website should be a valid URL")
-	@Column(nullable = true)
-	private String		website;
+	// Attributes -------------------------------------------------------------
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private AirlineType	type;
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.airline.name-lenght}")
+	@Automapped
+	private String				name;
 
-	@Column(nullable = false)
-	@Past(message = "Foundation date must be in the past")
-	private LocalDate	foundationMoment;
+	@Column(unique = true)
+	@Mandatory
+	@ValidString(min = 1, max = 3, pattern = "^[A-Z]{3}$", message = "{acme.validation.airline.iata-code-pattern}")
+	@ValidIATACode
+	private String				iataCode;
 
-	@Email(message = "Email should be valid")
-	@Column(nullable = true)
-	private String		email;
+	@Mandatory
+	@ValidUrl(message = "{acme.validation.airline.website-valid}")
+	@Automapped
+	private String				website;
 
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
-	@Column(nullable = true)
-	private String		phoneNumber;
+	@Mandatory
+	@Valid
+	@Automapped
+	private AirlineType			type;
+
+	@Mandatory
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true, message = "{acme.validation.airline.foundation-moment-past}")
+	private Date				foundationMoment;
+
+	@Optional
+	@ValidEmail(message = "{acme.validation.airline.email-valid}")
+	@Automapped
+	private String				email;
+
+	@Optional
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.airline.phone-number-pattern}")
+	@Automapped
+	private String				phoneNumber;
+
+	// Airline Type Enum  -------------------------------------------------------------
 
 
 	public enum AirlineType {

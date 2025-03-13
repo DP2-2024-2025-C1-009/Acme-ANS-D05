@@ -2,42 +2,76 @@
 package acme.entities;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Entity;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class Airport extends AbstractEntity {
 
-	@Column(nullable = false, length = 50)
+	// Serialisation version --------------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
+
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.airport.airport-name-length}")
+	@Automapped
 	private String				airportName;
 
-	@Column(unique = true, nullable = false, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be exactly three uppercase letters")
+	@Mandatory
+	@Column(unique = true)
+	@ValidString(min = 1, max = 3, pattern = "^[A-Z]{3}$", message = "{acme.validation.airport.iata-code-pattern}")
 	private String				iataCode;
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Mandatory
+	@Valid
+	@Automapped
 	private OperationalScope	operationalScope;
 
-	@Column(nullable = false, length = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.airport.city-length}")
+	@Automapped
 	private String				city;
 
-	@Column(nullable = false, length = 50)
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.airport.country-length}")
+	@Automapped
 	private String				country;
 
-	@Column(nullable = true, length = 100)
+	@Optional
+	@ValidUrl(message = "{acme.validation.airport.website-valid}")
+	@Automapped
 	private String				website;
 
-	@Column(nullable = true, length = 100)
-	@Email(message = "Email should be valid")
+	@Optional
+	@ValidEmail(message = "{acme.validation.airport.email-valid}")
+	@Automapped
 	private String				email;
 
-	@Column(nullable = true)
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
+	@Optional
+	@ValidString
+	@Automapped
+	private String				address;
+
+	@Optional
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.airport.phone-number-pattern}")
+	@Automapped
 	private String				contactPhoneNumber;
+
+	// Operational Scope Enum  -------------------------------------------------------------
 
 
 	public enum OperationalScope {

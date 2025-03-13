@@ -1,0 +1,33 @@
+key,name,photo-link,average-dwell-time,promotion-code,discounted-money
+service-01,Standard Service,http://lorem.com/photo,15.0,AAAA-22,EUR 500000.00
+## Variantes para el campo name ##
+service-02,A,http://lorem.com/photo,15.0,AAAB-22,EUR 500000.00
+service-03,Ab,http://lorem.com/photo,15.0,AAAC-22,EUR 500000.00
+service-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,http://lorem.com/photo,15.0,AAAD-22,EUR 500000.00
+service-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,http://lorem.com/photo,15.0,AAAF-22,EUR 500000.00
+service-06,โลเร็ม,http://lorem.com/photo,15.0,AAAG-22,EUR 500000.00
+service-07,<script>alert('Hacked!');</script>,http://lorem.com/photo,15.0,AAAH-22,EUR 500000.00
+## Variantes para el campo photoLink ##
+service-08,Standard Service,ftp://a,15.0,AAAI-22,EUR 500000.00
+service-09,Standard Service,ftp://a.b,15.0,AAAJ-22,EUR 500000.00
+service-10,Standard Service,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",15.0,AAAK-22,EUR 500000.00
+service-11,Standard Service,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/*",15.0,AAAL-22,EUR 500000.00
+## Variantes para el campo averageDwellTime ##
+service-12,Standard Service,http://lorem.com/photo,1.00,AAAM-22,EUR 500000.00
+service-13,Standard Service,http://lorem.com/photo,1.01,AAAN-22,EUR 500000.00
+service-14,Standard Service,http://lorem.com/photo,99.99,HHHH-22,EUR 500000.00
+service-15,Standard Service,http://lorem.com/photo,100.00,FFFF-22,EUR 500000.00
+## Variantes para el campo promotionCode ##
+service-16,Standard Service,http://lorem.com/photo,15.0,AAAO-22,EUR 500000.00
+service-17,Standard Service,http://lorem.com/photo,15.0,AAAP-22,EUR 500000.00
+service-18,Standard Service,http://lorem.com/photo,15.0,ZZZZ-22,EUR 500000.00
+service-19,Standard Service,http://lorem.com/photo,15.0,,EUR 500000.00
+## Variantes para el campo discountedMoney ##
+service-20,Standard Service,http://lorem.com/photo,15.0,AAAQ-22,EUR 0.00
+service-21,Standard Service,http://lorem.com/photo,15.0,AAAR-22,EUR 0.01
+service-22,Standard Service,http://lorem.com/photo,15.0,AAAS-22,EUR 999999.99
+service-23,Standard Service,http://lorem.com/photo,15.0,AAAT-22,EUR 1000000.00
+service-24,Standard Service,http://lorem.com/photo,15.0,AAAU-22,
+## Filas inventadas (datos completos) ##
+service-25,Premium Service,https://premium.com/photo.jpg,30.5,DISC-22,EUR 750000.00
+service-26,Budget Service,http://budget.com/img.png,10.0,SAVE-22,EUR 10000.00
