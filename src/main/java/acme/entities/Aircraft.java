@@ -3,14 +3,13 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,34 +19,43 @@ import lombok.Setter;
 
 public class Aircraft extends AbstractEntity {
 
-	@Size(max = 50)
-	@Column(nullable = false)
-	private String			model;
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
 
-	@Size(max = 50)
-	@Column(nullable = false, unique = true)
-	private String			numberRegistration;
+	// Attributes 
 
-	@Column(nullable = false)
-	private Integer			numberPassengers;
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Automapped
+	private String				model;
 
-	@Min(2000)
-	@Max(50000)
-	@Column(nullable = false)
-	private Integer			loadWeight;
+	@Mandatory
+	@ValidString(min = 1, max = 50)
+	@Column(unique = true)
+	private String				numberRegistration;
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private AircraftState	state;
+	@Mandatory
+	@ValidNumber(min = 1, max = 255)
+	@Automapped
+	private Integer				numberPassengers;
+
+	@Mandatory
+	private Integer				loadWeight;
+
+	// REVISAR ESTO PARA QUE NO DE PROBLEMAS
+	//	@Mandatory
+	//	@Valid
+	//	@Automapped
+	//	private AircraftState		state;
 
 	@Optional
-	@Size(max = 255)
-	@Column(nullable = true)
-	private String			optionalDetails;
+	@ValidString(min = 0, max = 255)
+	@Automapped
+	private String				optionalDetails;
 
 
 	public enum AircraftState {
-		SERVICE, ACTIVE, MAINTENANCE
+		ACTIVE, MAINTENANCE
 	}
 
 }

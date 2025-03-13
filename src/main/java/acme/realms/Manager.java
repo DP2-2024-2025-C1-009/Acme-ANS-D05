@@ -3,16 +3,20 @@ package acme.realms;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIdentifier;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,18 +32,24 @@ public class Manager extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Identifier number must have 2 or 3 uppercase letters followed by 6 digits")
+	@ValidString(min = 8, max = 9)
+	@ValidIdentifier
+	@Column(unique = true)
 	private String				identifierNumber;
 
-	@ValidNumber
-	@Min(value = 0, message = "Years of experience must be at least 0")
+	@Mandatory
+	@ValidNumber(min = 0, max = 120)
+	@Automapped
 	private Integer				yearsOfExperience;
 
-	@Past(message = "Date of birth date must be in the past")
+	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dateOfBirth;
 
+	@Optional
 	@ValidUrl
+	@Automapped
 	private String				pictureLink;
 
 	// Derived attributes -----------------------------------------------------

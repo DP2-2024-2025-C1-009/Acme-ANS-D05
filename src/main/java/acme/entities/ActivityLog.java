@@ -21,6 +21,8 @@ import lombok.Setter;
 @Setter
 public class ActivityLog extends AbstractEntity {
 
+	private static final long	serialVersionUID	= 1L;
+
 	@Column(nullable = false)
 	@Past(message = "Registration moment must be in the past")
 	private LocalDateTime		registrationMoment;
