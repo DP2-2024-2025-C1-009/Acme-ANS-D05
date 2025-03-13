@@ -1,14 +1,13 @@
 
-package acme.entities;
+package acme.entities.airline;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -38,15 +37,17 @@ public class Airline extends AbstractEntity {
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
+	@Column(unique = true)
 	private String				iataCode;
 
 	@Mandatory
 	@ValidUrl
-	@Column(nullable = true)
+	@Automapped
 	private String				website;
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Mandatory
+	@Valid
+	@Automapped
 	private AirlineType			type;
 
 	@Mandatory
@@ -64,8 +65,4 @@ public class Airline extends AbstractEntity {
 	@Automapped
 	private String				phoneNumber;
 
-
-	public enum AirlineType {
-		LUXURY, STANDARD, LOW_COST
-	}
 }
