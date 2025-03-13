@@ -42,7 +42,7 @@ public class Passenger extends AbstractEntity {
 	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
 	@ValidString
 	@Automapped
-	private String				pasport;
+	private String				passport;
 
 	@Mandatory
 	@Temporal(TemporalType.DATE)

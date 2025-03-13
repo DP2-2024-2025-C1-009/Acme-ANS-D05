@@ -1,0 +1,4 @@
+key,customerId,telephoneNumber,address,city,country,accumulatedPoints
+customer-01,customer1, 123456, "Calle Sevilla","Cuenca","Spain",200
+customer-02,customer2,123456, "Calle de la Esperanza","Sevilla","Spain", 345
+customer-03,customer3,123456, "Calle Bali","Ceuta","Spain",null
