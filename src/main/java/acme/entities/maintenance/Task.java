@@ -40,8 +40,4 @@ public class Task extends AbstractEntity {
 	@Automapped
 	private double				estimatedDuration;
 
-
-	public enum TaskType {
-		MAINTENANCE, INSPECTION, REPAIR, SYSTEM_CHECK
-	}
 }

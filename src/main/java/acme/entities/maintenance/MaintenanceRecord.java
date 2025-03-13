@@ -56,17 +56,11 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Automapped
 	private String				notes;
 
-
-	public enum Status {
-		PENDING, IN_PROGRESS, COMPLETED
-	}
-
 	// Relationships
-
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
 
-	private Task task;
+	private Task				task;
 }
