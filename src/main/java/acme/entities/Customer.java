@@ -10,6 +10,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,15 +26,14 @@ public class Customer extends AbstractEntity {
 
 	@Mandatory
 	@ValidString(min = 8, max = 9)
-	@Pattern(regexp = "^[A-Z]{2-3}\\d{6}$", message = "Customer Identificator " + "must have 2/3 letters followed by 6 numbers")
+	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Customer Identificator " + "must have 2/3 letters followed by 6 numbers")
 	@Automapped
 	private String				customerId;
 
 	@Mandatory
-	@ValidNumber(min = 6, max = 15)
-	@Pattern(regexp = "^+?\\d{6,15}$", message = "Customer telephone numbre " + "can start with simbol + and must have between 6 and 15 digits")
+	@ValidPhoneNumber
 	@Automapped
-	private Integer				telephoneNumber;
+	private String				telephoneNumber;
 
 	@Mandatory
 	@ValidString(max = 255)
