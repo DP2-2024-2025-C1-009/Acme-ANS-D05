@@ -1,0 +1,26 @@
+key, fullName, email, passport, birthDate, specialNeeds
+#fullName
+"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
+"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
+"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ana.martin@example.com","JKL321987",1988-04-14,"No"
+#email
+"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
+"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
+"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
+"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+#pasport
+"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
+"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
+"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
+"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+#birthDate
+"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
+"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
+"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
+"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"No"
+#specialNeeds
+"Juan Pérez","juan.perez@example.com","ABC123456",1990-05-15,null
+"Maria Lopez","maria.lopez@example.com","DEF987654",1985-08-22,"Especial"
+"Carlos García","carlos.garcia@example.com","GHI654321",1992-12-10,null
+"Ana Martín","ana.martin@example.com","JKL321987",1988-04-14,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"

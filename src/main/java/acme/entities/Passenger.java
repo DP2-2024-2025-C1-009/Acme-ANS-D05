@@ -23,31 +23,36 @@ import lombok.Setter;
 
 public class Passenger extends AbstractEntity {
 
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes
+
 	@Mandatory
 	@ValidString(max = 255)
 	@Automapped
-	private String	fullName;
+	private String				fullName;
 
 	@Mandatory
 	@ValidString
 	@Automapped
-	private String	email;
+	private String				email;
 
 	@Mandatory
 	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
 	@ValidString
 	@Automapped
-	private String	pasport;
+	private String				pasport;
 
 	@Mandatory
 	@Temporal(TemporalType.DATE)
 	@ValidMoment(past = true)
 	@Automapped
-	private Date	birthDate;
+	private Date				birthDate;
 
 	@Optional
 	@ValidString(max = 50)
 	@Automapped
-	private String	specialNeeds;
+	private String				specialNeeds;
 
 }

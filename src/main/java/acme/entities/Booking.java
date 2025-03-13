@@ -9,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -26,34 +27,40 @@ import lombok.Setter;
 @Setter
 public class Booking extends AbstractEntity {
 
+	// Serialisation identifier
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes
+
 	@Mandatory
 	@ValidString(min = 6, max = 8)
 	@Pattern(regexp = "^[A-Z0-9]{6,8}$")
 	@Column(unique = true)
 	@Automapped
-	private String		locatorCode;
+	private String				locatorCode;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	@Automapped
-	private Date		purchaseTime;
+	private Date				purchaseTime;
 
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Automapped
-	private FlightClass	flightClass;
+	private FlightClass			flightClass;
 
 	@Mandatory
 	@ValidNumber
 	@Automapped
-	private Double		prize;
+	private Double				prize;
 
 	@Optional
-	@Column(length = 4)
 	@ValidNumber
+	@Pattern(regexp = "^\\d{4}$", message = "El valor debe tener exactamente 4 dígitos numéricos")
+	@Digits(integer = 4, fraction = 0, message = "Debe ser un número entero de 4 dígitos")
 	@Automapped
-	private Integer		lastNibble;
+	private Integer				lastNibble;
 
 
 	public enum FlightClass {
