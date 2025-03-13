@@ -3,50 +3,54 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
+import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+public class Aircraft extends AbstractEntity {
 
-public class Aircraft {
+	// Serialisation version --------------------------------------------------
 
-	@Size(max = 50)
-	@Column(nullable = false)
-	private String			model;
+	private static final long	serialVersionUID	= 1L;
 
-	@Size(max = 50)
-	@Column(nullable = false, unique = true)
-	private String			numberRegistration;
+	// Attributes -------------------------------------------------------------
 
-	@Column(nullable = false)
-	private Integer			numberPassengers;
+	@Mandatory
+	@ValidString(min = 1, max = 50, message = "{acme.validation.aircraft.model-length}")
+	@Automapped
+	private String				model;
 
-	@Min(2000)
-	@Max(50000)
-	@Column(nullable = false)
-	private Integer			loadWeight;
+	@Mandatory
+	@Column(unique = true)
+	@ValidString(min = 1, max = 50, message = "{acme-validation.aircraft.number-registration-length}")
+	private String				numberRegistration;
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private AircraftState	state;
+	@Mandatory
+	@ValidNumber(min = 1, max = 255, message = "{acme.validation.aircraft.number-passengers-range}")
+	@Automapped
+	private Integer				numberPassengers;
+
+	@Mandatory
+	@ValidNumber(min = 2000, max = 50000, message = "{acme.validation.aircraft.load-weigth-range}")
+	@Automapped
+	private Integer				loadWeight;
+
+	@Mandatory
+	@Automapped
+	private boolean				aIsActive;
 
 	@Optional
-	@Size(max = 255)
-	@Column(nullable = true)
-	private String			optionalDetails;
-
-
-	public enum AircraftState {
-		SERVICE, ACTIVE, MAINTENANCE
-	}
+	@ValidString(max = 255, message = "{acme.validation.aircraft.optional-details-length}")
+	@Automapped
+	private String				optionalDetails;
 
 }

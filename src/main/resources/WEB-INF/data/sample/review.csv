@@ -1,0 +1,33 @@
+key,alias,moment,subject,text,score,is-recommended
+review-01,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-02,A,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-03,Ab,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-06,โลเร็ม,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-07,<script>alert('Hacked!');</script>,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-08,ReviewerOne,2000/01/01 00:00,Great Service,The service was outstanding and prompt.,8.5,true
+review-09,ReviewerOne,2000/01/01 00:01,Great Service,The service was outstanding and prompt.,8.5,true
+review-10,ReviewerOne,2022/07/29 23:59,Great Service,The service was outstanding and prompt.,8.5,true
+review-11,ReviewerOne,2010/05/15 00:00,S,Great Service,8.5,true
+review-12,ReviewerOne,2010/05/15 00:00,Su,Great Service,8.5,true
+review-13,ReviewerOne,2010/05/15 00:00,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,Great Service,8.5,true
+review-14,ReviewerOne,2010/05/15 00:00,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,Great Service,8.5,true
+review-15,ReviewerOne,2010/05/15 00:00,سريع,Great Service,8.5,true
+review-16,ReviewerOne,2010/05/15 00:00,<marquee>Bad Subject</marquee>,Great Service,8.5,true
+review-17,ReviewerOne,2010/05/15 00:00,Great Service,A,8.5,true
+review-18,ReviewerOne,2010/05/15 00:00,Great Service,Ab,8.5,true
+review-19,ReviewerOne,2010/05/15 00:00,Great Service,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",8.5,true
+review-20,ReviewerOne,2010/05/15 00:00,Great Service,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",8.5,true
+review-21,ReviewerOne,2010/05/15 00:00,Great Service,ทดสอบข้อความ,8.5,true
+review-22,ReviewerOne,2010/05/15 00:00,Great Service,<script>alert('Hacked Text');</script>,8.5,true
+review-23,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,0,true
+review-24,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,0.01,true
+review-25,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,9.99,true
+review-26,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,10,true
+review-27,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,,true
+review-28,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,false
+review-29,ReviewerOne,2010/05/15 00:00,Great Service,The service was outstanding and prompt.,8.5,
+review-30,Top Reviewer,2010/03/10 14:30,Excellent Experience,Everything was perfect and well organized.,9.5,true
+review-31,CriticX,2008/11/05 09:15,Could be better,Service was slow at times but overall acceptable.,5.0,false
+review-32,FeedbackGuru,2005/07/20 18:45,Not Satisfied,The quality did not meet my expectations.,2.0,false

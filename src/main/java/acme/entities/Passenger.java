@@ -1,7 +1,7 @@
 
 package acme.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Optional;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,27 +20,27 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Passenger {
+public class Passenger extends AbstractEntity {
 
 	@Column(nullable = false)
 	@Size(max = 255)
-	private String		fullName;
+	private String	fullName;
 
 	@Column(nullable = false)
-	private String		email;
+	private String	email;
 
 	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
 	@Column(nullable = false)
-	private String		pasport;
+	private String	pasport;
 
 	@Temporal(TemporalType.DATE)
 	@Past
 	@Column(nullable = false)
-	private LocalDate	birthDate;
+	private Date	birthDate;
 
 	@Optional
 	@Size(max = 50)
 	@Column(nullable = true)
-	private String		specialNeeds;
+	private String	specialNeeds;
 
 }
