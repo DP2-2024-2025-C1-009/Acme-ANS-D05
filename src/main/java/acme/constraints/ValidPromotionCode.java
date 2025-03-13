@@ -11,14 +11,15 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = IATACodeValidator.class)
+@Constraint(validatedBy = PromotionCodeValidator.class)
 @Target({
 	ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE
 })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidIATACode {
+public @interface ValidPromotionCode {
 
 	String message() default "";
 	Class<?>[] groups() default {};
+
 	Class<? extends Payload>[] payload() default {};
 }

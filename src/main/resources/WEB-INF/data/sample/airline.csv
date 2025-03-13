@@ -1,0 +1,31 @@
+key,name,iata-code,website,type,foundation-moment,email,phone-number
+airline-01,Acme Airlines,ACX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-02,A,AAX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-03,Ac,ABX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,AMX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,ANX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-06,โลเร็ม อิปซัม,AOX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-07,<script>alert('Hacked!');</script>,APX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-08,Acme Airlines,AQX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-09,Acme Airlines,ARX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-10,Acme Airlines,ASX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-11,Acme Airlines,ATX,http://a.co,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-12,Acme Airlines,AUX,https://www.example.org,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-13,Acme Airlines,AVX,ftp://a.b,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-14,Acme Airlines,AWX,http://lorem.com/ipsum,LUXURY,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-15,Acme Airlines,AXX,http://lorem.com/ipsum,LOW_COST,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-16,Acme Airlines,AYX,http://lorem.com/ipsum,STANDARD,2000/01/01 00:00,acme@lorem-ipsum.org,+1234567890
+airline-17,Acme Airlines,AZX,http://lorem.com/ipsum,STANDARD,2000/01/01 00:01,acme@lorem-ipsum.org,+1234567890
+airline-18,Acme Airlines,BBX,http://lorem.com/ipsum,STANDARD,2022/07/29 23:59,acme@lorem-ipsum.org,+1234567890
+airline-19,Acme Airlines,BCX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,a@b.co,+1234567890
+airline-20,Acme Airlines,BDX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,لوريم@إيبسوم.org,+1234567890
+airline-21,Acme Airlines,BEX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-22,Acme Airlines,BFX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+123456
+airline-23,Acme Airlines,BGX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+987654321
+airline-24,Sky High,SHX,http://skyhigh.com,LUXURY,2005/09/10 00:00,contact@skyhigh.com,+1122334455
+airline-25,BudgetAir,BAX,http://budgetair.com,LOW_COST,2008/03/20 00:00,info@budgetair.com,+9988776655
+airline-26,Global Wings,GWX,http://globalwings.org,STANDARD,2000/01/01 00:01,support@globalwings.org,+5544332211
+airline-27,Acme Airlines,BHX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-28,Acme Airlines,BIX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/*",STANDARD,2010/05/15 00:00,acme@lorem-ipsum.org,+1234567890
+airline-29,Acme Airlines,BKX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,lorem-psum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+1234567890
+airline-30,Acme Airlines,BLX,http://lorem.com/ipsum,STANDARD,2010/05/15 00:00,lorem-psum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+1234567890

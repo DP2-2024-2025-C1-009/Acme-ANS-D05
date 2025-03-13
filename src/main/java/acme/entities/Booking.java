@@ -9,7 +9,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -57,8 +56,6 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@ValidNumber
-	@Pattern(regexp = "^\\d{4}$", message = "El valor debe tener exactamente 4 dígitos numéricos")
-	@Digits(integer = 4, fraction = 0, message = "Debe ser un número entero de 4 dígitos")
 	@Automapped
 	private Integer				lastNibble;
 

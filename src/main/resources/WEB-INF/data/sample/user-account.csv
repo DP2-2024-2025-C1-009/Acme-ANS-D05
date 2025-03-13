@@ -12,4 +12,7 @@ user-account-administrator-02,true,"UserIdentity{name: 'Juan', surname: 'אÆlz�
 user-account-administrator-03,true,"UserIdentity{name: 'Daniel', surname: 'טיח Æl', email: 'danielmecias@acme.com'}",adminstrator2,administrator2
 user-account-manager-01,true,"UserIdentity{name: 'Hagas', surname: 'Bんい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'hagas@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Charles', surname: 'AirManager', email: 'charles@acme.com'}",manager2,manager2
-user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: 'Cよ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
+user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
+user-account-agent-02,true,"UserIdentity{name: 'Agent2', surname: 'Acme', email: 'agent2@acme.com'}",agent2,agent2
+user-account-agent-03,true,"UserIdentity{name: 'Agent3', surname: 'Acme', email: 'agent3@acme.com'}",agent3,agent3
+user-account-agent-01,true,"UserIdentity{name: 'Agent1', surname: 'Acme', email: 'agent1@acme.com'}",agent1,agent1

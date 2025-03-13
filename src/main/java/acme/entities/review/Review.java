@@ -1,12 +1,11 @@
 
-package acme.entities;
+package acme.entities.review;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -23,38 +22,39 @@ import lombok.Setter;
 @Setter
 public class Review extends AbstractEntity {
 
-	// Serialisation identifier
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes 
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidString(min = 1, max = 50, message = "{acme.validation.review.alias-length}")
 	@Automapped
 	private String				alias;
 
 	@Mandatory
-	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true, message = "{acme.validation.review.moment-past}")
 	private Date				moment;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidString(min = 1, max = 50, message = "{acme.validation.review.subject-length}")
 	@Automapped
 	private String				subject;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ValidString(min = 1, max = 255, message = "{acme.validation.review.text-length}")
 	@Automapped
 	private String				text;
 
 	@Optional
-	@ValidNumber(min = 0, max = 10, fraction = 2)
+	@ValidNumber(min = 0, max = 10, fraction = 2, message = "{acme.validation.review.score-range}")
 	@Automapped
 	private Double				score;
 
 	@Optional
-	@Valid
 	@Automapped
-	private Boolean				recommended;
+	private Boolean				isRecommended;
+
 }
