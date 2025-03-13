@@ -7,9 +7,9 @@ user-account-provider-02,true,"UserIdentity{name: 'Agent1', surname: 'Acme', ema
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-administrator-02,true,"UserIdentity{name: 'Juan', surname: 'אÆlzå', email: 'juan@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Daniel', surname: 'טיח Æl', email: 'danielmecias@acme.com'}",adminstrator2,administrator2
-user-account-manager-01,true,"UserIdentity{name: 'Hagas', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'hagas@acme.com'}",manager1,manager1
+user-account-manager-01,true,"UserIdentity{name: 'Hagas', surname: 'Bんい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'hagas@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Charles', surname: 'AirManager', email: 'charles@acme.com'}",manager2,manager2
-user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
+user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: 'Cよ芝', email: 'acmepassword@lorem-ipsum.org'}",manager3,manager3
 user-account-agent02,true,"UserIdentity{name: 'Agent2', surname: 'Acme', email: 'agent2@acme.com'}",agent2,agent2
 user-account-agent03,true,"UserIdentity{name: 'Agent3', surname: 'Acme', email: 'agent3@acme.com'}",manager3,manager3
 user-account-agent01,true,"UserIdentity{name: 'Agent1', surname: 'Acme', email: 'agent1@acme.com'}",agent1,agent1
