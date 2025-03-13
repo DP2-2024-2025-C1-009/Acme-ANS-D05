@@ -1,9 +1,9 @@
 
-package acme.entities;
+package acme.entities.airport;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Entity;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -12,7 +12,12 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidUrl;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class Airport extends AbstractEntity {
 
 	// Serialisation identifier
@@ -28,8 +33,8 @@ public class Airport extends AbstractEntity {
 	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be exactly three uppercase letters")
 	private String				iataCode;
 
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Mandatory
+	@Valid
 	@Automapped
 	private OperationalScope	operationalScope;
 
@@ -54,10 +59,5 @@ public class Airport extends AbstractEntity {
 	//@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Phone number must contain between 6 and 15 digits, optionally starting with '+'")
 	@Automapped
 	private String				contactPhoneNumber;
-
-
-	public enum OperationalScope {
-		INTERNATIONAL, DOMESTIC, REGIONAL
-	}
 
 }

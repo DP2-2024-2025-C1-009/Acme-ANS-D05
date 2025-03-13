@@ -11,10 +11,12 @@ import javax.persistence.TemporalType;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIdentifier;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,9 +32,8 @@ public class Manager extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	//IMPLEMENTAR CUSTOM RESTRICTION, las dos primeras seguro que coinciden
-	//Si no coinciden super.state(context, correctIdentifierNumber, "identifiernumber", "acme.valida...
+	@ValidString(min = 8, max = 9)
+	@ValidIdentifier
 	@Column(unique = true)
 	private String				identifierNumber;
 
@@ -41,11 +42,14 @@ public class Manager extends AbstractRole {
 	@Automapped
 	private Integer				yearsOfExperience;
 
+	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dateOfBirth;
 
+	@Optional
 	@ValidUrl
+	@Automapped
 	private String				pictureLink;
 
 	// Derived attributes -----------------------------------------------------
