@@ -52,6 +52,7 @@ public class Service extends AbstractEntity {
 	@Optional
 	@ValidMoney
 	@Automapped
+	//Porcentaje score
 	private Money				discountedMoney;
 
 }

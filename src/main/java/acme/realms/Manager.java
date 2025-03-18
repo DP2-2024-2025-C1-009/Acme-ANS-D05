@@ -14,7 +14,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidIdentifier;
 import lombok.Getter;
@@ -32,7 +31,6 @@ public class Manager extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 8, max = 9)
 	@ValidIdentifier
 	@Column(unique = true)
 	private String				identifierNumber;
@@ -51,6 +49,8 @@ public class Manager extends AbstractRole {
 	@ValidUrl
 	@Automapped
 	private String				pictureLink;
+
+	//Relacion con airline
 
 	// Derived attributes -----------------------------------------------------
 

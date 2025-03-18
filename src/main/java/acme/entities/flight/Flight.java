@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -42,10 +41,11 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
+	//@Valid
 	private boolean				selfTransfer;
 
-	@Column(nullable = false)
-	@ValidMoney(min = 0.00, max = 10000000.00)
+	@Mandatory
+	@ValidMoney()
 	@Automapped
 	private Money				cost;
 
@@ -86,6 +86,8 @@ public class Flight extends AbstractEntity {
 		return result;
 	}
 
+	//Devolver objeto
+
 	@Transient
 	public String getDestinationCity() {
 		String result;
@@ -103,7 +105,7 @@ public class Flight extends AbstractEntity {
 		FlightRepository repository;
 		repository = SpringHelper.getBean(FlightRepository.class);
 		result = repository.findNumberOfLegs(this.getId());
-		return result;
+		return result - 1;
 	}
 
 	// Relationships -------------------------------------------------------------
@@ -111,6 +113,7 @@ public class Flight extends AbstractEntity {
 
 	@OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Leg>	legs;
+	//No se recomienda usar OneToMany
 
 	@ManyToOne()
 	private Manager		manager;

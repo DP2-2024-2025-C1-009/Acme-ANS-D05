@@ -31,8 +31,7 @@ public class FlightCrewMember extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 8, max = 9)
-	@ValidIdentifier
+	@ValidIdentifier //terminar
 	@Column(unique = true)
 	private String					employeeCode;
 
@@ -57,7 +56,7 @@ public class FlightCrewMember extends AbstractRole {
 	private Airline					airline;
 
 	@Mandatory
-	@ValidMoney(min = 0, max = 1000000)
+	@ValidMoney()
 	@Automapped
 	private Money					salary;
 

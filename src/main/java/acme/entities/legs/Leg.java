@@ -34,7 +34,7 @@ public class Leg extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidFlightNumber
+	@ValidFlightNumber //Implementar el validador
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -56,6 +56,7 @@ public class Leg extends AbstractEntity {
 	// Derived attributes --------------------------------------------------------
 
 
+	//Usar la clase moment helper
 	@Transient
 	private Double getDuration() {
 		Double result;

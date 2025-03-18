@@ -45,6 +45,7 @@ public class Aircraft extends AbstractEntity {
 	private Integer				loadWeight;
 
 	@Mandatory
+	//Validation
 	@Automapped
 	private boolean				aIsActive;
 
