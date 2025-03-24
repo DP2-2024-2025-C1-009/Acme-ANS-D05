@@ -12,12 +12,15 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIATACode;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidIATACode
 public class Airport extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -32,7 +35,6 @@ public class Airport extends AbstractEntity {
 	private String				airportName;
 
 	@Mandatory
-	@ValidString(min = 1, max = 3, pattern = "^[A-Z]{3}$", message = "{acme.validation.airport.iata-code-pattern}")
 	@Column(unique = true)
 	private String				iataCode;
 
@@ -62,15 +64,8 @@ public class Airport extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.airport.phone-number-pattern}")
+	@ValidPhoneNumber
 	@Automapped
 	private String				contactPhoneNumber;
-
-	// Operational Scope Enum  -------------------------------------------------------------
-
-
-	public enum OperationalScope {
-		INTERNATIONAL, DOMESTIC, REGIONAL
-	}
 
 }

@@ -3,6 +3,8 @@ package acme.entities.aircraft;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -10,12 +12,14 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+//@ValidNumberRegistration  //Falla al popular, hay ver bien como hacerlo
 public class Aircraft extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -30,8 +34,8 @@ public class Aircraft extends AbstractEntity {
 	private String				model;
 
 	@Mandatory
-	@Column(unique = true)
 	@ValidString(min = 1, max = 50, message = "{acme-validation.aircraft.number-registration-length}")
+	@Column(unique = true)
 	private String				numberRegistration;
 
 	@Mandatory
@@ -45,13 +49,20 @@ public class Aircraft extends AbstractEntity {
 	private Integer				loadWeight;
 
 	@Mandatory
-	//Validation
+	@Valid
 	@Automapped
-	private boolean				aIsActive;
+	private Boolean				aIsActive;
 
 	@Optional
 	@ValidString(max = 255, message = "{acme.validation.aircraft.optional-details-length}")
 	@Automapped
 	private String				optionalDetails;
+
+	// Relationships -------------------------------------------------------------
+
+	@Optional //
+	@Valid
+	@ManyToOne
+	private Airline				airline;
 
 }

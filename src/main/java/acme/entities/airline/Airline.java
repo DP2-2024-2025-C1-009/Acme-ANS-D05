@@ -17,7 +17,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidIATACode;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,7 +40,6 @@ public class Airline extends AbstractEntity {
 	@Column(unique = true)
 	@Mandatory
 	@ValidString(min = 1, max = 3, pattern = "^[A-Z]{3}$", message = "{acme.validation.airline.iata-code-pattern}")
-	@ValidIATACode
 	private String				iataCode;
 
 	@Mandatory
@@ -64,14 +63,8 @@ public class Airline extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.airline.phone-number-pattern}")
+	@ValidPhoneNumber
 	@Automapped
 	private String				phoneNumber;
 
-	// Airline Type Enum  -------------------------------------------------------------
-
-
-	public enum AirlineType {
-		LUXURY, STANDARD, LOW_COST
-	}
 }

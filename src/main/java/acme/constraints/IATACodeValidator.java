@@ -3,29 +3,45 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.entities.airport.Airport;
+import acme.entities.airport.AirportRepository;
 
 @Validator
-public class IATACodeValidator extends AbstractValidator<ValidIATACode, String> {
+public class IATACodeValidator extends AbstractValidator<ValidIATACode, Airport> {
+
+	private static final String	IATA_REGEX	= "^[A-Z]{3}$";
+
+	@Autowired
+	private AirportRepository	airportRepository;
+
 
 	@Override
-	protected void initialise(final ValidIATACode annotation) {
-		// No initialization required
-	}
-
-	@Override
-	public boolean isValid(final String iataCode, final ConstraintValidatorContext context) {
-		assert context != null;
-		boolean result;
-		boolean isNull = iataCode == null;
-
-		if (!isNull) {
-			boolean valid = iataCode.length() == 3 && iataCode.charAt(2) == 'X';
-			super.state(context, valid, "iataCode", "acme.validation.airline.iata-code-last-letter");
+	public boolean isValid(final Airport airport, final ConstraintValidatorContext context) {
+		if (airport == null || airport.getIataCode() == null || airport.getIataCode().isEmpty()) {
+			super.state(context, false, "iataCode", "IATA code cannot be empty");
+			return false;
 		}
 
-		result = !super.hasErrors(context);
-		return result;
+		String iataCode = airport.getIataCode();
+
+		if (!iataCode.matches(IATACodeValidator.IATA_REGEX)) {
+			super.state(context, false, "iataCode", "IATA code must be three uppercase letters");
+			return false;
+		}
+
+		int id = airport.getId();
+		long count = this.airportRepository.countByIataCodeExcludingId(iataCode, id);
+
+		if (count > 0) {
+			super.state(context, false, "iataCode", "IATA code must be unique");
+			return false;
+		}
+
+		return true;
 	}
+
 }
