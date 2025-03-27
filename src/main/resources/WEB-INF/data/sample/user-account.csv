@@ -16,3 +16,8 @@ user-account-manager-03,true,"UserIdentity{name: 'Dacas', surname: '濯よ芝', 
 user-account-agent-02,true,"UserIdentity{name: 'Agent2', surname: 'Acme', email: 'agent2@acme.com'}",agent2,agent2
 user-account-agent-03,true,"UserIdentity{name: 'Agent3', surname: 'Acme', email: 'agent3@acme.com'}",agent3,agent3
 user-account-agent-01,true,"UserIdentity{name: 'Agent1', surname: 'Acme', email: 'agent1@acme.com'}",agent1,agent1
+user-account-member-01,true,"UserIdentity{name: 'Carlos', surname: 'Carls', email: 'carlos@acme.com'}",member1,member1
+user-account-member-02,true,"UserIdentity{name: 'Hugo', surname: 'Hugas', email: 'hug@acme.com'}",member2,member2
+user-account-member-03,true,"UserIdentity{name: 'Jesus', surname: 'Acun', email: 'jesus@acme.com'}",member3,member3
+user-account-member-04,true,"UserIdentity{name: 'Leo', surname: 'Perez', email: 'leo@acme.com'}",member4,member4
+user-account-member-05,true,"UserIdentity{name: 'Lola', surname: 'Lolita', email: 'lola@acme.com'}",member,member
