@@ -4,12 +4,14 @@ package acme.entities.maintenance;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,5 +41,13 @@ public class Task extends AbstractEntity {
 	@ValidNumber(min = 0, fraction = 2)
 	@Automapped
 	private double				estimatedDuration;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	private Technician			technician;
 
 }

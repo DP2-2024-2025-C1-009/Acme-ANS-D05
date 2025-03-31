@@ -1,0 +1,29 @@
+# Titles
+technician.task.form.title = Detalles de la tarea
+technician.task.list.title = Lista de tareas
+
+# Labels (Form)
+task.form.label.type = Tipo:
+task.form.label.description = Descripción:
+task.form.label.priority = Prioridad:
+task.form.label.estimatedDuration = Duración estimada:
+task.form.label.draftMode = Modo borrador:
+task.form.label.confirmation = Confirma los datos antes de enviarlos
+
+# Buttons (Form)
+task.form.button.create = Crear
+task.form.button.update = Actualizar
+task.form.button.publish = Publicar
+task.form.button.view = Ver
+task.form.button.delete = Eliminar
+
+# Labels (List)
+task.list.label.type = Tipo
+task.list.label.description = Descripción
+task.list.label.priority = Prioridad
+task.list.label.estimatedDuration = Duración estimada
+task.list.label.draftMode = Modo borrador
+task.list.label.actions = Acciones
+
+# Buttons (List)
+task.list.button.create = Nueva tarea

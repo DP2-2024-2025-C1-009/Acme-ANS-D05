@@ -1,0 +1,29 @@
+# Titles
+technician.task.form.title = Task details
+technician.task.list.title = List of tasks
+
+# Labels (Form)
+task.form.label.type = Type:
+task.form.label.description = Description:
+task.form.label.priority = Priority:
+task.form.label.estimatedDuration = Estimated Duration:
+task.form.label.draftMode = Draft Mode:
+task.form.label.confirmation = Confirm the data before submission
+
+# Buttons (Form)
+task.form.button.create = Create
+task.form.button.update = Update
+task.form.button.publish = Publish
+task.form.button.view = View
+task.form.button.delete = Delete
+
+# Labels (List)
+task.list.label.type = Type
+task.list.label.description = Description
+task.list.label.priority = Priority
+task.list.label.estimatedDuration = Estimated Duration
+task.list.label.draftMode = Draft Mode
+task.list.label.actions = Actions
+
+# Buttons (List)
+task.list.button.create = New task

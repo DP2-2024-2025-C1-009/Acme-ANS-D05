@@ -45,6 +45,12 @@
 		        code="master.menu.flight-crew-member.flight-assignment" 
 		        action="/flight-crew-member/flight-assignment/list-planned"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+    		<acme:menu-suboption 
+     		   code="master.menu.technician.task" 
+      		  action="/technician/task/list"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>

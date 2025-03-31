@@ -3,23 +3,20 @@ package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
-import acme.client.components.basis.AbstractEntity;
-import acme.client.components.principals.UserAccount;
+import acme.client.components.basis.AbstractRole;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
 
 	// Serialisation identifier -----------------------------------------------
 	private static final long	serialVersionUID	= 1L;
@@ -47,9 +44,5 @@ public class Technician extends AbstractEntity {
 
 	@Length(max = 255)
 	private String				certifications;
-
-	@OneToOne(optional = false)
-	@JoinColumn(name = "user_account_id", referencedColumnName = "id")
-	private UserAccount			userAccount;
 
 }
