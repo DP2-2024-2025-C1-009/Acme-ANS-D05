@@ -48,5 +48,7 @@ master.menu.user-account.consumer-profile = Perfil de consumidor
 # master.menu.flight-crew-member ####################################################
 
 master.menu.flight-crew-member = Tripulante
-master.menu.flight-crew-member.flight-assignment = Mis asignaciones de vuelo
+master.menu.flight-crew-member.flight-assignment.planned = Mis asignaciones planificadas
+master.menu.flight-crew-member.flight-assignment.completed = Mis asignaciones completadas
+
 
