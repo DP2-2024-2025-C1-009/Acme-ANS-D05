@@ -3,7 +3,7 @@ key,duty,lastUpdate,status,remarks,key:crewMember,key:leg,draftMode
 flightAssignment-01,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #Duty,"","","","","",""
 flightAssignment-02,PILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
-flightAssignment-03,LEAD_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-03,LEAD_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-07,true
 flightAssignment-04,CABIN_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #lastUpdate,"","","","","",""
 flightAssignment-05,COPILOT,2000/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
