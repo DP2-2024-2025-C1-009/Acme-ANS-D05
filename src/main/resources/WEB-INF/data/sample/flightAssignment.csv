@@ -1,39 +1,39 @@
-key,duty,lastUpdate,status,remarks,key:crewMember,key:leg
+key,duty,lastUpdate,status,remarks,key:crewMember,key:leg,draftMode
 #Base-Entity,"","","","","",""
-flightAssignment-01,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
+flightAssignment-01,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #Duty,"","","","","",""
-flightAssignment-02,PILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-03,LEAD_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-04,CABIN_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
+flightAssignment-02,PILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-03,LEAD_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-04,CABIN_ATTENDANT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #lastUpdate,"","","","","",""
-flightAssignment-05,COPILOT,2000/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-06,COPILOT,2000/01/01 00:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-07,COPILOT,2024/12/31 23:59,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-08,COPILOT,2025/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
+flightAssignment-05,COPILOT,2000/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-06,COPILOT,2000/01/01 00:01,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-07,COPILOT,2024/12/31 23:59,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-08,COPILOT,2025/01/01 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #Status,"","","","","",""
-flightAssignment-09,COPILOT,2020/09/11 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-010,COPILOT,2020/09/11 00:00,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
+flightAssignment-09,COPILOT,2020/09/11 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-010,COPILOT,2020/09/11 00:00,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
 #Remarks,"","","","","",""
-flightAssignment-11,COPILOT,2020/09/11 00:00,CONFIRMED,"""""",member-01,leg-01
-flightAssignment-12,COPILOT,2020/09/11 00:00,CONFIRMED,"",member-01,leg-01
-flightAssignment-13,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member-01,leg-01
-flightAssignment-14,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member-01,leg-01
-flightAssignment-15,COPILOT,2020/09/11 00:00,CONFIRMED,L,member-01,leg-01
-flightAssignment-16,COPILOT,2020/09/11 00:00,CONFIRMED,Lo,member-01,leg-01
-flightAssignment-17,COPILOT,2020/09/11 00:00,CONFIRMED,โลเร็ม อิปซัม,member-01,leg-01
-flightAssignment-18,COPILOT,2020/09/11 00:00,CONFIRMED,لوريم إيبسوم,member-01,leg-01
-flightAssignment-19,COPILOT,2020/09/11 00:00,CONFIRMED,洛伦·伊普森,member-01,leg-01
-flightAssignment-20,COPILOT,2020/09/11 00:00,CONFIRMED,<marquee>Hacked</marquee>,member-01,leg-01
-flightAssignment-21,COPILOT,2020/09/11 00:00,CONFIRMED,<script>alert(‘Hacked!’);</script>,member-01,leg-01
-flightAssignment-22,COPILOT,2020/09/11 00:00,CONFIRMED,' or 'A' = 'A,member-01,leg-01
+flightAssignment-11,COPILOT,2020/09/11 00:00,CONFIRMED,"""""",member-01,leg-01,true
+flightAssignment-12,COPILOT,2020/09/11 00:00,CONFIRMED,"",member-01,leg-01,true
+flightAssignment-13,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member-01,leg-01,true
+flightAssignment-14,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member-01,leg-01,true
+flightAssignment-15,COPILOT,2020/09/11 00:00,CONFIRMED,L,member-01,leg-01,true
+flightAssignment-16,COPILOT,2020/09/11 00:00,CONFIRMED,Lo,member-01,leg-01,true
+flightAssignment-17,COPILOT,2020/09/11 00:00,CONFIRMED,โลเร็ม อิปซัม,member-01,leg-01,true
+flightAssignment-18,COPILOT,2020/09/11 00:00,CONFIRMED,لوريم إيبسوم,member-01,leg-01,true
+flightAssignment-19,COPILOT,2020/09/11 00:00,CONFIRMED,洛伦·伊普森,member-01,leg-01,true
+flightAssignment-20,COPILOT,2020/09/11 00:00,CONFIRMED,<marquee>Hacked</marquee>,member-01,leg-01,true
+flightAssignment-21,COPILOT,2020/09/11 00:00,CONFIRMED,<script>alert(‘Hacked!’);</script>,member-01,leg-01,true
+flightAssignment-22,COPILOT,2020/09/11 00:00,CONFIRMED,' or 'A' = 'A,member-01,leg-01,true
 #CrewMember,"","","","","",""
-flightAssignment-23,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01
-flightAssignment-24,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-02,leg-01
-flightAssignment-25,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-03,leg-01
-flightAssignment-26,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-04,leg-01
+flightAssignment-23,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-01,true
+flightAssignment-24,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-02,leg-01,true
+flightAssignment-25,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-03,leg-01,true
+flightAssignment-26,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-04,leg-01,true
 #Leg,"","","","","",""
-flightAssignment-27,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-02
-flightAssignment-28,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-03
-flightAssignment-29,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-05
-flightAssignment-30,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-10
-flightAssignment-31,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-12
+flightAssignment-27,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-02,true
+flightAssignment-28,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-03,true
+flightAssignment-29,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-05,true
+flightAssignment-30,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-10,true
+flightAssignment-31,COPILOT,2020/09/11 00:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member-01,leg-12,true
