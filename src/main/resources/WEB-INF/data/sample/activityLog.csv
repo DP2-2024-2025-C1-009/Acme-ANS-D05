@@ -1,37 +1,37 @@
-key,registrationMoment,incidentType,description,severityLevel,key:activityLogAssignment
+key,registrationMoment,incidentType,description,severityLevel,key:activityLogAssignment,draftMode
 #Base-Entity,"","","","","","","",""
-activityLog-01,2020/09/11 00:00,L,L,1,flightAssignment-01
+activityLog-01,2020/09/11 00:00,L,L,1,flightAssignment-01,false
 #RegistrationMoment,"","","","",""
-activityLog-02,2000/01/01 00:00,L,L,1,flightAssignment-01
-activityLog-03,2000/01/01 00:01,L,L,1,flightAssignment-01
-activityLog-04,2024/12/31 23:59,L,L,1,flightAssignment-01
-activityLog-05,2025/01/01 00:00,L,L,1,flightAssignment-01
+activityLog-02,2000/01/01 00:00,L,L,1,flightAssignment-01,false
+activityLog-03,2000/01/01 00:01,L,L,1,flightAssignment-01,false
+activityLog-04,2024/12/31 23:59,L,L,1,flightAssignment-01,false
+activityLog-05,2025/01/01 00:00,L,L,1,flightAssignment-01,false
 #IncidentType,"","","","",""
-activityLog-06,2020/09/11 00:00,Lo,L,1,flightAssignment-01
-activityLog-07,2020/09/11 00:00,qazwsxedcrfvtgbyhnujmikolqazwsxedcrfvtgbyhnujmiko,L,1,flightAssignment-01
-activityLog-08,2020/09/11 00:00,qazwsxedcrfvtgbyhnujmikolqazwsxedcrfvtgbyhnujmikol,L,1,flightAssignment-01
-activityLog-09,2020/09/11 00:00,لوريم إيبسوم,L,1,flightAssignment-01
-activityLog-10,2020/09/11 00:00,洛伦·伊普森,L,1,flightAssignment-01
-activityLog-11,2020/09/11 00:00,โลเร็ม อิปซัม,L,1,flightAssignment-01
-activityLog-12,2020/09/11 00:00,<marquee>Hacked</marquee>,L,1,flightAssignment-01
-activityLog-13,2020/09/11 00:00,<script>alert(‘Hacked!’);</script>,L,1,flightAssignment-01
-activityLog-14,2020/09/11 00:00,' or 'A' = 'A,L,1,flightAssignment-01
+activityLog-06,2020/09/11 00:00,Lo,L,1,flightAssignment-01,false
+activityLog-07,2020/09/11 00:00,qazwsxedcrfvtgbyhnujmikolqazwsxedcrfvtgbyhnujmiko,L,1,flightAssignment-01,false
+activityLog-08,2020/09/11 00:00,qazwsxedcrfvtgbyhnujmikolqazwsxedcrfvtgbyhnujmikol,L,1,flightAssignment-01,false
+activityLog-09,2020/09/11 00:00,لوريم إيبسوم,L,1,flightAssignment-01,false
+activityLog-10,2020/09/11 00:00,洛伦·伊普森,L,1,flightAssignment-01,false
+activityLog-11,2020/09/11 00:00,โลเร็ม อิปซัม,L,1,flightAssignment-01,false
+activityLog-12,2020/09/11 00:00,<marquee>Hacked</marquee>,L,1,flightAssignment-01,false
+activityLog-13,2020/09/11 00:00,<script>alert(‘Hacked!’);</script>,L,1,flightAssignment-01,false
+activityLog-14,2020/09/11 00:00,' or 'A' = 'A,L,1,flightAssignment-01,false
 #Description,"","","","",""
-activityLog-15,2020/09/11 00:00,L,Lo,1,flightAssignment-01
-activityLog-16,2020/09/11 00:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",1,flightAssignment-01
-activityLog-17,2020/09/11 00:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",1,flightAssignment-01
-activityLog-18,2020/09/11 00:00,L,لوريم إيبسوم,1,flightAssignment-01
-activityLog-19,2020/09/11 00:00,L,洛伦·伊普森,1,flightAssignment-01
-activityLog-20,2020/09/11 00:00,L,โลเร็ม อิปซัม,1,flightAssignment-01
-activityLog-21,2020/09/11 00:00,L,<marquee>Hacked</marquee>,1,flightAssignment-01
-activityLog-22,2020/09/11 00:00,L,<script>alert(‘Hacked!’);</script>,1,flightAssignment-01
-activityLog-23,2020/09/11 00:00,L,' or 'A' = 'A,1,flightAssignment-01
+activityLog-15,2020/09/11 00:00,L,Lo,1,flightAssignment-01,false
+activityLog-16,2020/09/11 00:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",1,flightAssignment-01,false
+activityLog-17,2020/09/11 00:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",1,flightAssignment-01,false
+activityLog-18,2020/09/11 00:00,L,لوريم إيبسوم,1,flightAssignment-01,false
+activityLog-19,2020/09/11 00:00,L,洛伦·伊普森,1,flightAssignment-01,false
+activityLog-20,2020/09/11 00:00,L,โลเร็ม อิปซัม,1,flightAssignment-01,false
+activityLog-21,2020/09/11 00:00,L,<marquee>Hacked</marquee>,1,flightAssignment-01,false
+activityLog-22,2020/09/11 00:00,L,<script>alert(‘Hacked!’);</script>,1,flightAssignment-01,false
+activityLog-23,2020/09/11 00:00,L,' or 'A' = 'A,1,flightAssignment-01,false
 #SeverityLevel,"","","","",""
-activityLog-24,2020/09/11 00:00,L,L,0,flightAssignment-01
-activityLog-25,2020/09/11 00:00,L,L,1,flightAssignment-01
-activityLog-26,2020/09/11 00:00,L,L,9,flightAssignment-01
-activityLog-27,2020/09/11 00:00,L,L,10,flightAssignment-01
+activityLog-24,2020/09/11 00:00,L,L,0,flightAssignment-01,false
+activityLog-25,2020/09/11 00:00,L,L,1,flightAssignment-01,false
+activityLog-26,2020/09/11 00:00,L,L,9,flightAssignment-01,false
+activityLog-27,2020/09/11 00:00,L,L,10,flightAssignment-01,false
 #ActivityLogAssignment,"","","","",""
-member-27,2020/09/11 00:00,L,L,1,flightAssignment-07
-member-28,2020/09/11 00:00,L,L,1,flightAssignment-20
-member-29,2020/09/11 00:00,L,L,1,flightAssignment-31
+member-27,2020/09/11 00:00,L,L,1,flightAssignment-07,false
+member-28,2020/09/11 00:00,L,L,1,flightAssignment-20,false
+member-29,2020/09/11 00:00,L,L,1,flightAssignment-31,false

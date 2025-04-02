@@ -63,6 +63,6 @@ public class FlightAssignment extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				draftMode			= true;
+	private Boolean				draftMode;
 
 }

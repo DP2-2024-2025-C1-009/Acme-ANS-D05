@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.flightCrewMember.flightAssignment;
+package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
 
@@ -15,10 +15,9 @@ import acme.entities.flightAssignment.Duty;
 import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.legs.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMember;
-import acme.realms.flightCrewMembers.FlightCrewMemberStatus;
 
 @GuiService
-public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
 	protected CrewMemberFlightAssignmentRepository repository;
@@ -26,16 +25,16 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int id = super.getRequest().getData("id", int.class);
+		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
+		super.getResponse().setAuthorised(assignment != null && assignment.getDraftMode());
 	}
 
 	@Override
 	public void load() {
-		FlightAssignment object = new FlightAssignment();
-		object.setDraftMode(true);
-		object.setLastUpdate(MomentHelper.getCurrentMoment());
-
-		super.getBuffer().addData(object);
+		int id = super.getRequest().getData("id", int.class);
+		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
+		super.getBuffer().addData(assignment);
 	}
 
 	@Override
@@ -60,12 +59,6 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation");
-
-		boolean isLeadAttendant = object.getDuty().equals(Duty.LEAD_ATTENDANT);
-		super.state(isLeadAttendant, "duty", "acme.validation.flight-assignment.duty.lead-attendant-only");
-
-		boolean isAvailable = object.getCrewMember().getFlightCrewMemberStatus().equals(FlightCrewMemberStatus.AVAILABLE);
-		super.state(isAvailable, "crewMember", "acme.validation.flight-assignment.crew-member.not-available");
 	}
 
 	@Override
