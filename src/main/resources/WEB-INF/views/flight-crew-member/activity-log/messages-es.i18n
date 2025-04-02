@@ -1,0 +1,27 @@
+# Etiquetas y placeholders del formulario
+activity-log.form.label.incident-type = Tipo de incidente
+activity-log.form.placeholder.incident-type = Introduce el tipo de incidente
+
+activity-log.form.label.description = Descripción
+activity-log.form.placeholder.description = Describe el incidente
+
+activity-log.form.label.severity = Nivel de severidad
+activity-log.form.placeholder.severity = Un número entre 0 y 10
+
+# Botones del formulario
+activity-log.form.button.create = Crear registro
+activity-log.form.button.update = Actualizar
+activity-log.form.button.delete = Eliminar
+activity-log.form.button.publish = Publicar
+
+# Columnas del listado y botón
+activity-log.list.label.moment = Fecha de registro
+activity-log.list.label.incident = Incidente
+activity-log.list.label.severity = Severidad
+activity-log.list.label.status = Borrador
+activity-log.list.button.new = Nuevo registro de actividad
+
+# Mensajes de error
+activity-log.error.already-published = Este registro de actividad ya ha sido publicado.
+activity-log.error.cannot-delete-published = No se puede eliminar un registro de actividad ya publicado.
+activity-log.error.assignment-not-published = No se puede publicar el registro porque su asignación de vuelo no ha sido publicada.

@@ -1,0 +1,27 @@
+# FORM labels and placeholders
+activity-log.form.label.incident-type = Incident type
+activity-log.form.placeholder.incident-type = Enter the type of incident
+
+activity-log.form.label.description = Description
+activity-log.form.placeholder.description = Enter a description of the incident
+
+activity-log.form.label.severity = Severity level
+activity-log.form.placeholder.severity = A number between 0 and 10
+
+# FORM buttons
+activity-log.form.button.create = Create log
+activity-log.form.button.update = Update
+activity-log.form.button.delete = Delete
+activity-log.form.button.publish = Publish
+
+# LIST columns and button
+activity-log.list.label.moment = Registered on
+activity-log.list.label.incident = Incident
+activity-log.list.label.severity = Severity
+activity-log.list.label.status = Draft
+activity-log.list.button.new = New activity log
+
+# ERROR messages
+activity-log.error.already-published = This activity log is already published.
+activity-log.error.cannot-delete-published = Cannot delete a published activity log.
+activity-log.error.assignment-not-published = Cannot publish the log because its flight assignment has not been published.
