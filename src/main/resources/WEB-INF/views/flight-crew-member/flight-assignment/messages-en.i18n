@@ -10,6 +10,7 @@ flight-assignment.form.label.remarks = Additional remarks:
 flight-assignment.form.label.leg = Flight leg:
 flight-assignment.form.label.crew-member = Assigned crew member:
 flight-assignment.form.label.confirmation = Confirm the data before submission
+flight-assignment.form.label.crew-members = Crew members assigned to this leg
 
 # Buttons (Form)
 flight-assignment.form.button.create = Create
@@ -22,6 +23,7 @@ flight-assignment.form.button.member = View member
 flight-assignment.list.label.lastUpdate = Last update
 flight-assignment.list.label.status = Status
 flight-assignment.list.label.duty = Duty
+
 
 # Buttons (List)
 flight-assignment.list.button.create = New flight assignment

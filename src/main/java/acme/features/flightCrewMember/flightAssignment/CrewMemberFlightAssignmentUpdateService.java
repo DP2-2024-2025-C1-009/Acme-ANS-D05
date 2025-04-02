@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.flightCrewMember.flightAssignment;
+package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
 
@@ -27,7 +27,7 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
 		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
-		super.getResponse().setAuthorised(assignment != null && assignment.isDraftMode());
+		super.getResponse().setAuthorised(assignment != null && assignment.getDraftMode());
 	}
 
 	@Override

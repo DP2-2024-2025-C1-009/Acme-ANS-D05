@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.flightCrewMember.flightAssignment;
+package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
 
@@ -29,7 +29,7 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
 
 		boolean isOwner = assignment != null && super.getRequest().getPrincipal().hasRealm(assignment.getCrewMember());
-		boolean isDraft = assignment != null && assignment.isDraftMode();
+		boolean isDraft = assignment != null && assignment.getDraftMode();
 
 		super.getResponse().setAuthorised(isOwner && isDraft);
 	}

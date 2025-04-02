@@ -10,6 +10,8 @@ flight-assignment.form.label.remarks = Observaciones adicionales:
 flight-assignment.form.label.leg = Tramo de vuelo:
 flight-assignment.form.label.crew-member = Miembro de tripulación asignado:
 flight-assignment.form.label.confirmation = Confirmo que los datos son correctos
+flight-assignment.form.label.crew-members = Miembros de la tripulación asignados a este tramo
+
 
 # Botones (Formulario)
 flight-assignment.form.button.create = Crear

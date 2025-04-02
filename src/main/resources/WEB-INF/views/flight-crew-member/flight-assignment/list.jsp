@@ -11,5 +11,5 @@
 </acme:list>
 
 <jstl:if test="${_command == 'list-planned'}">
-	<acme:button code="flight-assignment.list.button.create" action="/authenticated/flight-crew-member/flight-assignment/create" />
+	<acme:button code="flight-assignment.list.button.create" action="/flight-crew-member/flight-assignment/create" />
 </jstl:if>

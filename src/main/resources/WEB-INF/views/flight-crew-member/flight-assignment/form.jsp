@@ -9,6 +9,18 @@
 	<acme:input-select code="flight-assignment.form.label.status" path="status" choices="${statusChoices}" />
 	<acme:input-select code="flight-assignment.form.label.leg" path="leg" choices="${legs}" />
 	<acme:input-textarea code="flight-assignment.form.label.remarks" path="remarks" />
+	<jstl:if test="${_command == 'show'}">
+	<jstl:if test="${not empty crewMembers}">
+		<h3>Crew members assigned to this leg</h3>
+			<ul>
+				<jstl:forEach var="member" items="${crewMembers}">
+					<li>
+						<jstl:out value="${member.userAccount.identity.fullName}" />
+					</li>
+				</jstl:forEach>
+			</ul>
+		</jstl:if>
+	</jstl:if>
 
 	<jstl:choose>
 
