@@ -4,7 +4,7 @@
 <%@ taglib prefix="acme" uri="http://acme-framework.org/" %>
 
 <acme:form>
-	<acme:input-textbox code="task.form.label.type" path="type"/>
+	<acme:input-select code="task.form.label.type" path="type" choices="${typeChoices}"/>
 	<acme:input-textbox code="task.form.label.description" path="description"/>
 	<acme:input-textbox code="task.form.label.priority" path="priority"/>
 	<acme:input-textbox code="task.form.label.estimatedDuration" path="estimatedDuration"/>

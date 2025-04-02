@@ -1,14 +1,20 @@
 
 package acme.features.authenticated.technician.maintenanceRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenance.MaintenanceRecord;
+import acme.entities.maintenance.Status; // Asegúrate de importar el enum
+import acme.entities.maintenance.Task;
+import acme.features.authenticated.technician.TechnicianTaskRepository;
 import acme.realms.Technician;
 
 @GuiService
@@ -38,7 +44,8 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	@Override
 	public void bind(final MaintenanceRecord record) {
 		assert record != null;
-		super.bindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes");
+		// Ahora se vinculan también los datos del campo "task"
+		super.bindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes", "task");
 		record.setDraftMode(true);
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 		record.setTechnician(technician);
@@ -56,12 +63,28 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		this.repository.save(record);
 	}
 
+
+	@Autowired
+	private TechnicianTaskRepository taskRepository;
+
+
 	@Override
 	public void unbind(final MaintenanceRecord record) {
+		// Se "desvinculan" los campos de MaintenanceRecord en un Dataset.
 		Dataset dataset = super.unbindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
+
+		// Creamos un SelectChoices para el enum Status
+		SelectChoices statusChoices = SelectChoices.from(Status.class, record.getStatus());
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statusChoices", statusChoices);
+
+		// Si se requiere, incluir otros campos (por ejemplo, la tarea)
+		Collection<Task> publishedTasks = this.taskRepository.findPublishedTasks();
+		SelectChoices taskChoices = SelectChoices.from(publishedTasks, "description", record.getTask());
+		dataset.put("task", taskChoices.getSelected().getKey());
+		dataset.put("taskChoices", taskChoices);
+
 		dataset.put("confirmation", false);
-		// Si se requiere, incluir información de la tarea.
-		dataset.put("task", record.getTask());
 		super.getResponse().addData(dataset);
 	}
 }
