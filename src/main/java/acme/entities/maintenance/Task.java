@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -47,6 +48,7 @@ public class Task extends AbstractEntity {
 	private boolean				draftMode;
 
 	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
 	private Technician			technician;
 

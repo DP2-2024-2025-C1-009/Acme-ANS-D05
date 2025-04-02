@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.maintenance;
+package acme.features.authenticated.technician;
 
 import java.util.Collection;
 

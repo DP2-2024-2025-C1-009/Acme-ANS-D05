@@ -18,6 +18,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -56,6 +57,10 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Automapped
 	private String				notes;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	// Relationships
 
 	@Mandatory
@@ -63,4 +68,9 @@ public class MaintenanceRecord extends AbstractEntity {
 	@ManyToOne(optional = false)
 
 	private Task				task;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Technician			technician;
 }

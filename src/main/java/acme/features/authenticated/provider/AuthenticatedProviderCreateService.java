@@ -35,9 +35,7 @@ public class AuthenticatedProviderCreateService extends AbstractGuiService<Authe
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = !super.getRequest().getPrincipal().hasRealmOfType(Provider.class);
+		boolean status = !super.getRequest().getPrincipal().hasRealmOfType(Provider.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -78,9 +76,7 @@ public class AuthenticatedProviderCreateService extends AbstractGuiService<Authe
 
 	@Override
 	public void unbind(final Provider object) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(object, "company", "sector");
+		Dataset dataset = super.unbindObject(object, "company", "sector");
 
 		super.getResponse().addData(dataset);
 	}

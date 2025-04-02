@@ -34,9 +34,7 @@ public class AuthenticatedProviderUpdateService extends AbstractGuiService<Authe
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = super.getRequest().getPrincipal().hasRealmOfType(Provider.class);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Provider.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -44,9 +42,8 @@ public class AuthenticatedProviderUpdateService extends AbstractGuiService<Authe
 	@Override
 	public void load() {
 		Provider object;
-		int userAccountId;
+		int userAccountId = super.getRequest().getPrincipal().getAccountId();
 
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		object = this.repository.findProviderByUserAccountId(userAccountId);
 
 		super.getBuffer().addData(object);
@@ -75,9 +72,7 @@ public class AuthenticatedProviderUpdateService extends AbstractGuiService<Authe
 	public void unbind(final Provider object) {
 		assert object != null;
 
-		Dataset dataset;
-
-		dataset = super.unbindObject(object, "company", "sector");
+		Dataset dataset = super.unbindObject(object, "company", "sector");
 		super.getResponse().addData(dataset);
 	}
 
