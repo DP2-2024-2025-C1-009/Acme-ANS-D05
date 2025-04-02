@@ -8,7 +8,8 @@ technician.maintenance-record.form.label.nextInspectionDueDate = Próxima inspec
 technician.maintenance-record.form.label.estimatedCost = Coste estimado:
 technician.maintenance-record.form.label.notes = Notas:
 technician.maintenance-record.form.label.task = Tareas asociadas:
-technician.maintenance-record.form.label.technician = Técnico asociado: 
+technician.maintenance-record.form.label.confirmation = Confirma los datos antes de enviarlos
+
 
 technician.maintenance-record.form.placeholder.score = 0.00 - 100.00
 		

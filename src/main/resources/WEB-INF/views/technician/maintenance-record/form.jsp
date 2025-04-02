@@ -1,5 +1,4 @@
 <%@page%>
-
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
@@ -17,7 +16,8 @@
 		path="estimatedCost" />
 	<acme:input-textbox
 		code="technician.maintenance-record.form.label.notes" path="notes" />
-<acme:input-select code="technician.maintenance-record.form.label.task" path="task" choices="${taskChoices}" />
+	<acme:input-select code="technician.maintenance-record.form.label.task"
+		path="task" choices="${taskChoices}" />
 
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
@@ -25,13 +25,14 @@
 				action="/technician/task/list?maintenanceRecordId=${id}" />
 		</jstl:when>
 		<jstl:when
-			test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
+			<acme:input-checkbox
+				code="technician.maintenance-record.form.label.confirmation"
+				path="confirmation" />
 			<acme:button code="technician.maintenance-record.form.button.tasks"
 				action="/technician/task/list?maintenanceRecordId=${id}" />
 			<acme:submit code="technician.maintenance-record.form.button.update"
 				action="/technician/maintenance-record/update" />
-			<acme:submit code="technician.maintenance-record.form.button.delete"
-				action="/technician/maintenance-record/delete" />
 			<acme:submit code="technician.maintenance-record.form.button.publish"
 				action="/technician/maintenance-record/publish" />
 		</jstl:when>

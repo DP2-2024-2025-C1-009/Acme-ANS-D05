@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.technician.maintenanceRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -9,6 +11,8 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenance.MaintenanceRecord;
 import acme.entities.maintenance.Status;
+import acme.entities.maintenance.Task;
+import acme.features.authenticated.technician.TechnicianTaskRepository;
 import acme.realms.Technician;
 
 @GuiService
@@ -17,7 +21,10 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 	//Internal state ----------------------------------------------------------
 
 	@Autowired
-	private TechnicianMaintenanceRecordRepository repository;
+	private TechnicianMaintenanceRecordRepository	repository;
+
+	@Autowired
+	private TechnicianTaskRepository				taskRepository;
 
 	//AbstractGuiService state ----------------------------------------------------------
 
@@ -40,19 +47,22 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord maintenanceRecord) {
+	public void unbind(final MaintenanceRecord record) {
+		// Se "desvinculan" los campos de MaintenanceRecord en un Dataset.
+		Dataset dataset = super.unbindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
 
-		SelectChoices choices;
-		Dataset dataset;
+		// Creamos un SelectChoices para el enum Status
+		SelectChoices statusChoices = SelectChoices.from(Status.class, record.getStatus());
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statusChoices", statusChoices);
 
-		choices = SelectChoices.from(Status.class, maintenanceRecord.getStatus());
+		// Si se requiere, incluir otros campos (por ejemplo, la tarea)
+		Collection<Task> publishedTasks = this.taskRepository.findPublishedTasks();
+		SelectChoices taskChoices = SelectChoices.from(publishedTasks, "description", record.getTask());
+		dataset.put("task", taskChoices.getSelected().getKey());
+		dataset.put("taskChoices", taskChoices);
 
-		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes");
 		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
-		dataset.put("statuses", choices);
-
 		super.getResponse().addData(dataset);
-
 	}
 }
