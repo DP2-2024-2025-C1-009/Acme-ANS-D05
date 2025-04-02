@@ -60,7 +60,7 @@ public class Aircraft extends AbstractEntity {
 
 	// Relationships -------------------------------------------------------------
 
-	@Optional //
+	@Mandatory //
 	@Valid
 	@ManyToOne
 	private Airline				airline;

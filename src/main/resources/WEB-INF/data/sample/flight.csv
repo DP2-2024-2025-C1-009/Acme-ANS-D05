@@ -1,33 +1,33 @@
-key,tag,self-transfer,cost,description
+key,tag,self-transfer,cost,description,draftMode,key:manager
 #base entity
-flight-01,Lorem ipsum dolor sit amet,true,100.00 EUR,Lorem ipsum dolor sit amet
+flight-01,Lorem ipsum dolor sit amet,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #tag
-flight-02,L,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-03,Lo,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-06,โลเร็ม อิปซัม,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-07,لوريم إيبسوم,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-08,洛伦·伊普森,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-09,<marquee>Hacked</marquee>,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-10,<script>alert('Hacked!');</script>,true,100.00 EUR,Lorem ipsum dolor sit amet
-flight-11,'' or 'A' = 'A,true,100.00 EUR,Lorem ipsum dolor sit amet
-#self-transfer
-flight-12,Lorem ipsum dolor sit amet,false,100.00 EUR,Lorem ipsum dolor sit amet
+flight-02,L,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-03,Lo,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-06,โลเร็ม อิปซัม,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-07,لوريم إيبسوم,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-08,洛伦·伊普森,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-09,<marquee>Hacked</marquee>,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-10,<script>alert('Hacked!');</script>,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-11,'' or 'A' = 'A,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+#self-transfer,true
+flight-12,Lorem ipsum dolor sit amet,false,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #cost
-flight-13,Lorem ipsum dolor sit amet,true,0.00 EUR,Lorem ipsum dolor sit amet
-flight-14,Lorem ipsum dolor sit amet,true,0.01 EUR,Lorem ipsum dolor sit amet
-flight-15,Lorem ipsum dolor sit amet,true,123.45 EUR,Lorem ipsum dolor sit amet
-flight-16,Lorem ipsum dolor sit amet,true,99999.99 EUR,Lorem ipsum dolor sit amet
-flight-17,Lorem ipsum dolor sit amet,true,1000000.00 EUR,Lorem ipsum dolor sit amet
+flight-13,Lorem ipsum dolor sit amet,true,0.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-14,Lorem ipsum dolor sit amet,true,0.01 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-15,Lorem ipsum dolor sit amet,true,123.45 EUR,Lorem ipsum dolor sit amet,true,manager-02
+flight-16,Lorem ipsum dolor sit amet,true,99999.99 EUR,Lorem ipsum dolor sit amet,true,manager-02
+flight-17,Lorem ipsum dolor sit amet,true,1000000.00 EUR,Lorem ipsum dolor sit amet,true,manager-02
 #description
-flight-18,Lorem ipsum dolor sit amet,true,100.00 EUR,L
-flight-19,Lorem ipsum dolor sit amet,true,100.00 EUR,Lo
-flight-20,Lorem ipsum dolor sit amet,true,100.00 EUR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d"
-flight-21,Lorem ipsum dolor sit amet,true,100.00 EUR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure"
-flight-22,Lorem ipsum dolor sit amet,true,100.00 EUR,โลเร็ม อิปซัม
-flight-23,Lorem ipsum dolor sit amet,true,100.00 EUR,لوريم إيبسوم
-flight-24,Lorem ipsum dolor sit amet,true,100.00 EUR,洛伦·伊普森
-flight-25,Lorem ipsum dolor sit amet,true,100.00 EUR,<marquee>Hacked</marquee>
-flight-26,Lorem ipsum dolor sit amet,true,100.00 EUR,<script>alert('Hacked!');</script>
-flight-27,Lorem ipsum dolor sit amet,true,100.00 EUR,'' or 'A' = 'A
+flight-18,Lorem ipsum dolor sit amet,true,100.00 EUR,L,true,manager-02
+flight-19,Lorem ipsum dolor sit amet,true,100.00 EUR,Lo,true,manager-02
+flight-20,Lorem ipsum dolor sit amet,true,100.00 EUR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d",true,manager-02
+flight-21,Lorem ipsum dolor sit amet,true,100.00 EUR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure",true,manager-02
+flight-22,Lorem ipsum dolor sit amet,true,100.00 EUR,โลเร็ม อิปซัม,true,manager-02
+flight-23,Lorem ipsum dolor sit amet,true,100.00 EUR,لوريم إيبسوم,true,manager-02
+flight-24,Lorem ipsum dolor sit amet,true,100.00 EUR,洛伦·伊普森,true,manager-02
+flight-25,Lorem ipsum dolor sit amet,true,100.00 EUR,<marquee>Hacked</marquee>,true,manager-02
+flight-26,Lorem ipsum dolor sit amet,true,100.00 EUR,<script>alert('Hacked!');</script>,true,manager-02
+flight-27,Lorem ipsum dolor sit amet,true,100.00 EUR,'' or 'A' = 'A,true,manager-02

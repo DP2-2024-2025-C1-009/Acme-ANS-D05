@@ -1,17 +1,17 @@
-key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:aircraft,key:flight
+key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:aircraft,key:flight,draftMode
 # base entity
-leg-01,AAA0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
+leg-01,AAA0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
 #flight-number-digits
-leg-02,AAB0001,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
-leg-03,AAC9999,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
-leg-04,AAD1234,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
+leg-02,AAB0001,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-03,AAC9999,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-04,AAD1234,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
 #scheduled-departure and scheduled-arrival
-leg-05,AAE0000,2000/01/01 00:00,2000/01/02 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
-leg-06,AAF0000,2000/01/01 00:01,2000/01/02 00:01,LANDED,airport-01,airport-02,aircraft-01,flight-01
-leg-07,AAG0000,2200/12/31 00:00,2200/12/31 23:58,LANDED,airport-01,airport-02,aircraft-01,flight-01
-leg-08,AAH0000,2200/12/30 23:59,2200/12/31 23:59,LANDED,airport-01,airport-02,aircraft-01,flight-01
+leg-05,AAE0000,2000/01/01 00:00,2000/01/02 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-06,AAF0000,2000/01/01 00:01,2000/01/02 00:01,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-07,AAG0000,2200/12/31 00:00,2200/12/31 23:58,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-08,AAH0000,2200/12/30 23:59,2200/12/31 23:59,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
 #status
-leg-09,AAM0000,2023/04/16 00:00,2023/05/16 00:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-01
-leg-10,AAN0000,2023/04/16 00:00,2023/05/16 00:00,DELAYED,airport-01,airport-02,aircraft-01,flight-01
-leg-11,AAO0000,2023/04/16 00:00,2023/05/16 00:00,CANCELLED,airport-01,airport-02,aircraft-01,flight-01
-leg-12,AAP0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01
+leg-09,AAM0000,2023/04/16 00:00,2023/05/16 00:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-01,true
+leg-10,AAN0000,2023/04/16 00:00,2023/05/16 00:00,DELAYED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-11,AAO0000,2023/04/16 00:00,2023/05/16 00:00,CANCELLED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-12,AAP0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true

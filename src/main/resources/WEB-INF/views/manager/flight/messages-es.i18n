@@ -1,0 +1,34 @@
+# messages-es.i18n
+
+manager.flight.form.title = Detalles de vuelo
+manager.flight.list.title = Lista de vuelos
+
+manager.flight.form.label.tag = Tag:
+manager.flight.form.label.selfTransfer = Tiene escala
+manager.flight.form.label.cost = Coste:
+manager.flight.form.label.description = Descripción:
+manager.flight.form.label.draftMode = Modo borrador:
+manager.flight.form.label.scheduledDeparture = Salida programada:
+manager.flight.form.label.scheduledArrival = Llegada programada:
+manager.flight.form.label.originCity = Ciudad de origen:
+manager.flight.form.label.destinationCity = Ciudad destino:
+manager.flight.form.label.numberOfLayovers = Número de escalas:
+manager.flight.list.label.draftMode = Modo borrador
+
+manager.flight.form.button.update = Actualizar
+manager.flight.form.button.delete = Borrar
+manager.flight.form.button.publish = Publicar
+manager.flight.form.button.create = Crear
+manager.flight.form.button.legs = Ver tramos
+
+manager.flight.list.label.tag = Tag
+manager.flight.list.label.selfTransfer = Tiene escala
+manager.flight.list.label.cost = Coste
+manager.flight.list.label.description = Descripción
+
+manager.flight.delete.published-legs= No puede borrar vuelos con tramos publicados
+manager.flight.publish.non-published-legs= No puede publicar vuelos con tramos sin publicar o sin tramos
+manager.flight.delete.associated-claims = No puedes borrar un vuelo con reclamos en alguno de sus tramos
+
+manager.flight.list.button.create = Crear
+
