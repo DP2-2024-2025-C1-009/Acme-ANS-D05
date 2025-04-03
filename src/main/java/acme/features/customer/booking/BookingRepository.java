@@ -19,7 +19,7 @@ public interface BookingRepository extends AbstractRepository {
 	@Query("SELECT a from Booking a")
 	Collection<Booking> findAllBookings();
 
-	@Query("SELECT a from Booking where a.locatorCode = :locatorCode")
+	@Query("SELECT a from Booking a where a.locatorCode = :locatorCode")
 	Booking findBookingByLocatorCode(@Param("locatorCode") String locatorCode);
 
 }

@@ -51,7 +51,7 @@ public class Aircraft extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Boolean				IsActive;
+	private Boolean				isActive;
 
 	@Optional
 	@ValidString(max = 255, message = "{acme.validation.aircraft.optional-details-length}")

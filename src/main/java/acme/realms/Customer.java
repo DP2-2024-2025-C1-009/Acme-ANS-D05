@@ -28,7 +28,7 @@ public class Customer extends AbstractRole {
 	@ValidString(min = 8, max = 9)
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Customer Identificator " + "must have 2/3 letters followed by 6 numbers")
 	@Automapped
-	private String				customerId;
+	private String				identifier;
 
 	@Mandatory
 	@ValidPhoneNumber

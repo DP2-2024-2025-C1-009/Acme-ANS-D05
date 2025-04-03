@@ -9,6 +9,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 
+// Corregir el crear (no da problemas pero no se encuentra al crearlo)
 @GuiService
 public class AircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
 
@@ -30,7 +31,7 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "IsActive", "optionalDetails");
+		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
 	}
 
 	@Override
