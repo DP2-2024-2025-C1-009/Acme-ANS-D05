@@ -21,8 +21,11 @@ acme.validation.airport.phone-number-pattern = El número de teléfono debe cont
 acme.validation.airport.website-valid = Introduce una URL válida. 
 acme.validation.airport.email-valid = Introduce una dirección de correo válida.
 
+acme.validation.flight.validSelfTransfer = Si el vuelo tiene auto-transferencia tiene que tener mas de un tramo
+acme.validation.flight.correctTimeOrder = La fecha de salida debe ser anterior a la fecha de llegada
+
 acme.validation.airline.name-lenght = La longitud del nombre de la aerolínea no debe superar los 50 caracteres.
-acme.validation.airline.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas.
+acme.validation.airline.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas
 acme.validation.airline.iata-code-last-letter = El último caracter del código IATA debe ser una X.
 acme.validation.airline.website-valid = Introduce una URL válida.
 acme.validation.airline.foundation-moment-past = La fecha de fundacion de la aerolínea debe ser una fecha en el pasado.
@@ -53,3 +56,5 @@ acme.validation.claim.passenger-email-correct = Introduce una diorección de cor
 
 acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
 acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
+
+acme.validation.confirmation.message = Necesitas confirmar los cambios

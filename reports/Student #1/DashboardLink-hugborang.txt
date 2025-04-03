@@ -7,5 +7,5 @@ https://github.com/orgs/DP2-2024-2025-C1-009/projects/4/views/1
 
 ------------------------------------------------------------
 To review the tasks, their current status, and my user's schedule,
-type "hugborang D02" in the filter bar.
+type "hugborang D03" in the filter bar.
 ------------------------------------------------------------

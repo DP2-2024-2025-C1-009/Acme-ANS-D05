@@ -1,27 +1,35 @@
-# Titles
-flight-crew-member.flight-assignment.form.title = Flight assignment details
-flight-crew-member.flight-assignment.list.title = List of flight assignments
+# --- TITLES ---
+flight-crew-member.flight-assignment.form.title = Flight Assignment details
+flight-crew-member.flight-assignment.list.title = Flight Assignments list
 
-# Labels (Form)
-flight-assignment.form.label.duty = Assigned duty:
-flight-assignment.form.label.lastUpdate = Last update:
-flight-assignment.form.label.status = Assignment status:
-flight-assignment.form.label.remarks = Additional remarks:
-flight-assignment.form.label.leg = Flight leg:
-flight-assignment.form.label.crew-member = Assigned crew member:
-flight-assignment.form.label.confirmation = Confirm the data before submission
+# --- FORM LABELS ---
+flight-crew-member.flight-assignment.form.label.duty = Duty
+flight-crew-member.flight-assignment.form.label.lastUpdate = Last update
+flight-crew-member.flight-assignment.form.label.status = Status
+flight-crew-member.flight-assignment.form.label.remarks = Remarks
+flight-crew-member.flight-assignment.form.label.flightCrewMember = Flight Crew Member
+flight-crew-member.flight-assignment.form.label.leg = Leg code
 
-# Buttons (Form)
-flight-assignment.form.button.create = Create
-flight-assignment.form.button.update = Update
-flight-assignment.form.button.publish = Publish
-flight-assignment.form.button.leg = View leg
-flight-assignment.form.button.member = View member
+# --- BUTTONS ---
+flight-crew-member.flight-assignment.form.button.activity-log = Show activity logs
+flight-crew-member.flight-assignment.form.button.visa-requirements = Show visa requirements
+flight-crew-member.flight-assignment.form.button.create = Create
+flight-crew-member.flight-assignment.form.button.update = Update
+flight-crew-member.flight-assignment.form.button.publish = Publish
+flight-crew-member.flight-assignment.form.button.delete = Delete
 
-# Labels (List)
-flight-assignment.list.label.lastUpdate = Last update
-flight-assignment.list.label.status = Status
-flight-assignment.list.label.duty = Duty
+# --- LIST LABELS ---
+flight-crew-member.flight-assignment.list.label.duty = Duty
+flight-crew-member.flight-assignment.list.label.lastUpdate = Last update
+flight-crew-member.flight-assignment.list.label.status = Status
+flight-crew-member.flight-assignment.list.label.remarks = Remarks
+flight-crew-member.flight-assignment.list.label.leg = Flight Number
+flight-crew-member.flight-assignment.list.label.draftMode = Draft mode
 
-# Buttons (List)
-flight-assignment.list.button.create = New flight assignment
+# --- LIST BUTTON ---
+flight-crew-member.flight-assignment.list.button.create = Create
+
+
+acme.validation.flightAssignment.duty.lead-attendant=Only crew members with duty 'LEAD ATTENDANT' can perform this operation
+acme.validation.flightAssignment.published.cannot-edit=You cannot update or delete a published flight assignment
+

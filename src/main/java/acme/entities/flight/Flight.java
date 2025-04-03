@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -18,6 +19,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidFlight;
 import acme.entities.legs.Leg;
 import acme.realms.Manager;
 import lombok.Getter;
@@ -26,6 +28,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidFlight
 public class Flight extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -41,7 +44,6 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	//@Valid
 	private boolean				selfTransfer;
 
 	@Mandatory
@@ -53,6 +55,10 @@ public class Flight extends AbstractEntity {
 	@ValidString(max = 255)
 	@Automapped
 	private String				description;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	// Derived attributes --------------------------------------------------------
 
@@ -113,8 +119,9 @@ public class Flight extends AbstractEntity {
 
 	@OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Leg>	legs;
-	//No se recomienda usar OneToMany
 
+	@Mandatory
+	@Valid
 	@ManyToOne()
 	private Manager		manager;
 }

@@ -37,49 +37,39 @@
 
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.administrator"
-			access="hasRealm('Administrator')">
-			<acme:menu-suboption
-				code="master.menu.administrator.list-user-accounts"
-				action="/administrator/user-account/list" />
-			<acme:menu-separator />
-			<acme:menu-suboption
-				code="master.menu.administrator.populate-db-initial"
-				action="/administrator/system/populate-initial" />
-			<acme:menu-suboption
-				code="master.menu.administrator.populate-db-sample"
-				action="/administrator/system/populate-sample" />
-			<acme:menu-separator />
-			<acme:menu-suboption
-				code="master.menu.administrator.shut-system-down"
-				action="/administrator/system/shut-down" />
+
+		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airline/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-aircrafts" action="/administrator/aircraft/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
+			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.provider"
-			access="hasRealm('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link"
-				action="http://www.example.com/" />
+		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
+			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/" />
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.flight-crew-member"
-			access="hasRealm('FlightCrewMember')">
-			<acme:menu-suboption
-				code="master.menu.flight-crew-member.flight-assignment"
-				action="/flight-crew-member/flight-assignment/list-planned" />
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.task" action="/technician/task/list" />
+			<acme:menu-suboption code="master.menu.technician.maintenance" action="/technician/maintenance-record/list" />
+    </acme:menu-option>
+		
+		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
+			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
+	<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.planned" action="/flight-crew-member/flight-assignment/list-planned"/>
+	<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.completed" action="/flight-crew-member/flight-assignment/list-completed"/>
+</acme:menu-option>
 
-		<acme:menu-option code="master.menu.technician"
-			access="hasRealm('Technician')">
-			<acme:menu-suboption code="master.menu.technician.task"
-				action="/technician/task/list" />
-			<acme:menu-suboption code="master.menu.technician.maintenance"
-				action="/technician/maintenance-record/list" />
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.consumer"
-			access="hasRealm('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link"
-				action="http://www.example.com/" />
+		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
+			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/" />
 		</acme:menu-option>
 	</acme:menu-left>
 

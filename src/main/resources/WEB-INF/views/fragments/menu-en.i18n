@@ -22,7 +22,10 @@ master.menu.anonymous.favoutite-link-riccarmar = 80230334D: Carreno Marino, Rica
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-user-accounts = List user accounts
+master.menu.administrator.list-airports = List airports
+master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
@@ -49,7 +52,14 @@ master.menu.user-account.consumer-profile = Consumer profile
 # master.menu.flight-crew-member ####################################################
 
 master.menu.flight-crew-member = Flight Crew Member
-master.menu.flight-crew-member.flight-assignment = My Flight Assignments
+master.menu.flight-crew-member.flight-assignment.planned = My Planned Assignments
+master.menu.flight-crew-member.flight-assignment.completed = My Completed Assignments
+
+# master.menu.manager ########################################################
+
+master.menu.manager = Manager
+master.menu.manager.list-flights = Flight list
+master.menu.manager.list-legs = Leg list
 
 # master.menu.technician ####################################################
 

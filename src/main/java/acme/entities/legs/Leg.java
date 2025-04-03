@@ -1,6 +1,7 @@
 
 package acme.entities.legs;
 
+import java.time.Duration;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
+import acme.client.helpers.MomentHelper;
 import acme.constraints.ValidFlightNumber;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -53,15 +55,17 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private LegStatus			status;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	// Derived attributes --------------------------------------------------------
 
 
-	//Usar la clase moment helper
 	@Transient
-	private Double getDuration() {
-		Double result;
-		result = this.getScheduledArrival().getTime() - this.getScheduledDeparture().getTime() / (1000.0 * 60 * 60);
-		return result;
+	public Double getDuration() {
+		Duration result = MomentHelper.computeDuration(this.getScheduledDeparture(), this.getScheduledArrival());
+		return result.getSeconds() / 60.;
 	}
 
 	// Relationships -------------------------------------------------------------
