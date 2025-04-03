@@ -1,4 +1,6 @@
 # Etiquetas y placeholders del formulario
+flight-crew-member.activity-log.list.title = Registro de actividad
+flight-crew-member.activity-log.form.title = Nuevo registro de actividad
 activity-log.form.label.incident-type = Tipo de incidente
 activity-log.form.placeholder.incident-type = Introduce el tipo de incidente
 
