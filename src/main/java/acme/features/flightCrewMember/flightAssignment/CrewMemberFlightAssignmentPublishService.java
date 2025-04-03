@@ -62,6 +62,9 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 			boolean overlapping = this.assignmentRepository.isCrewMemberOverlapping(assignment.getCrewMember().getId(), MomentHelper.getCurrentMoment());
 			super.state(!overlapping, "crewMember", "acme.validation.flightAssignment.crewMember.multipleLegs");
 		}
+
+		super.state(assignment.getDuty() == Duty.LEAD_ATTENDANT, "duty", "acme.validation.flightAssignment.duty.lead-attendant");
+
 	}
 
 	@Override

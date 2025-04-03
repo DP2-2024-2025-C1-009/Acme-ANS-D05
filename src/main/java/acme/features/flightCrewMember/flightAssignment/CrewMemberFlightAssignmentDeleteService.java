@@ -46,6 +46,11 @@ public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<
 	}
 
 	@Override
+	public void validate(final FlightAssignment assignment) {
+		super.state(assignment.getDraftMode(), "*", "acme.validation.flightAssignment.published.cannot-edit");
+	}
+
+	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode", "crewMember", "leg");
 
