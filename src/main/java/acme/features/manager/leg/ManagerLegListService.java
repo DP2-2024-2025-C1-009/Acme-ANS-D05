@@ -48,7 +48,6 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		legs = this.repository.findLegsByFlightId(id);
 
 		List<Leg> sortedLegs = legs.stream().sorted(Comparator.comparing(Leg::getScheduledDeparture)).collect(Collectors.toList());
-		System.out.println(sortedLegs);
 
 		super.getBuffer().addData(sortedLegs);
 	}
