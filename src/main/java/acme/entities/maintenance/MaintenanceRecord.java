@@ -3,6 +3,7 @@ package acme.entities.maintenance;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,12 +13,16 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTicker;
+import acme.entities.aircraft.Aircraft;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +35,11 @@ public class MaintenanceRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes
+
+	@Mandatory
+	@ValidTicker
+	@Column(unique = true)
+	private String				ticker;
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -47,20 +57,28 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Date				nextInspectionDueDate;
 
 	@Mandatory
-	@ValidNumber(min = 0, fraction = 2)
+	@ValidMoney(min = 0, max = 999999999)
 	@Automapped
-	private double				estimatedCost;
+	private Money				estimatedCost;
 
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
 	private String				notes;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	// Relationships
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
+	private Technician			technician;
 
-	private Task				task;
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Aircraft			aircraft;
 }

@@ -1,15 +1,20 @@
 
 package acme.entities.maintenance;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTicker;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +24,11 @@ import lombok.Setter;
 public class Task extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+
+	@Mandatory
+	@ValidTicker
+	@Column(unique = true)
+	private String				ticker;
 
 	@Mandatory
 	@Enumerated(EnumType.STRING)
@@ -39,5 +49,14 @@ public class Task extends AbstractEntity {
 	@ValidNumber(min = 0, fraction = 2)
 	@Automapped
 	private double				estimatedDuration;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Technician			technician;
 
 }

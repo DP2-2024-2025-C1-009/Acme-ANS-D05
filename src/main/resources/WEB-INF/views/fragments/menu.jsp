@@ -19,13 +19,24 @@
 <acme:menu-bar>
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-jaigommar1" action="https://www.porsche.com/spain"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-hugborang" action="https://www.cardmarket.com/es/Magic"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-cargalrod2" action="https://www.bet365.es/#/HO/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-jesmarde2" action="https://www.realmadrid.com/es-ES"/>
-      <acme:menu-suboption code="master.menu.anonymous.favoutite-link-riccarmar" action="https://www.formula1.com/"/>
+			<acme:menu-suboption
+				code="master.menu.anonymous.favourite-link-jaigommar1"
+				action="https://www.porsche.com/spain" />
+			<acme:menu-suboption
+				code="master.menu.anonymous.favourite-link-hugborang"
+				action="https://www.cardmarket.com/es/Magic" />
+			<acme:menu-suboption
+				code="master.menu.anonymous.favourite-link-cargalrod2"
+				action="https://www.bet365.es/#/HO/" />
+			<acme:menu-suboption
+				code="master.menu.anonymous.favourite-link-jesmarde2"
+				action="https://www.realmadrid.com/es-ES" />
+			<acme:menu-suboption
+				code="master.menu.anonymous.favoutite-link-riccarmar"
+				action="https://www.formula1.com/" />
 
 		</acme:menu-option>
+
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
@@ -40,35 +51,45 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/" />
 		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.task" action="/technician/task/list" />
+			<acme:menu-suboption code="master.menu.technician.maintenance" action="/technician/maintenance-record/list" />
+    </acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
 			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
-	<acme:menu-suboption 
-		code="master.menu.flight-crew-member.flight-assignment.planned" 
-		action="/flight-crew-member/flight-assignment/list-planned"/>
-
-	<acme:menu-suboption 
-		code="master.menu.flight-crew-member.flight-assignment.completed" 
-		action="/flight-crew-member/flight-assignment/list-completed"/>
+	<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.planned" action="/flight-crew-member/flight-assignment/list-planned"/>
+	<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.completed" action="/flight-crew-member/flight-assignment/list-completed"/>
 </acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/" />
 		</acme:menu-option>
 	</acme:menu-left>
 
-	<acme:menu-right>		
-		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.user-account.general-profile" action="/authenticated/user-account/update"/>
-			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRealm('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.provider-profile" action="/authenticated/provider/update" access="hasRealm('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
-			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
+	<acme:menu-right>
+		<acme:menu-option code="master.menu.user-account"
+			access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.user-account.general-profile"
+				action="/authenticated/user-account/update" />
+			<acme:menu-suboption code="master.menu.user-account.become-provider"
+				action="/authenticated/provider/create"
+				access="!hasRealm('Provider')" />
+			<acme:menu-suboption code="master.menu.user-account.provider-profile"
+				action="/authenticated/provider/update"
+				access="hasRealm('Provider')" />
+			<acme:menu-suboption code="master.menu.user-account.become-consumer"
+				action="/authenticated/consumer/create"
+				access="!hasRealm('Consumer')" />
+			<acme:menu-suboption code="master.menu.user-account.consumer-profile"
+				action="/authenticated/consumer/update"
+				access="hasRealm('Consumer')" />
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

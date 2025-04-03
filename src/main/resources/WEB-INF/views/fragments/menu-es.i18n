@@ -60,3 +60,8 @@ master.menu.manager = Manager
 master.menu.manager.list-flights = Listar vuelos
 master.menu.manager.list-legs = Listar tramos
 
+# master.menu.technician ####################################################
+
+master.menu.technician = Técnico
+master.menu.technician.task = Mis Tareas
+master.menu.technician.maintenance = Mis Registros de Mantenimiento
