@@ -39,6 +39,11 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 	}
 
 	@Override
+	public void validate(final FlightAssignment assignment) {
+		super.state(assignment.getDuty() == Duty.LEAD_ATTENDANT, "duty", "acme.validation.flightAssignment.duty.lead-attendant");
+	}
+
+	@Override
 	public void bind(final FlightAssignment assignment) {
 		super.bindObject(assignment, "duty", "status", "remarks", "leg");
 	}

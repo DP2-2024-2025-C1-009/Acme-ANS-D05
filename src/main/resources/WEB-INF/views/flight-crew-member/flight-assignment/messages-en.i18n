@@ -28,3 +28,8 @@ flight-crew-member.flight-assignment.list.label.draftMode = Draft mode
 
 # --- LIST BUTTON ---
 flight-crew-member.flight-assignment.list.button.create = Create
+
+
+acme.validation.flightAssignment.duty.lead-attendant=Only crew members with duty 'LEAD ATTENDANT' can perform this operation
+acme.validation.flightAssignment.published.cannot-edit=You cannot update or delete a published flight assignment
+
