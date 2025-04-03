@@ -2,89 +2,99 @@
 package acme.features.authenticated.technician.maintenanceRecord;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenance.MaintenanceRecord;
 import acme.entities.maintenance.Status;
 import acme.entities.maintenance.Task;
-import acme.features.authenticated.technician.TechnicianTaskRepository;
 import acme.realms.Technician;
 
 @GuiService
-@Service
 public class TechnicianMaintenanceRecordPublishService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
 	@Autowired
-	protected TechnicianMaintenanceRecordRepository	repository;
-
-	@Autowired
-	protected TechnicianTaskRepository				taskRepository;
+	private TechnicianMaintenanceRecordRepository repository;
 
 
 	@Override
 	public void authorise() {
-		int id = super.getRequest().getData("id", int.class);
-		MaintenanceRecord record = this.repository.findMaintenanceRecordById(id);
-		boolean isOwner = record != null && super.getRequest().getPrincipal().hasRealm(record.getTechnician());
-		boolean isDraft = record != null && record.isDraftMode();
-		super.getResponse().setAuthorised(isOwner && isDraft);
+		boolean status;
+		int masterId;
+		MaintenanceRecord maintenanceRecord;
+		Technician technician;
+		List<Task> publishedTasks;
+
+		masterId = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
+		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(t -> !t.isDraftMode()).toList();
+
+		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
+		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() //
+			&& super.getRequest().getPrincipal().hasRealm(technician) && !publishedTasks.isEmpty();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
+		MaintenanceRecord maintenanceRecord;
 		int id = super.getRequest().getData("id", int.class);
-		MaintenanceRecord record = this.repository.findMaintenanceRecordById(id);
-		super.getBuffer().addData(record);
+
+		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+
+		super.getBuffer().addData(maintenanceRecord);
 	}
 
 	@Override
-	public void bind(final MaintenanceRecord record) {
-		assert record != null;
-		// Vincula los campos editables
-		super.bindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes");
+	public void bind(final MaintenanceRecord maintenanceRecord) {
+		Aircraft aircraft;
+		Date currentMoment;
+
+		aircraft = super.getRequest().getData("aircraft", Aircraft.class);
+		currentMoment = MomentHelper.getCurrentMoment();
+
+		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueDate", "estimatedCost", "notes");
+		maintenanceRecord.setMoment(currentMoment);
+		maintenanceRecord.setAircraft(aircraft);
 	}
 
 	@Override
-	public void validate(final MaintenanceRecord record) {
-		assert record != null;
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation");
+	public void validate(final MaintenanceRecord maintenanceRecord) {
 
-		// Validar que exista una tarea asociada
-		Task task = record.getTask();
-		super.state(task != null, "*", "acme.validation.maintenance-record.no-task");
-		// Validar que la tarea esté publicada
-		super.state(!task.isDraftMode(), "*", "acme.validation.maintenance-record.unpublished-task");
 	}
 
 	@Override
-	public void perform(final MaintenanceRecord record) {
-		assert record != null;
-		record.setDraftMode(false);
-		this.repository.save(record);
+	public void perform(final MaintenanceRecord maintenanceRecord) {
+		maintenanceRecord.setDraftMode(false);
+		this.repository.save(maintenanceRecord);
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
-		Dataset dataset = super.unbindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
-		// Creamos un SelectChoices para el enum Status
-		SelectChoices statusChoices = SelectChoices.from(Status.class, record.getStatus());
+	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		Dataset dataset;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
+		Collection<Aircraft> aircrafts;
+
+		statusChoices = SelectChoices.from(Status.class, maintenanceRecord.getStatus());
+		aircrafts = this.repository.findAllAircrafts();
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", maintenanceRecord.getAircraft());
+
+		dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
 		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("statusChoices", statusChoices);
+		dataset.put("statuses", statusChoices);
+		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
+		dataset.put("aircrafts", aircraftChoices);
 
-		// Creamos un SelectChoices para las tareas publicadas
-		Collection<Task> publishedTasks = this.taskRepository.findPublishedTasks();
-		SelectChoices taskChoices = SelectChoices.from(publishedTasks, "description", record.getTask());
-		dataset.put("task", taskChoices.getSelected().getKey());
-		dataset.put("taskChoices", taskChoices);
-
-		dataset.put("confirmation", false);
 		super.getResponse().addData(dataset);
 	}
 }

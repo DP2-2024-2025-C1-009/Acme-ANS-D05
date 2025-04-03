@@ -9,30 +9,31 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenance.MaintenanceRecord;
 import acme.entities.maintenance.Status;
-import acme.entities.maintenance.Task;
-import acme.features.authenticated.technician.TechnicianTaskRepository;
 import acme.realms.Technician;
 
 @GuiService
 public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
-	//Internal state ----------------------------------------------------------
-
 	@Autowired
-	private TechnicianMaintenanceRecordRepository	repository;
-
-	@Autowired
-	private TechnicianTaskRepository				taskRepository;
-
-	//AbstractGuiService state ----------------------------------------------------------
+	private TechnicianMaintenanceRecordRepository repository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		MaintenanceRecord maintenanceRecord;
+		Technician technician;
 
+		masterId = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
+		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
+		status = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -43,26 +44,25 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
 
 		super.getBuffer().addData(maintenanceRecord);
-
 	}
 
 	@Override
-	public void unbind(final MaintenanceRecord record) {
-		// Se "desvinculan" los campos de MaintenanceRecord en un Dataset.
-		Dataset dataset = super.unbindObject(record, "moment", "status", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
+	public void unbind(final MaintenanceRecord maintenanceRecord) {
+		Dataset dataset;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
+		Collection<Aircraft> aircrafts;
 
-		// Creamos un SelectChoices para el enum Status
-		SelectChoices statusChoices = SelectChoices.from(Status.class, record.getStatus());
+		statusChoices = SelectChoices.from(Status.class, maintenanceRecord.getStatus());
+		aircrafts = this.repository.findAllAircrafts();
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", maintenanceRecord.getAircraft());
+
+		dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueDate", "estimatedCost", "notes", "draftMode");
 		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("statusChoices", statusChoices);
+		dataset.put("statuses", statusChoices);
+		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
+		dataset.put("aircrafts", aircraftChoices);
 
-		// Si se requiere, incluir otros campos (por ejemplo, la tarea)
-		Collection<Task> publishedTasks = this.taskRepository.findPublishedTasks();
-		SelectChoices taskChoices = SelectChoices.from(publishedTasks, "description", record.getTask());
-		dataset.put("task", taskChoices.getSelected().getKey());
-		dataset.put("taskChoices", taskChoices);
-
-		dataset.put("confirmation", false);
 		super.getResponse().addData(dataset);
 	}
 }

@@ -13,12 +13,9 @@ import acme.realms.Technician;
 
 @GuiService
 public class TechnicianMaintenanceRecordListService extends AbstractGuiService<Technician, MaintenanceRecord> {
-	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private TechnicianMaintenanceRecordRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -28,19 +25,19 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 
 	@Override
 	public void load() {
-		Collection<MaintenanceRecord> maintenanceRecords;
-
+		Collection<MaintenanceRecord> object;
 		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		maintenanceRecords = this.repository.findMaintenanceRecordsByTechnicianId(technicianId);
+		object = this.repository.findMainteanceRecordsByTechnicianId(technicianId);
 
-		super.getBuffer().addData(maintenanceRecords);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
-		Dataset dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDueDate");
-		super.addPayload(dataset, maintenanceRecord, "moment");
+		Dataset dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "status", "nextInspectionDueDate");
+		dataset.put("aircraft", maintenanceRecord.getAircraft().getNumberRegistration());
+		super.addPayload(dataset, maintenanceRecord);
 
 		super.getResponse().addData(dataset);
 	}

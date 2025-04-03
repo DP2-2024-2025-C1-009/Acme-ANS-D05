@@ -1,20 +1,20 @@
-key,type,description,priority,estimatedDuration,draftMode,key:technician
+key,ticker,type,description,priority,estimatedDuration,draftMode,key:technician
 # type
-task-01,MAINTENANCE,Standard maintenance task,5,3.50,false,technician-01
-task-02,INSPECTION,Standard inspection task,7,2.00,false,technician-01
-task-03,REPAIR,Standard repair task,4,1.00,false,technician-01
-task-04,SYSTEM_CHECK,Standard system check task,6,4.00,false,technician-01
+task-01,TASK-01,MAINTENANCE,Standard maintenance task,5,3.50,false,technician-01
+task-02,TASK-02,INSPECTION,Standard inspection task,7,2.00,false,technician-01
+task-03,TASK-03,REPAIR,Standard repair task,4,1.00,false,technician-01
+task-04,TASK-04,SYSTEM_CHECK,Standard system check task,6,4.00,false,technician-01
 # description
-task-05,MAINTENANCE,A,5,3.50,false,technician-01
-task-06,MAINTENANCE,Descripcion mediana,5,3.50,false,technician-01
-task-07,INSPECTION,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",5,3.50,false,technician-01
+task-05,TASK-05,MAINTENANCE,A,5,3.50,false,technician-01
+task-06,TASK-06,MAINTENANCE,Descripcion mediana,5,3.50,false,technician-01
+task-07,TASK-07,INSPECTION,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",5,3.50,false,technician-01
 # priority
-task-08,MAINTENANCE,Priority lower boundary,0,3.50,false,technician-01
-task-09,MAINTENANCE,Priority upper boundary,10,3.50,false,technician-01
+task-08,TASK-08,MAINTENANCE,Priority lower boundary,0,3.50,false,technician-01
+task-09,TASK-09,MAINTENANCE,Priority upper boundary,10,3.50,false,technician-01
 # estimatedDuration
-task-10,INSPECTION,Duration zero,5,0.00,false,technician-01
-task-11,INSPECTION,Valid duration,5,5.50,false,technician-01
+task-10,TASK-10,INSPECTION,Duration zero,5,0.00,false,technician-01
+task-11,TASK-11,INSPECTION,Valid duration,5,5.50,false,technician-01
 # description special characters
-task-12,REPAIR,"<script>alert('Hacked!')</script>",5,3.50,false,technician-01
-task-13,REPAIR,"โลเร็ม อิปซัม",5,3.50,false,technician-01
-task-14,SYSTEM_CHECK,"Prueba",5,3.50,false,technician-01
+task-12,TASK-12,REPAIR,"<script>alert('Hacked!')</script>",5,3.50,false,technician-01
+task-13,TASK-13,REPAIR,"โลเร็ม อิปซัม",5,3.50,false,technician-01
+task-14,TASK-14,SYSTEM_CHECK,"Prueba",5,3.50,false,technician-01

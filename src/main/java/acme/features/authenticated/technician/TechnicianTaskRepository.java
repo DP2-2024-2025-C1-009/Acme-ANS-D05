@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.maintenance.Involves;
 import acme.entities.maintenance.Task;
-import acme.realms.Technician;
 
 @Repository
 public interface TechnicianTaskRepository extends AbstractRepository {
@@ -17,12 +17,11 @@ public interface TechnicianTaskRepository extends AbstractRepository {
 	Collection<Task> findTasksByTechnicianId(int technicianId);
 
 	@Query("select t from Task t where t.id = :id")
-	Task findOneTaskById(int id);
+	Task findTaskById(int id);
 
-	@Query("select te from Technician te where te.userAccount.id = :accountId")
-	Technician findTechnicianByAccountId(int accountId);
+	@Query("select i from Involves i where i.task.id = :id")
+	Collection<Involves> findInvolvesByTaskId(int id);
 
-	@Query("select t from Task t where t.draftMode = false")
-	Collection<Task> findPublishedTasks();
-
+	@Query("select t from Task t where t.ticker = :ticker")
+	Task findTaskByTicker(String ticker);
 }

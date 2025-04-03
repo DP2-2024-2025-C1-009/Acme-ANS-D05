@@ -15,7 +15,7 @@ import acme.realms.Technician;
 public class TechnicianTaskListService extends AbstractGuiService<Technician, Task> {
 
 	@Autowired
-	protected TechnicianTaskRepository repository;
+	private TechnicianTaskRepository repository;
 
 
 	@Override
@@ -25,17 +25,19 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 
 	@Override
 	public void load() {
-		int accountId = super.getRequest().getPrincipal().getAccountId();
-		Technician principal = this.repository.findTechnicianByAccountId(accountId);
-		int technicianId = principal.getId();
-		Collection<Task> tasks = this.repository.findTasksByTechnicianId(technicianId);
-		super.getBuffer().addData(tasks);
+		Collection<Task> object;
+		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		object = this.repository.findTasksByTechnicianId(technicianId);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Task task) {
-		assert task != null;
-		Dataset dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "draftMode", "technician");
+		Dataset dataset = super.unbindObject(task, "ticker", "type", "priority");
+		super.addPayload(dataset, task, "description", "estimatedDuration");
+
 		super.getResponse().addData(dataset);
 	}
 }

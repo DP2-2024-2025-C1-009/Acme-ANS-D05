@@ -3,6 +3,7 @@ package acme.entities.maintenance;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,6 +20,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTicker;
 import acme.entities.aircraft.Aircraft;
 import acme.realms.Technician;
 import lombok.Getter;
@@ -33,6 +35,11 @@ public class MaintenanceRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes
+
+	@Mandatory
+	@ValidTicker
+	@Column(unique = true)
+	private String				ticker;
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -64,12 +71,6 @@ public class MaintenanceRecord extends AbstractEntity {
 	private boolean				draftMode;
 
 	// Relationships
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-
-	private Task				task;
 
 	@Mandatory
 	@Valid

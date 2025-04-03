@@ -2,7 +2,6 @@
 package acme.features.authenticated.technician;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
@@ -13,11 +12,10 @@ import acme.entities.maintenance.TaskType;
 import acme.realms.Technician;
 
 @GuiService
-@Service
 public class TechnicianTaskCreateService extends AbstractGuiService<Technician, Task> {
 
 	@Autowired
-	protected TechnicianTaskRepository repository;
+	private TechnicianTaskRepository repository;
 
 
 	@Override
@@ -27,42 +25,46 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void load() {
-		Task task = new Task();
+		Task task;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
+		task = new Task();
+		task.setType(TaskType.INSPECTION);
 		task.setDraftMode(true);
+		task.setTechnician(technician);
+
 		super.getBuffer().addData(task);
 	}
 
 	@Override
 	public void bind(final Task task) {
-		assert task != null;
-		int accountId = super.getRequest().getPrincipal().getAccountId();
-		Technician principal = this.repository.findTechnicianByAccountId(accountId);
 
-		super.bindObject(task, "type", "description", "priority", "estimatedDuration");
-		task.setTechnician(principal);
+		super.bindObject(task, "ticker", "type", "description", "priority", "estimatedDuration");
 	}
 
 	@Override
 	public void validate(final Task task) {
-		assert task != null;
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation");
+		Task existTask;
+		boolean validTicker;
+
+		existTask = this.repository.findTaskByTicker(task.getTicker());
+		validTicker = existTask == null || existTask.getId() == task.getId();
+		super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 	}
 
 	@Override
 	public void perform(final Task task) {
-		assert task != null;
 		this.repository.save(task);
 	}
 
 	@Override
 	public void unbind(final Task task) {
-		assert task != null;
-		Dataset dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "draftMode", "technician");
-		SelectChoices typeChoices = SelectChoices.from(TaskType.class, task.getType());
-		dataset.put("type", typeChoices.getSelected().getKey());
-		dataset.put("typeChoices", typeChoices);
-		dataset.put("confirmation", false);
+		Dataset dataset;
+		SelectChoices choices = SelectChoices.from(TaskType.class, task.getType());
+
+		dataset = super.unbindObject(task, "ticker", "type", "description", "priority", "estimatedDuration", "draftMode");
+		dataset.put("types", choices);
+
 		super.getResponse().addData(dataset);
 	}
 }
