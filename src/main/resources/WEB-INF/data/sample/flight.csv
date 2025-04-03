@@ -1,6 +1,6 @@
 key,tag,self-transfer,cost,description,draftMode,key:manager
 #base entity
-flight-01,Lorem ipsum dolor sit amet,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-01,AVuelo1,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #tag
 flight-02,L,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 flight-03,Lo,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
@@ -13,10 +13,10 @@ flight-09,<marquee>Hacked</marquee>,true,100.00 EUR,Lorem ipsum dolor sit amet,t
 flight-10,<script>alert('Hacked!');</script>,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 flight-11,'' or 'A' = 'A,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #self-transfer,true
-flight-12,Lorem ipsum dolor sit amet,false,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-12,AVuelo12,false,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #cost
 flight-13,Lorem ipsum dolor sit amet,true,0.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
-flight-14,Lorem ipsum dolor sit amet,true,0.01 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-14,AVuelo14,true,0.01 EUR,Lorem ipsum dolor sit amet,true,manager-01
 flight-15,Lorem ipsum dolor sit amet,true,123.45 EUR,Lorem ipsum dolor sit amet,true,manager-02
 flight-16,Lorem ipsum dolor sit amet,true,99999.99 EUR,Lorem ipsum dolor sit amet,true,manager-02
 flight-17,Lorem ipsum dolor sit amet,true,1000000.00 EUR,Lorem ipsum dolor sit amet,true,manager-02

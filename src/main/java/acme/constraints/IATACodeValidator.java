@@ -29,7 +29,7 @@ public class IATACodeValidator extends AbstractValidator<ValidIATACode, Airport>
 		String iataCode = airport.getIataCode();
 
 		if (!iataCode.matches(IATACodeValidator.IATA_REGEX)) {
-			super.state(context, false, "iataCode", "IATA code must be three uppercase letters");
+			super.state(context, false, "iataCode", "acme.validation.airport.iata-code-pattern");
 			return false;
 		}
 
@@ -37,7 +37,7 @@ public class IATACodeValidator extends AbstractValidator<ValidIATACode, Airport>
 		long count = this.airportRepository.countByIataCodeExcludingId(iataCode, id);
 
 		if (count > 0) {
-			super.state(context, false, "iataCode", "IATA code must be unique");
+			super.state(context, false, "iataCode", "acme.validation.airport.iata-code-pattern");
 			return false;
 		}
 

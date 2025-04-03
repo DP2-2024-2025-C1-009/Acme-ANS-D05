@@ -14,12 +14,14 @@ acme.validation.service.promotion-code-year = The last two digits must correspon
 acme.validation.service.promotion-code-pattern = The promotion code must consist of 4 uppercase letters, a hyphen, and two digits, with the last two corresponding to the current year.
 
 acme.validation.airport.airport-name-length = The airport name length must not exceed 50 characters.
-acme.validation.airport.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters.
+acme.validation.airport.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters
 acme.validation.airport.city-length = The city name length must not exceed 50 characters.
 acme.validation.airport.country-length = The country name length must not exceed 50 characters.
 acme.validation.airport.phone-number-pattern = The phone number must contain between 6 and 15 digits, optionally starting with '+'.
 acme.validation.airport.website-valid = Enter a valid URL.
 acme.validation.airport.email-valid = Enter a valid email address.
+
+acme.validation.flight.validSelfTransfer = If flight is self transfer it must have more than one leg
 
 acme.validation.airline.name-length = The airline name length must not exceed 50 characters.
 acme.validation.airline.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters.

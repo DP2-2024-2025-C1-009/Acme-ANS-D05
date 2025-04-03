@@ -90,12 +90,12 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		manager = this.repository.findManagerById(managerId);
 		aircrafts = this.repository.findAircraftsByAirlineId(manager.getAirline().getId());
-		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", leg.getAircraft());
 
 		departureAirports = this.repository.findAllAirports();
 		arrivalAirports = this.repository.findAllAirports();
-		departureAirportChoices = SelectChoices.from(departureAirports, "name", leg.getDepartureAirport());
-		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "name", leg.getArrivalAirport());
+		departureAirportChoices = SelectChoices.from(departureAirports, "airportName", leg.getDepartureAirport());
+		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "airportName", leg.getArrivalAirport());
 
 		legStatusChoices = SelectChoices.from(LegStatus.class, leg.getStatus());
 
