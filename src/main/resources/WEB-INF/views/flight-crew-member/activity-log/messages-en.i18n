@@ -1,4 +1,6 @@
 # FORM labels and placeholders
+flight-crew-member.activity-log.list.title = Activity Logs
+flight-crew-member.activity-log.form.title = New Activity Log
 activity-log.form.label.incident-type = Incident type
 activity-log.form.placeholder.incident-type = Enter the type of incident
 
