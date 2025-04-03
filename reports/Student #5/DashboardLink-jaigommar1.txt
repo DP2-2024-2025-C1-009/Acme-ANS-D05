@@ -6,5 +6,5 @@
 
 ------------------------------------------------------------
 To review the tasks, their current status, and my user's schedule,
-type "jaimegoomez D02" in the filter bar.
+type "jaimegoomez D03" in the filter bar.
 ------------------------------------------------------------
