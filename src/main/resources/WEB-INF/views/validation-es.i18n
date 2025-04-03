@@ -56,3 +56,5 @@ acme.validation.claim.passenger-email-correct = Introduce una diorección de cor
 
 acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
 acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
+
+acme.validation.confirmation.message = Necesitas confirmar los cambios
