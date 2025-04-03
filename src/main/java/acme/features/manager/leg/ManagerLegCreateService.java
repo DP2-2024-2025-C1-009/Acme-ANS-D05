@@ -66,7 +66,27 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+		assert leg != null;
+
+		Flight flight = leg.getFlight();
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+
+		boolean correctSelfTransfer;
+
+		if (flight.isSelfTransfer())
+			correctSelfTransfer = legs.size() >= 0;
+		else
+			correctSelfTransfer = legs.size() == 0;
+
+		if (!correctSelfTransfer)
+			super.state(false, "*", "manager.leg.create.validSelfTransfer");
+
+		boolean correctTimeOrder = true;
+		if (leg.getScheduledDeparture().after(leg.getScheduledArrival()))
+			correctTimeOrder = false;
+
+		if (!correctTimeOrder)
+			super.state(false, "*", "manager.leg.create.correctTimeOrder");
 	}
 
 	@Override

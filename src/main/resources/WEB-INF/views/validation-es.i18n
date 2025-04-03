@@ -22,6 +22,7 @@ acme.validation.airport.website-valid = Introduce una URL válida.
 acme.validation.airport.email-valid = Introduce una dirección de correo válida.
 
 acme.validation.flight.validSelfTransfer = Si el vuelo tiene auto-transferencia tiene que tener mas de un tramo
+acme.validation.flight.correctTimeOrder = La fecha de salida debe ser anterior a la fecha de llegada
 
 acme.validation.airline.name-lenght = La longitud del nombre de la aerolínea no debe superar los 50 caracteres.
 acme.validation.airline.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas

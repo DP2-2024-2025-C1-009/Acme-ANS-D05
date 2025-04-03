@@ -57,7 +57,14 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+		assert leg != null;
+
+		boolean correctTimeOrder = true;
+		if (leg.getScheduledDeparture().after(leg.getScheduledArrival()))
+			correctTimeOrder = false;
+
+		if (!correctTimeOrder)
+			super.state(false, "*", "manager.leg.create.correctTimeOrder");
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 
 package acme.constraints;
 
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.ConstraintValidatorContext;
@@ -49,6 +51,22 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 			super.state(context, correctSelfTransfer, "*", "acme.validation.flight.validSelfTransfer");
 
+		}
+		{
+			boolean correctTimeOrder = true;
+			List<Leg> legs = this.repository.findAllLegs(flight.getId());
+			if (!legs.isEmpty()) {
+				legs.sort(Comparator.comparing(Leg::getScheduledDeparture));
+				Date actualTime = legs.get(0).getScheduledArrival();
+				legs.remove(0);
+				for (Leg leg : legs)
+					if (!leg.getScheduledDeparture().after(actualTime)) {
+						correctTimeOrder = false;
+						break;
+					} else
+						actualTime = leg.getScheduledArrival();
+			}
+			super.state(context, correctTimeOrder, "*", "acme.validation.flight.correctTimeOrder");
 		}
 
 		result = !super.hasErrors(context);
