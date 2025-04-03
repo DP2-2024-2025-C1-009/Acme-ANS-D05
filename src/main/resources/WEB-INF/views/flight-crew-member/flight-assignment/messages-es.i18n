@@ -1,29 +1,36 @@
-# Títulos
-flight-crew-member.flight-assignment.form.title = Detalles de la asignación de vuelo
-flight-crew-member.flight-assignment.list.title = Listado de asignaciones de vuelo
+# --- TÍTULOS ---
+flight-crew-member.flight-assignment.form.title = Detalles del vuelo asignado
+flight-crew-member.flight-assignment.list.title = Listado de vuelos asignados
 
-# Etiquetas (Formulario)
-flight-assignment.form.label.duty = Función asignada:
-flight-assignment.form.label.lastUpdate = Última actualización:
-flight-assignment.form.label.status = Estado de la asignación:
-flight-assignment.form.label.remarks = Observaciones adicionales:
-flight-assignment.form.label.leg = Tramo de vuelo:
-flight-assignment.form.label.crew-member = Miembro de tripulación asignado:
-flight-assignment.form.label.confirmation = Confirmo que los datos son correctos
-flight-assignment.form.label.crew-members = Miembros de la tripulación asignados a este tramo
+# --- ETIQUETAS DEL FORMULARIO ---
+flight-crew-member.flight-assignment.form.label.duty = Función
+flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización
+flight-crew-member.flight-assignment.form.label.status = Estado
+flight-crew-member.flight-assignment.form.label.remarks = Observaciones
+flight-crew-member.flight-assignment.form.label.flightCrewMember = Tripulante asignado
+flight-crew-member.flight-assignment.form.label.leg = Código del tramo
+
+# --- BOTONES DEL FORMULARIO ---
+flight-crew-member.flight-assignment.form.button.activity-log = Ver registros de actividad
+flight-crew-member.flight-assignment.form.button.visa-requirements = Ver requisitos de visado
+flight-crew-member.flight-assignment.form.button.create = Crear
+flight-crew-member.flight-assignment.form.button.update = Actualizar
+flight-crew-member.flight-assignment.form.button.publish = Publicar
+flight-crew-member.flight-assignment.form.button.delete = Eliminar
+
+# --- ETIQUETAS DEL LISTADO ---
+flight-crew-member.flight-assignment.list.label.duty = Función
+flight-crew-member.flight-assignment.list.label.lastUpdate = Última actualización
+flight-crew-member.flight-assignment.list.label.status = Estado
+flight-crew-member.flight-assignment.list.label.remarks = Observaciones
+flight-crew-member.flight-assignment.list.label.leg = Número de vuelo
+flight-crew-member.flight-assignment.list.label.draftMode = Borrador
+
+# --- BOTÓN DEL LISTADO ---
+flight-crew-member.flight-assignment.list.button.create = Crear
 
 
-# Botones (Formulario)
-flight-assignment.form.button.create = Crear
-flight-assignment.form.button.update = Actualizar
-flight-assignment.form.button.publish = Publicar
-flight-assignment.form.button.leg = Ver tramo
-flight-assignment.form.button.member = Ver miembro
+acme.validation.flightAssignment.duty.lead-attendant=Solo los miembros de la tripulación con el rol 'LEAD ATTENDANT' pueden realizar esta operación
+acme.validation.flightAssignment.published.cannot-edit=No puedes actualizar o borrar un flight assignment ya publicado
 
-# Etiquetas (Listado)
-flight-assignment.list.label.duty = Función
-flight-assignment.list.label.lastUpdate = Última actualización
-flight-assignment.list.label.status = Estado
 
-# Botones (Listado)
-flight-assignment.list.button.create = Nueva asignación de vuelo

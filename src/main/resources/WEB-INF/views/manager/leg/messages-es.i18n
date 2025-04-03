@@ -31,5 +31,7 @@ manager.leg.list.label.departureAirport = Aeropuerto de salida
 manager.leg.list.label.arrivalAirport = Aeropuerto de llegada
 
 manager.leg.delete.associated-claims = No puedes eliminar un tramo con reclamos asociados
+manager.leg.create.validSelfTransfer = No puedes crear mas de un tramo en un vuelo sin auto transferencia
+manager.leg.create.correctTimeOrder = La fecha de salida debe ser anterior a la fecha de llegada
 
 manager.leg.list.button.create = Crear

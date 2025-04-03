@@ -1,8 +1,6 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -13,83 +11,67 @@ import acme.client.services.GuiService;
 import acme.entities.flightAssignment.AssignmentStatus;
 import acme.entities.flightAssignment.Duty;
 import acme.entities.flightAssignment.FlightAssignment;
-import acme.entities.legs.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
 public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	protected CrewMemberFlightAssignmentRepository repository;
+	private CrewMemberFlightAssignmentRepository assignmentRepository;
 
 
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
-		super.getResponse().setAuthorised(assignment != null && assignment.getDraftMode());
+		FlightAssignment assignment = this.assignmentRepository.findById(id);
+		boolean canEdit = assignment != null && assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getCrewMember());
+
+		super.getResponse().setAuthorised(canEdit);
 	}
 
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		FlightAssignment assignment = this.repository.findOneAssignmentById(id);
+		FlightAssignment assignment = this.assignmentRepository.findById(id);
+
+		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(assignment);
 	}
 
 	@Override
-	public void bind(final FlightAssignment object) {
-		assert object != null;
-
-		int legId = super.getRequest().getData("leg", int.class);
-		Leg leg = this.repository.findLegById(legId);
-
-		int accountId = super.getRequest().getPrincipal().getAccountId();
-		FlightCrewMember principal = this.repository.findFlightCrewMemberByAccountId(accountId);
-
-		super.bindObject(object, "duty", "status", "remarks");
-		object.setLeg(leg);
-		object.setCrewMember(principal);
-		object.setLastUpdate(MomentHelper.getCurrentMoment());
+	public void bind(final FlightAssignment assignment) {
+		super.bindObject(assignment, "duty", "status", "remarks", "leg");
 	}
 
 	@Override
-	public void validate(final FlightAssignment object) {
-		assert object != null;
-
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation");
+	public void validate(final FlightAssignment assignment) {
+		super.state(assignment.getDraftMode(), "*", "acme.validation.flightAssignment.published.cannot-edit");
+		super.state(assignment.getDuty() == Duty.LEAD_ATTENDANT, "duty", "acme.validation.flightAssignment.duty.lead-attendant");
 	}
 
 	@Override
-	public void perform(final FlightAssignment object) {
-		assert object != null;
-		this.repository.save(object);
+	public void perform(final FlightAssignment assignment) {
+		this.assignmentRepository.save(assignment);
 	}
 
 	@Override
-	public void unbind(final FlightAssignment object) {
-		assert object != null;
+	public void unbind(final FlightAssignment assignment) {
+		Dataset data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode", "crewMember", "leg");
 
-		Collection<Leg> legs = this.repository.findAllLegs();
+		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
 
-		Dataset dataset = super.unbindObject(object, "duty", "status", "remarks", "draftMode");
+		SelectChoices dutyOptions = SelectChoices.from(Duty.class, assignment.getDuty());
+		data.put("dutyChoices", dutyOptions);
+		data.put("duty", dutyOptions.getSelected().getKey());
 
-		SelectChoices dutyChoices = SelectChoices.from(Duty.class, object.getDuty());
-		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, object.getStatus());
-		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", object.getLeg());
+		SelectChoices statusOptions = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+		data.put("statusChoices", statusOptions);
+		data.put("status", statusOptions.getSelected().getKey());
 
-		dataset.put("duty", dutyChoices.getSelected().getKey());
-		dataset.put("dutyChoices", dutyChoices);
+		SelectChoices legOptions = SelectChoices.from(this.assignmentRepository.findLegsByAirline(assignment.getCrewMember().getAirline().getId()), "flightNumber", assignment.getLeg());
+		data.put("legChoices", legOptions);
+		data.put("leg", legOptions.getSelected().getKey());
 
-		dataset.put("status", statusChoices.getSelected().getKey());
-		dataset.put("statusChoices", statusChoices);
-
-		dataset.put("leg", legChoices.getSelected().getKey());
-		dataset.put("legs", legChoices);
-
-		dataset.put("confirmation", false);
-
-		super.getResponse().addData(dataset);
+		super.getResponse().addData(data);
 	}
 }

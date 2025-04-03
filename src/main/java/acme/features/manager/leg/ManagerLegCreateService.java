@@ -66,7 +66,27 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+		assert leg != null;
+
+		Flight flight = leg.getFlight();
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+
+		boolean correctSelfTransfer;
+
+		if (flight.isSelfTransfer())
+			correctSelfTransfer = legs.size() >= 0;
+		else
+			correctSelfTransfer = legs.size() == 0;
+
+		if (!correctSelfTransfer)
+			super.state(false, "*", "manager.leg.create.validSelfTransfer");
+
+		boolean correctTimeOrder = true;
+		if (leg.getScheduledDeparture().after(leg.getScheduledArrival()))
+			correctTimeOrder = false;
+
+		if (!correctTimeOrder)
+			super.state(false, "*", "manager.leg.create.correctTimeOrder");
 	}
 
 	@Override
@@ -90,12 +110,12 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		manager = this.repository.findManagerById(managerId);
 		aircrafts = this.repository.findAircraftsByAirlineId(manager.getAirline().getId());
-		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", leg.getAircraft());
 
 		departureAirports = this.repository.findAllAirports();
 		arrivalAirports = this.repository.findAllAirports();
-		departureAirportChoices = SelectChoices.from(departureAirports, "name", leg.getDepartureAirport());
-		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "name", leg.getArrivalAirport());
+		departureAirportChoices = SelectChoices.from(departureAirports, "airportName", leg.getDepartureAirport());
+		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "airportName", leg.getArrivalAirport());
 
 		legStatusChoices = SelectChoices.from(LegStatus.class, leg.getStatus());
 

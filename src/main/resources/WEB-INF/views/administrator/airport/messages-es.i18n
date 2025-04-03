@@ -10,7 +10,7 @@ administrator.airport.label.contactPhoneNumber = Número de teléfono de contact
 administrator.airport.button.create = Crear
 administrator.airport.button.update = Actualizar
 
-administrator.airport.form.label.confirmation = ¿Está seguro?
+administrator.airport.form.label.confirmation = Confirmar cambios
 
 administrator.airport.list.title = Lista de aeropuertos
 

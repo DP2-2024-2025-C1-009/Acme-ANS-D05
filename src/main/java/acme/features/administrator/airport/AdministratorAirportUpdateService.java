@@ -14,7 +14,7 @@ import acme.entities.airport.OperationalScope;
 @GuiService
 public class AdministratorAirportUpdateService extends AbstractGuiService<Administrator, Airport> {
 
-	// Internal state ---------------------------------------------------------
+	// Repositories ---------------------------------------------------------
 
 	@Autowired
 	private AdministratorAirportRepository repository;

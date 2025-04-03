@@ -31,5 +31,7 @@ manager.leg.list.label.departureAirport = Departure Airport
 manager.leg.list.label.arrivalAirport = Arrival Airport
 
 manager.leg.delete.associated-claims = You can't delete a leg with associated claims
+manager.leg.create.validSelfTransfer = You can't create more than one leg in a non self transfer flight
+manager.leg.create.correctTimeOrder = Departure time must be before arrival time
 
 manager.leg.list.button.create = Create

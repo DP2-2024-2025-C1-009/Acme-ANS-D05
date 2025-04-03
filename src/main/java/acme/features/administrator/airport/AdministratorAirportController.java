@@ -13,7 +13,7 @@ import acme.entities.airport.Airport;
 @GuiController
 public class AdministratorAirportController extends AbstractGuiController<Administrator, Airport> {
 
-	// Internal state ---------------------------------------------------------
+	// Services -------------------------------------------------------
 
 	@Autowired
 	private AdministratorAirportListService		listService;
