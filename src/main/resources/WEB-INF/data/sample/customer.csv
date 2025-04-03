@@ -1,4 +1,4 @@
-key,customerId,telephoneNumber,address,city,country,accumulatedPoints
-customer-01,AB123456,123456,Calle Sevilla,Cuenca,Spain,200
-customer-02,AB123457,123456,Calle de la Esperanza,Sevilla,Spain,345
-customer-03,AB123458,123456,Calle Bali,Ceuta,Spain,null
+key,key:userAccount,identifier,telephoneNumber,address,city,country,accumulatedPoints
+customer-01,user-account-customer-01,AB123456,123456,Calle Sevilla,Cuenca,Spain,200
+customer-02,user-account-customer-02,AB123457,123456,Calle de la Esperanza,Sevilla,Spain,345
+customer-03,user-account-customer-03,AB123458,123456,Calle Bali,Ceuta,Spain,null

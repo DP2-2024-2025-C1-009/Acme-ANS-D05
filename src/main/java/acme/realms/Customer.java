@@ -1,10 +1,10 @@
 
-package acme.entities;
+package acme.realms;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Pattern;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Customer extends AbstractEntity {
+public class Customer extends AbstractRole {
 
 	// Serialisation identifier
 	private static final long	serialVersionUID	= 1L;
@@ -28,7 +28,7 @@ public class Customer extends AbstractEntity {
 	@ValidString(min = 8, max = 9)
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Customer Identificator " + "must have 2/3 letters followed by 6 numbers")
 	@Automapped
-	private String				customerId;
+	private String				identifier;
 
 	@Mandatory
 	@ValidPhoneNumber

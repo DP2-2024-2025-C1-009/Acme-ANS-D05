@@ -1,4 +1,4 @@
-key,model,number-registration,number-passengers,load-weight,a-is-active,optional-details,key:airline
+key,model,number-registration,number-passengers,load-weight,is-active,optional-details,key:airline
 aircraft-01,Boeing 737,REG-700,180,30000,true,Standard aircraft,airline-01
 aircraft-02,A,REG-701,180,30000,true,Standard aircraft,airline-01
 aircraft-03,AB,REG-702,180,30000,true,Standard aircraft,airline-01

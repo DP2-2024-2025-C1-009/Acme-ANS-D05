@@ -29,3 +29,8 @@ flight-crew-member.flight-assignment.list.label.draftMode = Borrador
 # --- BOTÓN DEL LISTADO ---
 flight-crew-member.flight-assignment.list.button.create = Crear
 
+
+acme.validation.flightAssignment.duty.lead-attendant=Solo los miembros de la tripulación con el rol 'LEAD ATTENDANT' pueden realizar esta operación
+acme.validation.flightAssignment.published.cannot-edit=No puedes actualizar o borrar un flight assignment ya publicado
+
+

@@ -44,6 +44,12 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 	}
 
 	@Override
+	public void validate(final FlightAssignment assignment) {
+		super.state(assignment.getDraftMode(), "*", "acme.validation.flightAssignment.published.cannot-edit");
+		super.state(assignment.getDuty() == Duty.LEAD_ATTENDANT, "duty", "acme.validation.flightAssignment.duty.lead-attendant");
+	}
+
+	@Override
 	public void perform(final FlightAssignment assignment) {
 		this.assignmentRepository.save(assignment);
 	}
