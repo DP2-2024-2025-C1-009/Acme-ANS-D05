@@ -54,7 +54,7 @@ public class Airport extends AbstractEntity {
 	private String				country;
 
 	@Optional
-	@ValidUrl(message = "{acme.validation.airport.website-valid}")
+	@ValidUrl(remote = false, message = "{acme.validation.airport.website-valid}")
 	@Automapped
 	private String				website;
 

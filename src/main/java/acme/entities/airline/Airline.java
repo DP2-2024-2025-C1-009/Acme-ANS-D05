@@ -43,7 +43,7 @@ public class Airline extends AbstractEntity {
 	private String				iataCode;
 
 	@Mandatory
-	@ValidUrl(message = "{acme.validation.airline.website-valid}")
+	@ValidUrl(remote = false, message = "{acme.validation.airline.website-valid}")
 	@Automapped
 	private String				website;
 

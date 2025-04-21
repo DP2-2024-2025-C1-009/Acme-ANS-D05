@@ -34,7 +34,7 @@ public class Service extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidUrl(message = "{acme.validation.service.photo-link-valid}")
+	@ValidUrl(remote = false, message = "{acme.validation.service.photo-link-valid}")
 	@Automapped
 	private String				photoLink;
 
