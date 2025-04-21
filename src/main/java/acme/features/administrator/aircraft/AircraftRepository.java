@@ -13,7 +13,7 @@ import acme.entities.aircraft.Aircraft;
 @Repository
 public interface AircraftRepository extends AbstractRepository {
 
-	@Query("SELECT a from Aircraft a where a.id = :id")
+	@Query("SELECT a from Aircraft a JOIN FETCH a.airline WHERE a.id = :id")
 	Aircraft findAircraftById(int id);
 
 	@Query("SELECT COUNT(a) FROM Aircraft a WHERE a.numberRegistration = :numberRegistration")
