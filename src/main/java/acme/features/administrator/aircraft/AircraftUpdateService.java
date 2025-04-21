@@ -31,18 +31,19 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void load() {
-		int id = super.getResponse().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class);
 		Aircraft aircraft = this.aircraftRepository.findAircraftById(id);
-
-		if (aircraft == null)
-			throw new IllegalStateException("Aircraft not found with ID: " + id);
-
 		super.getBuffer().addData(aircraft);
 	}
 
 	@Override
 	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails", "airline");
+		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
+		Integer airlineId = super.getRequest().getData("airline", Integer.class);
+		if (airlineId != null) {
+			Airline airline = this.airlineRepository.findAirlineById(airlineId);
+			aircraft.setAirline(airline);
+		}
 	}
 
 	@Override
@@ -61,20 +62,11 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 		Dataset data = super.unbindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
 
 		Collection<Airline> airlines = this.airlineRepository.findAllAirlines();
-		SelectChoices choices = new SelectChoices();
-
-		for (Airline airline : airlines) {
-			String key = String.valueOf(airline.getId());
-			String label = airline.getName();
-			boolean selected = aircraft.getAirline() != null && aircraft.getAirline().getId() == airline.getId();
-			choices.add(key, label, selected);
-		}
+		SelectChoices choices = SelectChoices.from(airlines, "name", aircraft.getAirline());
 
 		data.put("airlines", choices);
-		data.put("airline", choices.getSelected() != null ? choices.getSelected().getKey() : "");
+		data.put("airline", aircraft.getAirline() != null ? String.valueOf(aircraft.getAirline().getId()) : "");
 
-		data.put("confirmation", false);
-		data.put("readonly", false);
 		super.getResponse().addData(data);
 	}
 }
