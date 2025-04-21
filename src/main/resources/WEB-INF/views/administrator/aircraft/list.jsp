@@ -6,6 +6,7 @@
 <acme:list>
 	<acme:list-column code="aircraft.list.label.model" path="model" width="10%" />
 	<acme:list-column code="aircraft.list.label.number-registration" path="numberRegistration" width="20%" />
+	<acme:list-column code="aircraft.list.label.airline" path="airline" width="20%" />
 	<acme:list-column code="aircraft.list.label.is-active" path="isActive" width="10%" />
 
 	<acme:list-payload path="payload" />

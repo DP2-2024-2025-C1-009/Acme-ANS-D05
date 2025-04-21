@@ -1,0 +1,14 @@
+administrator.booking.form.title = Datos Reservas
+administrator.booking.list.title = Reservas
+booking.form.label.locator-code = Localizador
+booking.form.label.purchase-time = Hora de la compra
+booking.list.label.flight-class = Clase de vuelo
+booking.form.label.flight-class = Seleccione la clase de vuelo deseada
+booking.form.label.last-nibble = Introduzca su último nibble
+booking.form.label.confirmation = Confirmo que la información es correcta
+booking.form.button.create = Crear reserva
+booking.form.button.update = Actualizar información
+booking.list.label.locator-code = Localizador
+booking.list.label.purchase-time = Hora de la compra
+booking.form.label.prize = Precio
+booking.list.button.new = Añadir nueva reserva

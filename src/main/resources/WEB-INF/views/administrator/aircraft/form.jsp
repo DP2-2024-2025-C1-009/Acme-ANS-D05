@@ -9,6 +9,7 @@
 	<acme:input-textbox code="aircraft.form.label.number-passengers" path="numberPassengers" />
 	<acme:input-textbox code="aircraft.form.label.load-weight" path="loadWeight"  />
 	<acme:input-checkbox code="aircraft.form.label.is-active" path="isActive" />
+	<acme:input-select code="aircraft.form.label.airline" path="airline" choices="${airlines}" />
 	<acme:input-textbox code="aircraft.form.label.optional-details" path="optionalDetails" />
 
 	<jstl:choose>
