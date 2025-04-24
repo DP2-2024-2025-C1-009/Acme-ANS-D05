@@ -15,11 +15,13 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidFlightAssignment;
 import acme.entities.legs.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
+@ValidFlightAssignment
 @Entity
 @Getter
 @Setter
