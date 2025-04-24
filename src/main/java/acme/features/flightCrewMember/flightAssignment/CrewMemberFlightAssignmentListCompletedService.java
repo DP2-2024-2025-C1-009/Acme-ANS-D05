@@ -35,10 +35,6 @@ public class CrewMemberFlightAssignmentListCompletedService extends AbstractGuiS
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
-
-		data.put("leg", assignment.getLeg().getFlightNumber());
-
-		super.addPayload(data, assignment, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
 		super.getResponse().addData(data);
 	}
 }

@@ -1,18 +1,18 @@
 # --- TÍTULOS ---
-flight-crew-member.flight-assignment.form.title = Detalles del vuelo asignado
-flight-crew-member.flight-assignment.list.title = Listado de vuelos asignados
+flight-crew-member.flight-assignment.form.title = Detalles del vuelo 
+flight-crew-member.flight-assignment.list.title = Listado de vuelos 
 
 # --- ETIQUETAS DEL FORMULARIO ---
 flight-crew-member.flight-assignment.form.label.duty = Función
 flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización
-flight-crew-member.flight-assignment.form.label.status = Estado
+flight-crew-member.flight-assignment.form.label.assignmentStatus  = Estado
 flight-crew-member.flight-assignment.form.label.remarks = Observaciones
-flight-crew-member.flight-assignment.form.label.flightCrewMember = Tripulante asignado
+flight-crew-member.flight-assignment.form.label.crewMember = Tripulante 
 flight-crew-member.flight-assignment.form.label.leg = Código del tramo
+flight-crew-member.flight-assignment.form.label.confirmation = Confirmación
 
 # --- BOTONES DEL FORMULARIO ---
 flight-crew-member.flight-assignment.form.button.activity-log = Ver registros de actividad
-flight-crew-member.flight-assignment.form.button.visa-requirements = Ver requisitos de visado
 flight-crew-member.flight-assignment.form.button.create = Crear
 flight-crew-member.flight-assignment.form.button.update = Actualizar
 flight-crew-member.flight-assignment.form.button.publish = Publicar
@@ -29,8 +29,9 @@ flight-crew-member.flight-assignment.list.label.draftMode = Borrador
 # --- BOTÓN DEL LISTADO ---
 flight-crew-member.flight-assignment.list.button.create = Crear
 
-
-acme.validation.flightAssignment.duty.lead-attendant=Solo los miembros de la tripulación con el rol 'LEAD ATTENDANT' pueden realizar esta operación
-acme.validation.flightAssignment.published.cannot-edit=No puedes actualizar o borrar un flight assignment ya publicado
-
+# --- VALIDACIONES ---
+acme.validation.flightAssignment.crewMember.available=Debes estar DISPONIBLE para poder ser asignado a un trayecto.
+acme.validation.flightAssignment.leg.overlap=No puedes estar asignado a trayectos que se solapen en el tiempo.
+acme.validation.flightAssignment.duty.pilot.taken=Este trayecto ya tiene un PILOTO asignado.
+acme.validation.flightAssignment.duty.copilot.taken=Este trayecto ya tiene un COPILOTO asignado.
 
