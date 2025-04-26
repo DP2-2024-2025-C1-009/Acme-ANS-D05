@@ -1,7 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,32 +40,37 @@ public class CrewMemberFlightAssignmentShowService extends AbstractGuiService<Fl
 
 	@Override
 	public void unbind(final FlightAssignment assignment) {
-		Collection<Leg> legs;
-		SelectChoices legChoices;
-		SelectChoices dutyChoices;
-		SelectChoices statusChoices;
-		Dataset data;
+		List<Leg> legs;
 
-		if (assignment.getDraftMode())
-			legs = this.assignmentRepository.findPlannedPublishedLegs(MomentHelper.getCurrentMoment());
-		else
+		if (assignment.getLeg() != null)
 			legs = this.assignmentRepository.findAllLegs();
+		else
+			legs = this.assignmentRepository.findPlannedPublishedLegs(MomentHelper.getCurrentMoment());
 
-		dutyChoices = SelectChoices.from(Duty.class, assignment.getDuty());
-		statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-		legChoices = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+		SelectChoices legChoices;
+		try {
+			legChoices = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+		} catch (Exception e) {
+			legChoices = SelectChoices.from(legs, "flightNumber", new Leg());
+		}
 
-		data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+		SelectChoices dutyChoices = SelectChoices.from(Duty.class, assignment.getDuty());
+		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 
+		Dataset data = super.unbindObject(assignment, "status", "remarks");
+
+		data.put("confirmation", false);
+		data.put("readonly", false);
+		data.put("moment", assignment.getLastUpdate());
+		data.put("duty", dutyChoices.getSelected().getKey());
 		data.put("dutyChoices", dutyChoices);
+		data.put("assignmentStatus", statusChoices.getSelected().getKey());
 		data.put("statusChoices", statusChoices);
-		data.put("legChoices", legChoices);
 		data.put("leg", legChoices.getSelected().getKey());
-
+		data.put("legChoices", legChoices);
 		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
-
-		data.put("legNotCompleted", MomentHelper.isFuture(assignment.getLeg().getScheduledArrival()));
 
 		super.getResponse().addData(data);
 	}
+
 }

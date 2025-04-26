@@ -34,7 +34,7 @@
 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode && legNotCompleted}">
 			<acme:button code="flight-crew-member.flight-assignment.form.button.activity-log"
-						 action="/flight-crew-member/activity-log/list?assignmentId=${id}"/>
+						 action="/flight-crew-member/activity-log/list?masterId=${id}"/>
 			<acme:submit code="flight-crew-member.flight-assignment.form.button.publish"
 						 action="/flight-crew-member/flight-assignment/publish"/>
 			<acme:submit code="flight-crew-member.flight-assignment.form.button.update"
@@ -45,12 +45,12 @@
 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode}">
 			<acme:button code="flight-crew-member.flight-assignment.form.button.activity-log"
-						 action="/flight-crew-member/activity-log/list?assignmentId=${id}"/>
+						 action="/flight-crew-member/activity-log/list?masterId=${id}"/>
 		</jstl:when>
 
 		<jstl:when test="${_command == 'show' && not draftMode}">
 			<acme:button code="flight-crew-member.flight-assignment.form.button.activity-log"
-						 action="/flight-crew-member/activity-log/list?assignmentId=${id}"/>
+						 action="/flight-crew-member/activity-log/list?masterId=${id}"/>
 		</jstl:when>
 
 	</jstl:choose>

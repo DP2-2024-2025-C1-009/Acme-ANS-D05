@@ -4,6 +4,7 @@ package acme.features.flightCrewMember.activityLog;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -18,8 +19,18 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void authorise() {
-		boolean isFlightCrew = super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class);
-		super.getResponse().setAuthorised(isFlightCrew);
+		int id = super.getRequest().getData("id", int.class);
+		ActivityLog log = this.ActivityLogRepository.findActivityLogById(id);
+
+		boolean correctCrew = log != null && //
+			log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		boolean flightAssignmentPublished = log != null && !log.getActivityLogAssignment().getDraftMode();
+		boolean legInPast = log != null && MomentHelper.isPast(log.getActivityLogAssignment().getLeg().getScheduledArrival());
+		boolean draftMode = log != null && log.getDraftMode();
+
+		boolean authorised = correctCrew && flightAssignmentPublished && legInPast && draftMode;
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -36,8 +47,6 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void validate(final ActivityLog log) {
-		if (!log.getDraftMode())
-			super.state(false, "*", "activity-log.error.already-published");
 	}
 
 	@Override
@@ -48,6 +57,8 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
+		data.put("registrationMoment", log.getRegistrationMoment());
+		data.put("assignmentId", log.getActivityLogAssignment().getId());
 		super.getResponse().addData(data);
 	}
 }
