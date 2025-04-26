@@ -76,7 +76,7 @@ public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<
 
 		data.put("confirmation", false);
 		data.put("readonly", false);
-		data.put("moment", assignment.getLastUpdate()); // O MomentHelper.getBaseMoment() si quieres forzar un valor
+		data.put("moment", assignment.getLastUpdate());
 		data.put("dutyChoices", dutyChoices);
 		data.put("duty", dutyChoices.getSelected().getKey());
 		data.put("statusChoices", statusChoices);
