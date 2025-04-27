@@ -43,7 +43,7 @@ public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember,
 		data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
 
 		data.put("masterId", assignment.getId());
-		data.put("buttonsAvaiable", showButtons);
+		data.put("buttonsAvailable", showButtons);
 		data.put("publishAvailable", publishAvailable);
 
 		super.getResponse().addData(data);
