@@ -44,6 +44,7 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void validate(final ActivityLog log) {
+		;
 	}
 
 	@Override
@@ -53,10 +54,23 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void unbind(final ActivityLog log) {
-		Dataset data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
+		Dataset data;
+
+		var assignment = log.getActivityLogAssignment();
+
+		boolean correctUser = assignment.getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean buttonsAvailable = log.getDraftMode() && correctUser;
+		boolean publishAvailable = !assignment.getDraftMode() && log.getDraftMode() && correctUser && MomentHelper.isPast(assignment.getLeg().getScheduledArrival());
+
+		data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
+
 		data.put("id", log.getId());
+		data.put("assignmentId", assignment.getId());
+		data.put("buttonsAvailable", buttonsAvailable);
+		data.put("publishAvailable", publishAvailable);
 		data.put("registrationMoment", log.getRegistrationMoment());
-		data.put("assignmentId", log.getActivityLogAssignment().getId());
+		data.put("draftMode", log.getDraftMode());
+
 		super.getResponse().addData(data);
 	}
 
