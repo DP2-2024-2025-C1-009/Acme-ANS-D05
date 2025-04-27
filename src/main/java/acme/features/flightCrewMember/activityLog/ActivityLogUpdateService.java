@@ -14,29 +14,26 @@ import acme.realms.flightCrewMembers.FlightCrewMember;
 public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	@Autowired
-	private ActivityLogRepository ActivityLogRepository;
+	private ActivityLogRepository activityLogRepository;
 
 
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		ActivityLog log = this.ActivityLogRepository.findActivityLogById(id);
+		ActivityLog log = this.activityLogRepository.findActivityLogById(id);
 
-		boolean correctCrew = log != null && //
-			log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
-
-		boolean flightAssignmentPublished = log != null && !log.getActivityLogAssignment().getDraftMode();
+		boolean correctCrew = log != null && log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean legInPast = log != null && MomentHelper.isPast(log.getActivityLogAssignment().getLeg().getScheduledArrival());
 		boolean draftMode = log != null && log.getDraftMode();
 
-		boolean authorised = correctCrew && flightAssignmentPublished && legInPast && draftMode;
+		boolean authorised = correctCrew && legInPast && draftMode;
 		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		ActivityLog log = this.ActivityLogRepository.findActivityLogById(id);
+		ActivityLog log = this.activityLogRepository.findActivityLogById(id);
 		super.getBuffer().addData(log);
 	}
 
@@ -51,14 +48,16 @@ public class ActivityLogUpdateService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void perform(final ActivityLog log) {
-		this.ActivityLogRepository.save(log);
+		this.activityLogRepository.save(log);
 	}
 
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
+		data.put("id", log.getId());
 		data.put("registrationMoment", log.getRegistrationMoment());
 		data.put("assignmentId", log.getActivityLogAssignment().getId());
 		super.getResponse().addData(data);
 	}
+
 }
