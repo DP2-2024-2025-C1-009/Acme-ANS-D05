@@ -85,9 +85,6 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 		SelectChoices dutyChoices = SelectChoices.from(Duty.class, assignment.getDuty());
 		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 
-		data = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode");
-
-		data.put("confirmation", false);
 		data.put("readonly", false);
 		data.put("moment", assignment.getLastUpdate());
 		data.put("duty", dutyChoices.getSelected().getKey());
@@ -97,6 +94,7 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 		data.put("leg", legChoices.getSelected().getKey());
 		data.put("legChoices", legChoices);
 		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
+
 		super.getResponse().addData(data);
 	}
 }

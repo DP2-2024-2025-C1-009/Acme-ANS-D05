@@ -70,6 +70,8 @@ public class CrewMemberFlightAssignmentShowService extends AbstractGuiService<Fl
 		data.put("legChoices", legChoices);
 		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
 
+		data.put("draftMode", assignment.getDraftMode());
+		data.put("legNotCompleted", !MomentHelper.isPast(assignment.getLeg().getScheduledArrival()));
 		super.getResponse().addData(data);
 	}
 

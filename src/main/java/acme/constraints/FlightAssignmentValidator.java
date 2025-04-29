@@ -30,8 +30,10 @@ public class FlightAssignmentValidator extends AbstractValidator<ValidFlightAssi
 
 	@Override
 	public boolean isValid(final FlightAssignment assignment, final ConstraintValidatorContext context) {
-		if (assignment == null)
+		if (assignment == null) {
+			super.state(context, false, "*", "acme.validation.null-entity");
 			return false;
+		}
 
 		if (assignment.getCrewMember() != null) {
 			boolean available = assignment.getCrewMember().getFlightCrewMemberStatus() == FlightCrewMemberStatus.AVAILABLE;
