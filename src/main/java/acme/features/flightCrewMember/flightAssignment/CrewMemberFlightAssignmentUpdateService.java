@@ -93,7 +93,6 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 
 		Dataset data = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode");
 
-		data.put("confirmation", false);
 		data.put("readonly", false);
 		data.put("moment", assignment.getLastUpdate());
 		data.put("dutyChoices", dutyChoices);
@@ -103,6 +102,9 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 		data.put("legChoices", legChoices);
 		data.put("leg", legChoices.getSelected().getKey());
 		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
+
+		data.put("draftMode", assignment.getDraftMode());
+		data.put("legNotCompleted", !MomentHelper.isPast(assignment.getLeg().getScheduledArrival()));
 
 		super.getResponse().addData(data);
 	}

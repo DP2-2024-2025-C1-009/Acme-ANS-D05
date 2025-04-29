@@ -54,8 +54,10 @@ public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<
 	@Override
 	public void perform(final FlightAssignment assignment) {
 		Collection<ActivityLog> logs = this.assignmentRepository.findRelatedLogs(assignment.getId());
-		this.assignmentRepository.deleteAll(logs);
+		if (!logs.isEmpty())
+			this.assignmentRepository.deleteAll(logs);
 		this.assignmentRepository.delete(assignment);
+
 	}
 
 	@Override
