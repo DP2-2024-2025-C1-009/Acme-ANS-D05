@@ -2,8 +2,8 @@ key,registrationMoment,incidentType,description,severityLevel,key:activityLogAss
 #Base-Entity,"","","","","","","",""
 activityLog-01,2020/09/11 00:00,L,L,1,flightAssignment-01,false
 #RegistrationMoment,"","","","",""
-activityLog-02,2000/01/01 00:00,L,L,1,flightAssignment-01,false
-activityLog-03,2000/01/01 00:01,L,L,1,flightAssignment-01,false
+activityLog-02,2022/09/01 00:01,L,L,1,flightAssignment-01,false
+activityLog-03,2023/01/01 00:01,L,L,1,flightAssignment-01,false
 activityLog-04,2024/12/31 23:59,L,L,1,flightAssignment-01,false
 activityLog-05,2025/01/01 00:00,L,L,1,flightAssignment-01,false
 #IncidentType,"","","","",""
@@ -31,7 +31,14 @@ activityLog-24,2020/09/11 00:00,L,L,0,flightAssignment-01,false
 activityLog-25,2020/09/11 00:00,L,L,1,flightAssignment-01,false
 activityLog-26,2020/09/11 00:00,L,L,9,flightAssignment-01,false
 activityLog-27,2020/09/11 00:00,L,L,10,flightAssignment-01,false
-#ActivityLogAssignment,"","","","",""
-member-27,2020/09/11 00:00,L,L,1,flightAssignment-07,false
-member-28,2020/09/11 00:00,L,L,1,flightAssignment-20,false
-member-29,2020/09/11 00:00,L,L,1,flightAssignment-31,false
+#Prueba,"","","","",""
+activityLog-51,2024/12/31 23:59,TYPEA,Incidente menor sin repercusiones,1,flightAssignment-29,true
+activityLog-52,2024/12/15 14:00,TYPEB,Problema con el equipamiento de cabina,2,flightAssignment-29,true
+activityLog-53,2024/11/30 10:30,TYPEC,Pasajero conflictivo durante el vuelo,3,flightAssignment-29,true
+activityLog-54,2024/10/10 08:15,TYPEA,Retraso leve por condiciones meteorológicas,2,flightAssignment-29,true
+activityLog-55,2024/09/01 16:45,TYPEB,Fallo en el sistema de entretenimiento,1,flightAssignment-29,true
+activityLog-56,2024/07/20 12:00,TYPEA,Incidente con el equipaje durante carga,2,flightAssignment-29,true
+activityLog-57,2024/06/01 06:30,TYPEC,Retraso por problema técnico menor,3,flightAssignment-29,true
+activityLog-58,2024/04/15 09:00,TYPEB,Avería temporal en WC,1,flightAssignment-29,true
+activityLog-59,2024/03/10 18:20,TYPEC,Pasajero desmayado asistencia médica necesaria,3,flightAssignment-29,true
+activityLog-60,2025/01/01 00:00,TYPEA,Ruido extraño detectado durante el vuelo,2,flightAssignment-29,true
