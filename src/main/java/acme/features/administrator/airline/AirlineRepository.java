@@ -22,4 +22,7 @@ public interface AirlineRepository extends AbstractRepository {
 	@Query("select b from Airline b where b.iataCode =:codigo")
 	Collection<Airline> findAllAirlineCode(@Param("codigo") String codigo);
 
+	@Query("SELECT COUNT(a) FROM Airline a WHERE a.iataCode = :iataCode AND a.id <> :id")
+	long countByIataCodeExcludingId(@Param("iataCode") String iataCode, @Param("id") int id);
+
 }

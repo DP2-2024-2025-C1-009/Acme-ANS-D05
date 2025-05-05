@@ -12,7 +12,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidIATACode;
+import acme.constraints.ValidAirport;
 import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidIATACode
+@ValidAirport
 public class Airport extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
