@@ -1,14 +1,13 @@
 
-package acme.entities;
+package acme.entities.booking;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -45,7 +44,7 @@ public class Booking extends AbstractEntity {
 	private Date				purchaseTime;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private FlightClass			flightClass;
 
@@ -58,10 +57,5 @@ public class Booking extends AbstractEntity {
 	@ValidNumber
 	@Automapped
 	private Integer				lastNibble;
-
-
-	public enum FlightClass {
-		ECONOMY, BUSINESS
-	}
 
 }
