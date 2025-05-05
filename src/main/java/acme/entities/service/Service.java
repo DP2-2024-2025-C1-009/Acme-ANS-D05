@@ -20,6 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidPromotionCode
 public class Service extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -44,15 +45,12 @@ public class Service extends AbstractEntity {
 	private double				averageDwellTime;
 
 	@Optional
-	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$", message = "{acme.validation.service.promotion-code-pattern}")
 	@Column(unique = true)
-	@ValidPromotionCode
 	private String				promotionCode;
 
 	@Optional
 	@ValidMoney
 	@Automapped
-	//Porcentaje score
 	private Money				discountedMoney;
 
 }
