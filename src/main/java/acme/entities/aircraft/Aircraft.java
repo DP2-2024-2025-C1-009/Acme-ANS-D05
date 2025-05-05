@@ -12,6 +12,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidNumberRegistration;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-//@ValidNumberRegistration  //Falla al popular, hay ver bien como hacerlo
+@ValidNumberRegistration
 public class Aircraft extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------

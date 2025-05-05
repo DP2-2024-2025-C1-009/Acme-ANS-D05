@@ -2,6 +2,7 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,5 +25,8 @@ public interface AircraftRepository extends AbstractRepository {
 
 	@Query("SELECT a FROM Aircraft a WHERE a.model = :model")
 	Aircraft findAircraftByModel(@Param("model") String model);
+
+	@Query("select a from Aircraft a where a.numberRegistration = :numberRegistration")
+	Optional<Aircraft> findAircraftByNumberRegistration(String numberRegistration);
 
 }
