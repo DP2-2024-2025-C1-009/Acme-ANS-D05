@@ -21,10 +21,10 @@ import acme.realms.flightCrewMembers.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
-@ValidFlightAssignment
 @Entity
 @Getter
 @Setter
+@ValidFlightAssignment
 public class FlightAssignment extends AbstractEntity {
 
 	// Serialisation identifier
@@ -32,16 +32,6 @@ public class FlightAssignment extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes 
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private FlightCrewMember	crewMember;
-
-	@Mandatory
-	@Valid
-	@ManyToOne
-	private Leg					leg;
 
 	@Mandatory
 	@Valid
@@ -66,5 +56,17 @@ public class FlightAssignment extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	private Boolean				draftMode;
+
+	// RelationShips
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private FlightCrewMember	crewMember;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Leg					leg;
 
 }
