@@ -14,11 +14,11 @@
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="pasenger.form.label.confirmation" path="confirmation" />
-			<acme:submit code="pasenger.form.button.create" action="/customer/pasenger/create" />
+			<acme:submit code="pasenger.form.button.create" action="/customer/passenger/create" />
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update')}">
 			<acme:input-checkbox code="pasenger.form.label.confirmation" path="confirmation" />
-			<acme:submit code="pasenger.form.button.update" action="/customer/pasenger/update" />
+			<acme:submit code="pasenger.form.button.update" action="/customer/passenger/update" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>
