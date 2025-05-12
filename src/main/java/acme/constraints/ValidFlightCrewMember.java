@@ -9,15 +9,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Constraint(validatedBy = PromotionCodeValidator.class)
-@Target({
-	ElementType.TYPE
-})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidPromotionCode {
+@Constraint(validatedBy = FlightCrewMemberValidator.class)
+public @interface ValidFlightCrewMember {
 
-	String message() default "";
+	String message() default "{acme.validation.text.message}";
 	Class<?>[] groups() default {};
-
 	Class<? extends Payload>[] payload() default {};
+
 }

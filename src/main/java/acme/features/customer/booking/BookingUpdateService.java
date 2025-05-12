@@ -9,8 +9,8 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.Booking;
-import acme.entities.Booking.FlightClass;
+import acme.entities.booking.Booking;
+import acme.entities.booking.FlightClass;
 import acme.realms.Customer;
 
 @GuiService

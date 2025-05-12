@@ -9,15 +9,17 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Constraint(validatedBy = PromotionCodeValidator.class)
 @Target({
 	ElementType.TYPE
 })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidPromotionCode {
+@Constraint(validatedBy = ActivityLogValidator.class)
+public @interface ValidActivityLog {
 
-	String message() default "";
+	String message() default "{acme.validation.activityLog.registrationMoment.afterArrival}";
+
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
+
 }

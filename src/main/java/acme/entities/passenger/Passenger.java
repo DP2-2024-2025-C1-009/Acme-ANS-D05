@@ -1,12 +1,9 @@
 
-package acme.entities;
+package acme.entities.passenger;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
@@ -16,7 +13,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +20,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Booking extends AbstractEntity {
+
+public class Passenger extends AbstractEntity {
 
 	// Serialisation identifier
 	private static final long	serialVersionUID	= 1L;
@@ -32,36 +29,30 @@ public class Booking extends AbstractEntity {
 	//Attributes
 
 	@Mandatory
-	@ValidString(min = 6, max = 8)
-	@Pattern(regexp = "^[A-Z0-9]{6,8}$")
-	@Column(unique = true)
+	@ValidString(max = 255)
 	@Automapped
-	private String				locatorCode;
+	private String				fullName;
 
 	@Mandatory
-	@Temporal(TemporalType.TIMESTAMP)
+	@ValidString
+	@Automapped
+	private String				email;
+
+	@Mandatory
+	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
+	@ValidString
+	@Automapped
+	private String				passport;
+
+	@Mandatory
+	@Temporal(TemporalType.DATE)
 	@ValidMoment(past = true)
 	@Automapped
-	private Date				purchaseTime;
-
-	@Mandatory
-	@Enumerated(EnumType.STRING)
-	@Automapped
-	private FlightClass			flightClass;
-
-	@Mandatory
-	@ValidNumber
-	@Automapped
-	private Double				prize;
+	private Date				birthDate;
 
 	@Optional
-	@ValidNumber
+	@ValidString(max = 50)
 	@Automapped
-	private Integer				lastNibble;
-
-
-	public enum FlightClass {
-		ECONOMY, BUSINESS
-	}
+	private String				specialNeeds;
 
 }

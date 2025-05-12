@@ -1,18 +1,18 @@
 # --- TITLES ---
-flight-crew-member.flight-assignment.form.title = Flight Assignment details
-flight-crew-member.flight-assignment.list.title = Flight Assignments list
+flight-crew-member.flight-assignment.form.title = Flight Assignment Details
+flight-crew-member.flight-assignment.list.title = Flight Assignments List
 
 # --- FORM LABELS ---
 flight-crew-member.flight-assignment.form.label.duty = Duty
 flight-crew-member.flight-assignment.form.label.lastUpdate = Last update
-flight-crew-member.flight-assignment.form.label.status = Status
+flight-crew-member.flight-assignment.form.label.assignmentStatus  = Status
 flight-crew-member.flight-assignment.form.label.remarks = Remarks
-flight-crew-member.flight-assignment.form.label.flightCrewMember = Flight Crew Member
+flight-crew-member.flight-assignment.form.label.crewMember = Flight Crew Member
 flight-crew-member.flight-assignment.form.label.leg = Leg code
+flight-crew-member.flight-assignment.form.label.confirmation = Confirmation
 
 # --- BUTTONS ---
 flight-crew-member.flight-assignment.form.button.activity-log = Show activity logs
-flight-crew-member.flight-assignment.form.button.visa-requirements = Show visa requirements
 flight-crew-member.flight-assignment.form.button.create = Create
 flight-crew-member.flight-assignment.form.button.update = Update
 flight-crew-member.flight-assignment.form.button.publish = Publish
@@ -29,7 +29,8 @@ flight-crew-member.flight-assignment.list.label.draftMode = Draft mode
 # --- LIST BUTTON ---
 flight-crew-member.flight-assignment.list.button.create = Create
 
-
-acme.validation.flightAssignment.duty.lead-attendant=Only crew members with duty 'LEAD ATTENDANT' can perform this operation
-acme.validation.flightAssignment.published.cannot-edit=You cannot update or delete a published flight assignment
-
+# --- VALIDATIONS ---
+acme.validation.flightAssignment.crewMember.available=You must be AVAILABLE to be assigned to a leg.
+acme.validation.flightAssignment.leg.overlap=You cannot be assigned to overlapping flight legs.
+acme.validation.flightAssignment.duty.pilot.taken=This leg already has a PILOT assigned.
+acme.validation.flightAssignment.duty.copilot.taken=This leg already has a CO-PILOT assigned.
