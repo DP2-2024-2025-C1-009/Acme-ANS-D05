@@ -30,7 +30,13 @@ public class BookingShowService extends AbstractGuiService<Customer, Booking> {
 
 	@Override
 	public void unbind(final Booking booking) {
-		Dataset data = super.unbindObject(booking, "locatorCode", "purchaseTime", "flightClass", "prize", "lastNibble");
+		Dataset data = super.unbindObject(booking, "locatorCode", "purchaseTime");
+
+		data.put("flightClass", booking.getFlightClass().toString());
+
+		data.put("prize", booking.getPrize() != null ? booking.getPrize() : "");
+		data.put("lastNibble", booking.getLastNibble() != null ? booking.getLastNibble() : "");
+
 		super.getResponse().addData(data);
 	}
 }

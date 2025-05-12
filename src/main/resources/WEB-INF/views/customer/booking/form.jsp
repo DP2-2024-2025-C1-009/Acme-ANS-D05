@@ -8,7 +8,7 @@
 	<acme:input-textbox code="booking.form.label.purchase-time" path="purchaseTime" />
 	<acme:input-textbox code="booking.form.label.flight-class" path="flightClass" />
 	<acme:input-textbox code="booking.form.label.prize" path="prize"  />
-	<acme:input-checkbox code="booking.form.label.last-nibble" path="lastNibble" />
+	<acme:input-textbox code="booking.form.label.last-nibble" path="lastNibble" />
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">

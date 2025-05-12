@@ -9,7 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -45,8 +46,9 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Date				purchaseTime;
 
+	// Posible motivo de la assertion error
+
 	@Mandatory
-	@Valid
 	@Enumerated(EnumType.STRING)
 	@Automapped
 	private FlightClass			flightClass;
@@ -56,9 +58,12 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Double				prize;
 
+	//Error en el pattern
+
 	@Optional
 	@ValidNumber
-	@Pattern(regexp = "^\\d{4}$", message = "Nibble must contains exactly 4 digits.")
+	@Min(1000)
+	@Max(9999)
 	@Automapped
 	private Integer				lastNibble;
 
