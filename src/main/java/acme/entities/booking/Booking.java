@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -45,6 +47,7 @@ public class Booking extends AbstractEntity {
 
 	@Mandatory
 	@Valid
+	@Enumerated(EnumType.STRING)
 	@Automapped
 	private FlightClass			flightClass;
 
@@ -55,6 +58,7 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@ValidNumber
+	@Pattern(regexp = "^\\d{4}$", message = "Nibble must contains exactly 4 digits.")
 	@Automapped
 	private Integer				lastNibble;
 
