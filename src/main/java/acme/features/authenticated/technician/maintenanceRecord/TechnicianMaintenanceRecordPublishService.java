@@ -1,9 +1,9 @@
 
 package acme.features.authenticated.technician.maintenanceRecord;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,15 +31,30 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		int masterId;
 		MaintenanceRecord maintenanceRecord;
 		Technician technician;
-		List<Task> publishedTasks;
 
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(t -> !t.isDraftMode()).toList();
-
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
-		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() //
-			&& super.getRequest().getPrincipal().hasRealm(technician) && !publishedTasks.isEmpty();
+		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && //
+			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId() && //
+			(maintenanceRecord.getStatus() == Status.PENDING || maintenanceRecord.getStatus() == Status.IN_PROGRESS //
+				|| maintenanceRecord.getStatus() == Status.COMPLETED);
+
+		if (status) {
+			String method;
+			int aircraftId;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraftId == 0 || aircraft != null;
+			}
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -69,7 +84,31 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
+		Collection<Task> tasks;
+		boolean allTasksNotDraft;
+		boolean tasksValid;
+		MaintenanceRecord existMaintenanceRecord;
+		boolean validTicker;
+		Date minimumNextInspection;
+		boolean validNextInspection;
 
+		tasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(maintenanceRecord.getId());
+		allTasksNotDraft = tasks.stream().allMatch(task -> !task.isDraftMode());
+		tasksValid = !tasks.isEmpty() && allTasksNotDraft;
+		if (!tasksValid)
+			super.state(tasksValid, "*", "acme.validation.maintenance-record.tasks.not-draft.message");
+
+		existMaintenanceRecord = this.repository.findMaintenanceRecordByTicker(maintenanceRecord.getTicker());
+		validTicker = existMaintenanceRecord == null || existMaintenanceRecord.getId() == maintenanceRecord.getId();
+		if (!validTicker)
+			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
+
+		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
+		validNextInspection = maintenanceRecord.getNextInspectionDueDate() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueDate(), minimumNextInspection);
+
+		super.state(validNextInspection, "nextInspectionDueDate", "acme.validation.maintenance-record.moment-next-inspection.publish.messsage");
 	}
 
 	@Override
