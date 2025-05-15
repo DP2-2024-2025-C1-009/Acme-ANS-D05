@@ -3,8 +3,11 @@ package acme.entities.activityLog;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -15,6 +18,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidActivityLog;
 import acme.entities.flightAssignment.FlightAssignment;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +26,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "draft_mode")
+})
+@ValidActivityLog
 public class ActivityLog extends AbstractEntity {
 
 	// Serialisation identifier
@@ -51,11 +59,14 @@ public class ActivityLog extends AbstractEntity {
 	private int					severityLevel;
 
 	@Mandatory
-	@Valid
-	@ManyToOne
-	private FlightAssignment	activityLogAssignment;
+	@Automapped
+	@Column(name = "draft_mode")
+	private Boolean				draftMode;
+
+	// RelationShips
 
 	@Mandatory
-	@Automapped
-	private Boolean				draftMode;
+	@Valid
+	@ManyToOne(optional = false)
+	private FlightAssignment	activityLogAssignment;
 }

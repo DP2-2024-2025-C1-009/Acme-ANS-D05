@@ -1,6 +1,6 @@
 key,flight-number,scheduled-departure,scheduled-arrival,status,key:departure-airport,key:arrival-airport,key:aircraft,key:flight,draftMode
 # base entity
-leg-01,AAA0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
+leg-01,AAA0000,2000/01/01 00:00,2000/01/02 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
 #flight-number-digits
 leg-02,AAB0001,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-12,true
 leg-03,AAC9999,2023/06/16 00:00,2023/07/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-01,true
@@ -15,3 +15,15 @@ leg-09,AAM0000,2023/04/16 00:00,2023/05/16 00:00,ON_TIME,airport-01,airport-02,a
 leg-10,AAN0000,2023/04/16 00:00,2023/05/16 00:00,DELAYED,airport-01,airport-02,aircraft-01,flight-04,true
 leg-11,AAO0000,2023/04/16 00:00,2023/05/16 00:00,CANCELLED,airport-01,airport-02,aircraft-01,flight-05,true
 leg-12,AAP0000,2023/04/16 00:00,2023/05/16 00:00,LANDED,airport-01,airport-02,aircraft-01,flight-06,true
+#pruebas,"","","","","","","","",""
+leg-50,CGR0000,2002/02/13 00:00,2002/02/13 07:00,LANDED,airport-01,airport-02,aircraft-01,flight-10,false
+leg-51,CGR0001,2028/02/13 00:00,2028/02/13 08:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-11,true
+leg-52,CGR0002,2030/02/13 01:00,2030/02/14 08:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-21,false
+leg-53,CGR0003,2030/02/13 02:00,2030/02/14 07:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-13,false
+leg-54,CGR0004,2025/01/02 06:00,2025/01/02 08:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-14,false
+leg-55,CGR0005,2025/01/03 09:00,2025/01/03 11:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-15,false
+leg-56,CGR0006,2025/01/04 10:00,2025/01/04 13:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-16,false
+leg-57,CGR0007,2025/01/05 14:00,2025/01/05 16:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-17,false
+leg-58,CGR0008,2025/01/06 08:00,2025/01/06 10:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-18,false
+leg-59,CGR0009,2021/01/06 08:00,2021/01/06 10:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-19,false
+leg-60,CGR0010,2025/01/06 08:00,2025/01/06 10:00,ON_TIME,airport-01,airport-02,aircraft-01,flight-20,false

@@ -1,0 +1,75 @@
+# validation-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes. The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.service.name-length = The name length must not exceed 50 characters.
+acme.validation.service.photo-link-valid = Enter a valid URL.
+acme.validation.service.promotion-code-year = The last two digits must correspond to the current year.
+acme.validation.service.promotion-code-pattern = The promotion code must consist of 4 uppercase letters, a hyphen, and two digits, with the last two corresponding to the current year.
+
+acme.validation.airport.airport-name-length = The airport name length must not exceed 50 characters.
+acme.validation.airport.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters
+acme.validation.airport.city-length = The city name length must not exceed 50 characters.
+acme.validation.airport.country-length = The country name length must not exceed 50 characters.
+acme.validation.airport.phone-number-pattern = The phone number must contain between 6 and 15 digits, optionally starting with '+'.
+acme.validation.airport.website-valid = Enter a valid URL.
+acme.validation.airport.email-valid = Enter a valid email address.
+
+acme.validation.flight.validSelfTransfer = If flight is self transfer it must have more than one leg
+acme.validation.flight.correctTimeOrder = Departure time must be before arrival time
+
+
+acme.validation.airline.name-length = The airline name length must not exceed 50 characters.
+acme.validation.airline.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters.
+acme.validation.airline.iata-code-last-letter = The last character of the IATA code must be an X.
+acme.validation.airline.website-valid = Enter a valid URL.
+acme.validation.airline.foundation-moment-past = The airline's foundation date must be in the past.
+acme.validation.airline.email-valid = Enter a valid email address.
+acme.validation.airline.phone-number-pattern = The phone number must contain between 6 and 15 digits, optionally starting with '+'.
+
+acme.validation.aircraft.model-length = The aircraft model length must not exceed 50 characters.
+acme-validation.aircraft.number-registration-length = The registration number must be unique and must not exceed 50 characters.
+acme.validation.aircraft.load-weight-range = The aircraft load must be a value between 2,000 and 50,000 kilograms.
+acme.validation.aircraft.optional-details-length = The length of optional details must not exceed 255 characters.
+acme.validation.aircraft.number-passengers-range = The number of passengers must be between 1 and 255.
+
+
+
+acme.validation.review.alias-length = The alias/name length must not exceed 50 characters.
+acme.validation.review.moment-past = The review date must be in the past.
+acme.validation.review.subject-length = The review subject length must not exceed 50 characters.
+acme.validation.review.text-length = The review text length must not exceed 255 characters.
+acme.validation.review.score-range = The score must be a value between 0 and 10.
+
+acme.validation.agent.employee-code-pattern = The employee code must have 2 or 3 uppercase letters followed by 6 digits.
+acme.validation.agent.employee-code-initials = The code must be your initials, first from your last name(s) and then from your first name.
+
+acme.validation.agent.spoken-languages-length = The list of languages must not exceed 255 characters.
+acme.validation.agent.start-working-date = The start working date must be in the past.
+acme.validation.agent.bio-length = The biography must not exceed 255 characters.
+
+acme.validation.claim.registration-moment-date = The claim registration date must be in the past.
+acme.validation.claim.description-length = The description must not exceed 255 characters.
+acme.validation.claim.passenger-email-correct = Enter a valid email address.
+
+acme.validation.tracking-log.steps-length = The steps carried out must not exceed 50 characters.
+acme.validation.tracking-log.resolution-length = The resolution must not exceed 255 characters.
+
+acme.validation.confirmation.message = You need to confirm the changes
+
+acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
+acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
+acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
+acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
+acme.validation.maintenance-record.moment-next-inspection.update.messsage = When updating this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not at least one hour later than the current date and hour
+acme.validation.maintenance-record.moment-next-inspection.publish.messsage = When publishing this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not at least one hour later than the current date and hour  
+acme.validation.involves.draft-record.message = Published maintenance record. The involvements in tasks of a published maintenance record can't be modified
+acme.validation.technician.license-number.duplicated.message = The license number is already on use
+acme.validation.technician.phone-number.duplicated.message = The phone number is already on use
+

@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.Passenger;
+import acme.entities.passenger.Passenger;
 
 @Repository
 public interface PassengerRepository extends AbstractRepository {

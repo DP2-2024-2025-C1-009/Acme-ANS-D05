@@ -39,6 +39,15 @@ acme.validation.aircraft.load-weight-range = The aircraft load must be a value b
 acme.validation.aircraft.optional-details-length = The length of optional details must not exceed 255 characters.
 acme.validation.aircraft.number-passengers-range = The number of passengers must be between 1 and 255.
 
+acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
+acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
+acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
+acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
+acme.validation.maintenance-record.moment-next-inspection.update.messsage = When updating this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not valid
+acme.validation.maintenance-record.moment-next-inspection.publish.messsage = When publishing this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not valid
+acme.validation.involves.draft-record.message = Published maintenance record. The involvements in tasks of a published maintenance record must not be modified
+acme.validation.technician.license-number.duplicated.message = The license number is already on use
+acme.validation.technician.phone-number.duplicated.message = The phone number is already on use
 
 acme.validation.review.alias-length = The alias/name length must not exceed 50 characters.
 acme.validation.review.moment-past = The review date must be in the past.

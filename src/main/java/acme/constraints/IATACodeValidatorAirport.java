@@ -11,7 +11,7 @@ import acme.entities.airport.Airport;
 import acme.entities.airport.AirportRepository;
 
 @Validator
-public class IATACodeValidator extends AbstractValidator<ValidIATACode, Airport> {
+public class IATACodeValidatorAirport extends AbstractValidator<ValidAirport, Airport> {
 
 	private static final String	IATA_REGEX	= "^[A-Z]{3}$";
 
@@ -28,7 +28,7 @@ public class IATACodeValidator extends AbstractValidator<ValidIATACode, Airport>
 
 		String iataCode = airport.getIataCode();
 
-		if (!iataCode.matches(IATACodeValidator.IATA_REGEX)) {
+		if (!iataCode.matches(IATACodeValidatorAirport.IATA_REGEX)) {
 			super.state(context, false, "iataCode", "acme.validation.airport.iata-code-pattern");
 			return false;
 		}

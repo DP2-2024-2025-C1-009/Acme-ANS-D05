@@ -11,12 +11,12 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = IATACodeValidator.class)
+@Constraint(validatedBy = IATACodeValidatorAirport.class)
 @Target({
 	ElementType.TYPE
 })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidIATACode {
+public @interface ValidAirport {
 
 	String message() default "{acme.validation.airport.iata-code-pattern}";
 	Class<?>[] groups() default {};

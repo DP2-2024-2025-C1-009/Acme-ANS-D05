@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.Booking;
+import acme.entities.booking.Booking;
 
 @Repository
 public interface BookingRepository extends AbstractRepository {

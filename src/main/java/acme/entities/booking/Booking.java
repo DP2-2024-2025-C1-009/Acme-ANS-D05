@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.booking;
 
 import java.util.Date;
 
@@ -9,6 +9,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -44,6 +46,8 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Date				purchaseTime;
 
+	// Posible motivo de la assertion error
+
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Automapped
@@ -54,14 +58,13 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Double				prize;
 
+	//Error en el pattern
+
 	@Optional
 	@ValidNumber
+	@Min(1000)
+	@Max(9999)
 	@Automapped
 	private Integer				lastNibble;
-
-
-	public enum FlightClass {
-		ECONOMY, BUSINESS
-	}
 
 }

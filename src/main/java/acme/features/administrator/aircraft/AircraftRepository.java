@@ -2,6 +2,7 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,8 +14,8 @@ import acme.entities.aircraft.Aircraft;
 @Repository
 public interface AircraftRepository extends AbstractRepository {
 
-	@Query("SELECT a from Aircraft a where a.id = :id")
-	Aircraft findAircraftById(int id);
+	@Query("SELECT a FROM Aircraft a JOIN FETCH a.airline WHERE a.id = :id")
+	Aircraft findAircraftById(@Param("id") int id);
 
 	@Query("SELECT COUNT(a) FROM Aircraft a WHERE a.numberRegistration = :numberRegistration")
 	long countByNumberRegistration(@Param("numberRegistration") String numberRegistration);
@@ -24,5 +25,8 @@ public interface AircraftRepository extends AbstractRepository {
 
 	@Query("SELECT a FROM Aircraft a WHERE a.model = :model")
 	Aircraft findAircraftByModel(@Param("model") String model);
+
+	@Query("select a from Aircraft a where a.numberRegistration = :numberRegistration")
+	Optional<Aircraft> findAircraftByNumberRegistration(String numberRegistration);
 
 }

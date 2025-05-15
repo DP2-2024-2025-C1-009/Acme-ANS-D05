@@ -66,3 +66,9 @@ master.menu.manager.list-legs = Leg list
 master.menu.technician = Technician
 master.menu.technician.task = My Tasks
 master.menu.technician.maintenance = My Maintenance Records
+
+# master.menu.customer #################################################
+
+master.menu.customer = Customer
+master.menu.customer.bookings = Bookings
+master.menu.customer.passengers = Passengers
