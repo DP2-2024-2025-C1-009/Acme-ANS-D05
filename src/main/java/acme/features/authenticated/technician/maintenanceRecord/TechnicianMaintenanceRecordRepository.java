@@ -34,6 +34,6 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	@Query("select m from MaintenanceRecord m where m.ticker = :ticker")
 	MaintenanceRecord findMaintenanceRecordByTicker(String ticker);
 
-	@Query("SELECT a FROM Aircraft a JOIN FETCH a.airline WHERE a.id = :id")
+	@Query("select a from Aircraft a JOIN FETCH a.airline WHERE a.id = :id")
 	Aircraft findAircraftById(@Param("id") int id);
 }
