@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.technician.maintenanceRecord;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
 
@@ -35,6 +36,22 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
 		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
 
+		if (status) {
+			String method;
+			int aircraftId;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraftId == 0 || aircraft != null;
+			}
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -51,9 +68,11 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		Aircraft aircraft;
+		int aircraftId;
 		Date currentMoment;
 
-		aircraft = super.getRequest().getData("aircraft", Aircraft.class);
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftById(aircraftId);
 		currentMoment = MomentHelper.getCurrentMoment();
 
 		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueDate", "estimatedCost", "notes");
@@ -65,10 +84,20 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 	public void validate(final MaintenanceRecord maintenanceRecord) {
 		MaintenanceRecord existMaintenanceRecord;
 		boolean validTicker;
+		Date minimumNextInspection;
+		boolean validNextInspection;
 
 		existMaintenanceRecord = this.repository.findMaintenanceRecordByTicker(maintenanceRecord.getTicker());
 		validTicker = existMaintenanceRecord == null || existMaintenanceRecord.getId() == maintenanceRecord.getId();
-		super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
+		if (!validTicker)
+			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
+
+		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
+		validNextInspection = maintenanceRecord.getNextInspectionDueDate() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueDate(), minimumNextInspection);
+
+		super.state(validNextInspection, "nextInspectionDueDate", "acme.validation.maintenance-record.moment-next-inspection.update.messsage");
 	}
 
 	@Override
