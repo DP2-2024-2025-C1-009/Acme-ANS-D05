@@ -9,7 +9,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenance.Involves;
-import acme.entities.maintenance.MaintenanceRecord;
 import acme.realms.Technician;
 
 @GuiService
@@ -21,7 +20,9 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -47,17 +48,4 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 		super.getResponse().addData(dataset);
 	}
 
-	@Override
-	public void unbind(final Collection<Involves> involves) {
-		int masterId;
-		final boolean draft;
-		MaintenanceRecord maintenanceRecord;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		draft = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
-
-		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("draft", draft);
-	}
 }
