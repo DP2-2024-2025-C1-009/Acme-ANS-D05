@@ -24,6 +24,10 @@ acme.validation.airport.email-valid = Enter a valid email address.
 acme.validation.flight.validSelfTransfer = If flight is self transfer it must have more than one leg
 acme.validation.flight.correctTimeOrder = Departure time must be before arrival time
 
+acme.validation.leg.duplicated-flightNumber = The flight number must not be duplicated
+acme.validation.leg.scheduledArrival-departure = The arrival date cannot be earlier than the departure date
+acme.validation.leg.different-airport = The departure and arrival airports must be different
+acme.validation.leg.flightNumberIATA = The first three characters of the flight number must match the airline's IATA code of the flight's manager
 
 acme.validation.airline.name-length = The airline name length must not exceed 50 characters.
 acme.validation.airline.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters.
