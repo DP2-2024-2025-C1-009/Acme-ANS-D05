@@ -80,13 +80,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		if (!correctSelfTransfer)
 			super.state(false, "*", "manager.leg.create.validSelfTransfer");
-
-		boolean correctTimeOrder = true;
-		if (leg.getScheduledDeparture().after(leg.getScheduledArrival()))
-			correctTimeOrder = false;
-
-		if (!correctTimeOrder)
-			super.state(false, "*", "manager.leg.create.correctTimeOrder");
 	}
 
 	@Override

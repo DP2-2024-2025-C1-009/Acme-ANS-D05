@@ -35,68 +35,41 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 		if (leg == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			{
+			// Validación: flightNumber único
+			boolean uniqueLeg = true;
+			Leg existingLeg = leg.getFlightNumber() != null ? this.repository.findLegByFlightNumber(leg.getFlightNumber()) : null;
+			uniqueLeg = existingLeg == null || existingLeg.equals(leg);
+			super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flightNumber");
 
-				// Verificamos que sea unico el flightNumber
+			// Validación: los primeros 3 caracteres del flightNumber coinciden con el IATA
+			boolean correctFlightNumber = true;
 
-				boolean uniqueLeg = true;
-				Leg existingLeg;
-				if (leg.getFlightNumber() != null)
-					existingLeg = this.repository.findLegByFlightNumber(leg.getFlightNumber());
+			if (leg.getFlightNumber() != null && leg.getFlight() != null && leg.getFlight().getManager() != null && leg.getFlight().getManager().getAirline() != null && leg.getFlight().getManager().getAirline().getIataCode() != null) {
+
+				String flightNumber = leg.getFlightNumber();
+				String iataCode = leg.getFlight().getManager().getAirline().getIataCode();
+
+				if (flightNumber.length() >= 3 && iataCode.length() >= 3)
+					correctFlightNumber = flightNumber.substring(0, 3).equals(iataCode.substring(0, 3));
 				else
-					existingLeg = null;
-				uniqueLeg = existingLeg == null || existingLeg.equals(leg);
+					correctFlightNumber = false;
+			} else
+				correctFlightNumber = false;
 
-				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flightNumber");
-			}
-			{
+			super.state(context, correctFlightNumber, "flightNumber", "acme.validation.leg.flightNumberIATA");
 
-				// Verificamos que coincida con el las letras del codigo IATA
+			// Validación: scheduledArrival posterior a scheduledDeparture
+			boolean arrivalAfterDeparture = leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null && leg.getScheduledArrival().after(leg.getScheduledDeparture());
 
-				boolean correctFlightNumber = true;
-				Leg existingLeg;
-				if (leg.getFlightNumber() != null)
-					existingLeg = this.repository.findLegByFlightNumber(leg.getFlightNumber());
-				else
-					existingLeg = null;
-				for (int i = 0; i < 3; i++)
-					if (correctFlightNumber == true)
-						correctFlightNumber = existingLeg == null || existingLeg.getFlightNumber().charAt(i) == existingLeg.getFlight().getManager().getAirline().getIataCode().charAt(i);
-					else
-						i = 3;
+			super.state(context, arrivalAfterDeparture, "scheduledArrival", "acme.validation.leg.scheduledArrival-departure");
 
-				super.state(context, correctFlightNumber, "flightNumber", "acme.validation.leg.flightNumberIATA");
-			}
-			{
+			// Validación: departureAirport y arrivalAirport distintos
+			boolean differentAirport = leg.getDepartureAirport() != null && leg.getArrivalAirport() != null && !leg.getDepartureAirport().equals(leg.getArrivalAirport());
 
-				// Verificamos que la hora de llegada sea posterior a la hora de salida
-
-				boolean arrivalAfterDeparture;
-
-				if (leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null)
-					arrivalAfterDeparture = false;
-				else
-					arrivalAfterDeparture = leg.getScheduledArrival().after(leg.getScheduledDeparture());
-
-				super.state(context, arrivalAfterDeparture, "scheduledArrival", "acme.validation.leg.scheduledArrival-departure");
-			}
-			{
-
-				// Verificamos que los aeropuertos de llegada y salida sean distintos
-
-				boolean differentAirport;
-				if (leg.getDepartureAirport() == null || leg.getArrivalAirport() == null)
-					differentAirport = false;
-				else
-					differentAirport = leg.getDepartureAirport() != leg.getArrivalAirport();
-
-				super.state(context, differentAirport, "arrivalAirport", "acme.validation.leg.different-airport");
-			}
+			super.state(context, differentAirport, "arrivalAirport", "acme.validation.leg.different-airport");
 		}
 
 		result = !super.hasErrors(context);
-
 		return result;
 	}
-
 }

@@ -99,7 +99,8 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("departureAirports", departureAirportChoices);
 		dataset.put("arrivalAirport", arrivalAirportChoices.getSelected().getKey());
 		dataset.put("arrivalAirports", arrivalAirportChoices);
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+
+		dataset.put("masterId", leg.getFlight().getId());
 
 		super.getResponse().addData(dataset);
 	}
