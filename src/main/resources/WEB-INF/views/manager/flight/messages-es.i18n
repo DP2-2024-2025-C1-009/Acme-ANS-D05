@@ -4,7 +4,7 @@ manager.flight.form.title = Detalles de vuelo
 manager.flight.list.title = Lista de vuelos
 
 manager.flight.form.label.tag = Tag:
-manager.flight.form.label.selfTransfer = Tiene escala
+manager.flight.form.label.selfTransfer = Transporte al siguiente vuelo
 manager.flight.form.label.cost = Coste:
 manager.flight.form.label.description = Descripción:
 manager.flight.form.label.draftMode = Modo borrador:

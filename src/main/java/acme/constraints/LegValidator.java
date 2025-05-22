@@ -1,6 +1,8 @@
 
 package acme.constraints;
 
+import java.util.Collection;
+
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,45 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 			boolean differentAirport = leg.getDepartureAirport() != null && leg.getArrivalAirport() != null && !leg.getDepartureAirport().equals(leg.getArrivalAirport());
 
 			super.state(context, differentAirport, "arrivalAirport", "acme.validation.leg.different-airport");
+
+			// Validación: evitar solapamientos de Aircraft
+			boolean aircraftAvailable = true;
+			if (leg.getAircraft() != null && leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
+				Collection<Leg> overlappingLegs = this.repository.findLegsByAircraftId(leg.getAircraft().getId());
+				for (Leg other : overlappingLegs) {
+
+					if (other.getId() == leg.getId())
+						continue;
+
+					boolean overlaps = !(leg.getScheduledArrival().before(other.getScheduledDeparture()) || leg.getScheduledDeparture().after(other.getScheduledArrival()));
+
+					if (overlaps) {
+						aircraftAvailable = false;
+						break;
+					}
+				}
+			}
+			super.state(context, aircraftAvailable, "aircraft", "acme.validation.leg.aircraft-overlap");
+
+			// Validación: evitar solapamientos entre Legs de un mismo vuelo
+
+			boolean nonOverlappingWithSameFlight = true;
+			if (leg.getFlight() != null && leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
+				Collection<Leg> sameFlightLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
+				for (Leg other : sameFlightLegs) {
+
+					if (other.getId() == leg.getId())
+						continue;
+
+					boolean overlaps = !(leg.getScheduledArrival().before(other.getScheduledDeparture()) || leg.getScheduledDeparture().after(other.getScheduledArrival()));
+
+					if (overlaps) {
+						nonOverlappingWithSameFlight = false;
+						break;
+					}
+				}
+			}
+			super.state(context, nonOverlappingWithSameFlight, "scheduledDeparture", "acme.validation.leg.overlap-same-flight");
 		}
 
 		result = !super.hasErrors(context);

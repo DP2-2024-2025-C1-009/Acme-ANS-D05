@@ -29,6 +29,9 @@ acme.validation.leg.duplicated-flightNumber = El número de vuelo no puede estar
 acme.validation.leg.scheduledArrival-departure = La fecha de llegada no puede ser anterior a la fecha de salida
 acme.validation.leg.different-airport = El aeropuerto de origen y el aeropuerto de llegada deben ser distintos
 acme.validation.leg.flightNumberIATA = Los tres primeros caracteres del numero de vuelo deben coincidir con el código IATA de la aerolínea del manager del vuelo
+acme.validation.leg.aircraft-overlap = La aeronave ya está en uso en otro tramo que se solapa temporalmente
+acme.validation.leg.overlap-same-flight = Este tramo se solapa con otro del mismo vuelo
+
 
 acme.validation.airline.name-lenght = La longitud del nombre de la aerolínea no debe superar los 50 caracteres.
 acme.validation.airline.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas
