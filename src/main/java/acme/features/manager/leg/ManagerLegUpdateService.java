@@ -2,11 +2,13 @@
 package acme.features.manager.leg;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
@@ -57,7 +59,17 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+
+		// Validación: Al actualizar un leg, la fecha de salida y de llegada debe ser en el futuro
+		// Nota: Se usa el reloj del sistema
+
+		Date now = MomentHelper.getCurrentMoment();
+
+		boolean departureInFuture = MomentHelper.isAfter(leg.getScheduledDeparture(), now);
+		boolean arrivalInFuture = MomentHelper.isAfter(leg.getScheduledArrival(), now);
+
+		super.state(departureInFuture, "scheduledDeparture", "manager.leg.create.departure-future");
+		super.state(arrivalInFuture, "scheduledArrival", "manager.leg.create.arrival-future");
 	}
 
 	@Override

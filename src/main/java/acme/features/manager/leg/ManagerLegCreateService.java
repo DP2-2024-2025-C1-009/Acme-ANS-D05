@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
@@ -80,6 +81,18 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		if (!correctSelfTransfer)
 			super.state(false, "*", "manager.leg.create.validSelfTransfer");
+
+		// Validación: Al crear un nuevo leg, la fecha de salida y de llegada debe ser en el futuro
+		// Nota: Se usa el reloj del sistema
+
+		Date now = MomentHelper.getCurrentMoment();
+
+		boolean departureInFuture = MomentHelper.isAfter(leg.getScheduledDeparture(), now);
+		boolean arrivalInFuture = MomentHelper.isAfter(leg.getScheduledArrival(), now);
+
+		super.state(departureInFuture, "scheduledDeparture", "manager.leg.create.departure-future");
+		super.state(arrivalInFuture, "scheduledArrival", "manager.leg.create.arrival-future");
+
 	}
 
 	@Override
