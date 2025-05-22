@@ -13,13 +13,14 @@ acme.validation.service.photo-link-valid = Introduce una URL válida
 acme.validation.service.promotion-code-year = Los dos últimos dígitos se deben corresponder con el año actual.
 acme.validation.service.promotion-code-pattern = El código promocional debe estar compuesto por 4 letras mayúsculas, un guión y dos dígitos, estos últimos correspondientes con el año actual.
 
-acme.validation.airport.airport-name-length = La logitud del nombre del aeropuerto no debe superar los 50 caracteres.
-acme.validation.airport.iata-code-pattern = El código IATA debe ser único y debe contener únicamente tres letras mayúsculas.
+acme.validation.airport.airport-name-length = La logitud del nombre del aeropuerto no debe superar los 50 caracteres
+acme.validation.airport.iata-code-pattern = El código IATA debe contener únicamente tres letras mayúsculas
+acme.validation.airport.iata-code-unique = El código IATA debe ser único
 acme.validation.airport.city-length = La longitud de la ciudad no debe superar los 50 caracteres.
 acme.validation.airport.country-length = La longitud del país no debe superar los 50 caracteres.
-acme.validation.airport.phone-number-pattern = El número de teléfono debe contener entre 6 y 15 dígitos, empezando opcionalmente con '+'.
-acme.validation.airport.website-valid = Introduce una URL válida. 
-acme.validation.airport.email-valid = Introduce una dirección de correo válida.
+acme.validation.airport.phone-number-pattern = El número de teléfono debe contener entre 6 y 15 dígitos, empezando opcionalmente con '+'
+acme.validation.airport.website-valid = Introduce una URL válida
+acme.validation.airport.email-valid = Introduce una dirección de correo válida
 
 acme.validation.flight.validSelfTransfer = Si el vuelo tiene auto-transferencia tiene que tener mas de un tramo
 acme.validation.flight.correctTimeOrder = La fecha de salida debe ser anterior a la fecha de llegada
