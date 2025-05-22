@@ -31,6 +31,7 @@ acme.validation.leg.different-airport = El aeropuerto de origen y el aeropuerto 
 acme.validation.leg.flightNumberIATA = Los tres primeros caracteres del numero de vuelo deben coincidir con el código IATA de la aerolínea del manager del vuelo
 acme.validation.leg.aircraft-overlap = La aeronave ya está en uso en otro tramo que se solapa temporalmente
 acme.validation.leg.overlap-same-flight = Este tramo se solapa con otro del mismo vuelo
+acme.validation.leg.aircraft-inactive = No puedes usar aviones inactivos
 
 
 acme.validation.airline.name-lenght = La longitud del nombre de la aerolínea no debe superar los 50 caracteres.

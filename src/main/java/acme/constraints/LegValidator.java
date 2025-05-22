@@ -70,9 +70,16 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 			super.state(context, differentAirport, "arrivalAirport", "acme.validation.leg.different-airport");
 
-			// Validación: evitar solapamientos de Aircraft
+			// Validación: evitar solapamientos de Aircraft y comprobar que esté activo
 			boolean aircraftAvailable = true;
+			boolean aircraftIsActive = true;
+
 			if (leg.getAircraft() != null && leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
+
+				// Validar que el aircraft está activo
+				aircraftIsActive = leg.getAircraft().getIsActive();
+
+				// Validar que no se solape con otros tramos
 				Collection<Leg> overlappingLegs = this.repository.findLegsByAircraftId(leg.getAircraft().getId());
 				for (Leg other : overlappingLegs) {
 
@@ -87,6 +94,9 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 					}
 				}
 			}
+
+			// Mensajes de validación
+			super.state(context, aircraftIsActive, "aircraft", "acme.validation.leg.aircraft-inactive");
 			super.state(context, aircraftAvailable, "aircraft", "acme.validation.leg.aircraft-overlap");
 
 			// Validación: evitar solapamientos entre Legs de un mismo vuelo
