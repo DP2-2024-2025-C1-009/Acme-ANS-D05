@@ -1,7 +1,7 @@
 
 package acme.features.customer.passenger;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,7 +25,7 @@ public class PassengerListService extends AbstractGuiService<Customer, Passenger
 
 	@Override
 	public void load() {
-		Collection<Passenger> res = this.passengerRepository.findAllPassengers();
+		List<Passenger> res = this.passengerRepository.findAllPassengers();
 		super.getBuffer().addData(res);
 	}
 

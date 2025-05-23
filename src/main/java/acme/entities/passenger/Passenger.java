@@ -3,6 +3,7 @@ package acme.entities.passenger;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,15 +40,14 @@ public class Passenger extends AbstractEntity {
 	private String				email;
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "The passport pattern must be followed")
+	@Pattern(regexp = "^[A-Z0-9]{6,9}$", message = "{acme.validation.passenger.passport}")
 	@ValidString
-	@Automapped
+	@Column(unique = true)
 	private String				passport;
 
 	@Mandatory
 	@Temporal(TemporalType.DATE)
 	@ValidMoment(past = true)
-	@Automapped
 	private Date				birthDate;
 
 	@Optional

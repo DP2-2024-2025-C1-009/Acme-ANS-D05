@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -20,6 +22,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,8 +49,6 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Date				purchaseTime;
 
-	// Posible motivo de la assertion error
-
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Automapped
@@ -58,13 +59,16 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Double				prize;
 
-	//Error en el pattern
-
 	@Optional
 	@ValidNumber
 	@Min(1000)
 	@Max(9999)
 	@Automapped
 	private Integer				lastNibble;
+
+	//Relations
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "customer")
+	private Customer			customer;
 
 }

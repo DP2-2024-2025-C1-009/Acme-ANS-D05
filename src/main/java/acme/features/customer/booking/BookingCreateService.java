@@ -1,9 +1,6 @@
 
 package acme.features.customer.booking;
 
-import java.util.Collection;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -30,8 +27,7 @@ public class BookingCreateService extends AbstractGuiService<Customer, Booking> 
 	@Override
 	public void load() {
 		Booking booking = new Booking();
-		Date now = MomentHelper.getCurrentMoment();
-		booking.setPurchaseTime(now);
+		booking.setPurchaseTime(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(booking);
 	}
 
@@ -42,19 +38,20 @@ public class BookingCreateService extends AbstractGuiService<Customer, Booking> 
 
 	@Override
 	public void validate(final Booking booking) {
-		Collection<Booking> res = this.bookingRepository.findAllBookings();
-		Integer lcn = booking.getLastNibble();
-
-		if (!res.contains(lcn.intValue()))
-			super.state(false, "lastCardNibble", "lastCardNibble.not-stored");
-
-		boolean confirmation;
-		confirmation = super.getResponse().getData("confirmation", boolean.class);
+		boolean confirmation = false;
+		if (super.getRequest().hasData("confirmation", boolean.class))
+			confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
+		int accountId = super.getRequest().getPrincipal().getAccountId();
+		Customer customer = this.bookingRepository.findCustomerByAccountId(accountId);
+
+		booking.setCustomer(customer);
+		booking.setPurchaseTime(MomentHelper.getCurrentMoment());
+
 		this.bookingRepository.save(booking);
 	}
 
@@ -64,6 +61,9 @@ public class BookingCreateService extends AbstractGuiService<Customer, Booking> 
 		data.put("flightclass", SelectChoices.from(FlightClass.class, booking.getFlightClass()));
 		data.put("confirmation", false);
 		data.put("readonly", false);
+		data.put("purchaseTimeReadonly", true);
+
 		super.getResponse().addData(data);
 	}
+
 }

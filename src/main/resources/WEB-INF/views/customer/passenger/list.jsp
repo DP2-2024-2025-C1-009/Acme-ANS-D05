@@ -4,10 +4,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/" %>
 
 <acme:list>
-	<acme:list-column code="passenger.list.label.model" path="model" width="10%" />
-	<acme:list-column code="passenger.list.label.number-registration" path="numberRegistration" width="20%" />
-	<acme:list-column code="passenger.list.label.airline" path="airline" width="20%" />
-	<acme:list-column code="passenger.list.label.is-active" path="isActive" width="10%" />
+	<acme:list-column code="passenger.list.label.full-name" path="fullName" width="10%" />
+	<acme:list-column code="passenger.list.label.email" path="email" width="20%" />
+	<acme:list-column code="passenger.list.label.passport" path="passport" width="20%" />
+	<acme:list-column code="passenger.list.label.birth-date" path="birthDate" width="10%" />
+	<acme:list-column code="passenger.list.label.special-needs" path="specialNeeds" width="10%" />
 
 
 </acme:list>

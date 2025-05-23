@@ -1,0 +1,16 @@
+administrator.passenger.form.title = Passengers Data
+administrator.passenger.list.title = Passengers
+passenger.form.label.full-name = Full Passenger Name
+passenger.form.label.email = Email
+passenger.form.label.passport = Passport
+passenger.form.label.birth-date = Birth Date
+passenger.form.label.special-needs = Special Needs
+passenger.form.label.confirmation = I confirm that the information is correct
+passenger.form.button.create = Create passenger
+passenger.form.button.update = Update information
+passenger.list.label.full-name = Full Passenger Name
+passenger.list.label.email = Email
+passenger.list.label.passport = Passport
+passenger.list.label.birth-date = Birth Date
+passenger.list.label.special-needs = Special Needs
+passenger.list.button.new = Add new passenger

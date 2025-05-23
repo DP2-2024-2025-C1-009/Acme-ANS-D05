@@ -1,7 +1,7 @@
 
 package acme.features.customer.passenger;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,7 +37,7 @@ public class PassengerUpdateService extends AbstractGuiService<Customer, Passeng
 
 	@Override
 	public void validate(final Passenger passenger) {
-		Collection<Passenger> res = this.passengerRepository.findAllPassengers();
+		List<Passenger> res = this.passengerRepository.findAllPassengers();
 
 		if (res.contains(passenger))
 			super.state(false, "passenger", "passenger.already-published");

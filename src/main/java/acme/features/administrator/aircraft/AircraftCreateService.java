@@ -14,7 +14,6 @@ import acme.entities.aircraft.Aircraft;
 import acme.entities.airline.Airline;
 import acme.features.administrator.airline.AirlineRepository;
 
-// Corregir el crear (no da problemas pero no se encuentra al crearlo)
 @GuiService
 public class AircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
 

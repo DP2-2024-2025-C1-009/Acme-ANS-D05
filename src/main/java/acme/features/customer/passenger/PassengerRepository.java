@@ -1,7 +1,7 @@
 
 package acme.features.customer.passenger;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +17,7 @@ public interface PassengerRepository extends AbstractRepository {
 	Passenger findPassengerById(int id);
 
 	@Query("SELECT a from Passenger a")
-	Collection<Passenger> findAllPassengers();
+	List<Passenger> findAllPassengers();
 
 	@Query("SELECT a from Passenger a where a.fullName = :fullName")
 	Passenger FindPassengerByFullName(@Param("fullName") String fullName);

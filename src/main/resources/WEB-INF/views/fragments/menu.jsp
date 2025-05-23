@@ -74,8 +74,8 @@
 	</acme:menu-left>
 	
 	<acme:menu-option code="master.menu.customer" access = "hasRealm('Customer')">
-		<acme:menu-suboption code="master.menu.customer.bookings" action="/customer/booking/list/"/>
-		<acme:menu-suboption code="master.menu.customer.passengers" action="/customer/passenger/list/"/>
+		<acme:menu-suboption code="master.menu.customer.booking" action="/customer/booking/list"/>
+		<acme:menu-suboption code="master.menu.customer.passenger" action="/customer/passenger/list"/>
 </acme:menu-option>
 
 	<acme:menu-right>
@@ -95,6 +95,9 @@
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile"
 				action="/authenticated/consumer/update"
 				access="hasRealm('Consumer')" />
+			<acme:menu-suboption code="master.menu.user-account.customer-profile"
+				action="/authenticated/customer/update"
+				access="hasRealm('Customer')" />
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
