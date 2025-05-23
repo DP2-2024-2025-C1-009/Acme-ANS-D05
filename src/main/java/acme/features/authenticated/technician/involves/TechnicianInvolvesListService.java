@@ -27,22 +27,23 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 
 	@Override
 	public void load() {
-		int masterId;
 		Collection<Involves> involves;
+		int technicianId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		involves = this.repository.findInvolvesByMasterId(masterId);
+		technicianId = super.getRequest().getPrincipal().getRealmOfType(Technician.class).getId();
+
+		involves = this.repository.findInvolvesByTechnicianId(technicianId);
 
 		super.getBuffer().addData(involves);
 	}
-
 	@Override
 	public void unbind(final Involves involves) {
 		Dataset dataset = super.unbindObject(involves);
+
 		dataset.put("taskTicker", involves.getTask().getTicker());
-		dataset.put("taskType", involves.getTask().getType());
-		dataset.put("taskPriority", involves.getTask().getPriority());
+		dataset.put("maintenanceRecordTicker", involves.getMaintenanceRecord().getTicker());
 		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
+		dataset.put("maintenanceRecordTechnician", involves.getMaintenanceRecord().getTechnician().getLicenseNumber());
 		super.addPayload(dataset, involves);
 
 		super.getResponse().addData(dataset);
