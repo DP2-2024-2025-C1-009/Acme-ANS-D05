@@ -87,11 +87,15 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		Date now = MomentHelper.getCurrentMoment();
 
-		boolean departureInFuture = MomentHelper.isAfter(leg.getScheduledDeparture(), now);
-		boolean arrivalInFuture = MomentHelper.isAfter(leg.getScheduledArrival(), now);
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
 
-		super.state(departureInFuture, "scheduledDeparture", "manager.leg.create.departure-future");
-		super.state(arrivalInFuture, "scheduledArrival", "manager.leg.create.arrival-future");
+			boolean departureInFuture = MomentHelper.isAfter(leg.getScheduledDeparture(), now);
+			boolean arrivalInFuture = MomentHelper.isAfter(leg.getScheduledArrival(), now);
+
+			super.state(departureInFuture, "scheduledDeparture", "manager.leg.create.departure-future");
+			super.state(arrivalInFuture, "scheduledArrival", "manager.leg.create.arrival-future");
+
+		}
 
 	}
 

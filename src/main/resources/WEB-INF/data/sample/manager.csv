@@ -1,3 +1,4 @@
 key,key:userAccount,yearsOfExperience,dateOfBirth,pictureLink,identifierNumber,key:airline
 manager-01,user-account-manager-01,1,2000/02/12 00:00,http://www.lorem-ipsum.org/dolor/sit.html#dolor,ABC123456,airline-01
 manager-02,user-account-manager-02,3,2003/03/12 00:00,http://www.lorem-ipsum.org/dolor/sit.html,GHI345678,airline-02
+manager-03,user-account-manager-03,3,2003/04/16 00:00,http://www.lorem-ipsum.org/dolor/sit.html,HBA234567,airline-03
