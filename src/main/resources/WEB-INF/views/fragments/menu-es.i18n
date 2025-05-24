@@ -65,6 +65,7 @@ master.menu.manager.list-legs = Listar tramos
 master.menu.technician = Técnico
 master.menu.technician.task = Mis Tareas
 master.menu.technician.maintenance = Mis Registros de Mantenimiento
+master.menu.technician.involves = Involucraciones de tareas
 
 # master.menu.customer ######################################################
 master.menu.customer = Cliente
