@@ -82,7 +82,7 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		manager = this.repository.findManagerById(managerId);
 		aircrafts = this.repository.findAircraftsByAirlineId(manager.getAirline().getId());
-		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", leg.getAircraft());
 
 		departureAirports = this.repository.findAllAirports();
 		arrivalAirports = this.repository.findAllAirports();
