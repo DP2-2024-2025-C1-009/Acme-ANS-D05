@@ -7,7 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.passenger.Passenger;
-import acme.realms.Customer;
+import acme.realms.customers.Customer;
 
 @GuiService
 public class PassengerCreateService extends AbstractGuiService<Customer, Passenger> {
@@ -24,7 +24,14 @@ public class PassengerCreateService extends AbstractGuiService<Customer, Passeng
 	@Override
 	public void load() {
 		Passenger passenger;
+		Customer customer;
+
+		customer = (Customer) super.getRequest().getPrincipal().getActiveRealm();
+
 		passenger = new Passenger();
+		passenger.setDraftMode(true);
+		passenger.setCustomer(customer);
+
 		super.getBuffer().addData(passenger);
 	}
 
@@ -47,8 +54,10 @@ public class PassengerCreateService extends AbstractGuiService<Customer, Passeng
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		Dataset data = super.unbindObject(passenger, "fullName", "email", "passport", "birthDate", "specialNeeds");
-		super.getResponse().addData(data);
+		Dataset dataset;
+
+		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds");
+		super.getResponse().addData(dataset);
 	}
 
 }

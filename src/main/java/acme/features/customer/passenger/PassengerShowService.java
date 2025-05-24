@@ -7,7 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.passenger.Passenger;
-import acme.realms.Customer;
+import acme.realms.customers.Customer;
 
 @GuiService
 public class PassengerShowService extends AbstractGuiService<Customer, Passenger> {
@@ -18,20 +18,38 @@ public class PassengerShowService extends AbstractGuiService<Customer, Passenger
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Passenger passenger;
+		Customer customer;
+
+		masterId = super.getRequest().getData("id", int.class);
+		passenger = this.passengerRepository.findPassengerById(masterId);
+
+		customer = passenger == null ? null : this.passengerRepository.findCustomerByPassengerId(passenger.getId());
+
+		status = passenger != null && super.getRequest().getPrincipal().hasRealm(customer);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
-		Passenger res = this.passengerRepository.findPassengerById(id);
-		super.getBuffer().addData(res);
+		Passenger passenger;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		passenger = this.passengerRepository.findPassengerById(id);
+
+		super.getBuffer().addData(passenger);
 	}
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		Dataset data = super.unbindObject(passenger, "fullName", "email", "passport", "birthDate", "specialNeeds");
-		super.getResponse().addData(data);
+		Dataset dataset;
+
+		dataset = super.unbindObject(passenger, "fullName", "email", "passport", "birthDate", "specialNeeds", "draftMode");
+		super.getResponse().addData(dataset);
 	}
 
 }

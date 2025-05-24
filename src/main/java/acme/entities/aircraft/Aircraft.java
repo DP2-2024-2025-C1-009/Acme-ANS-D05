@@ -50,9 +50,8 @@ public class Aircraft extends AbstractEntity {
 	private Integer				loadWeight;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				isActive;
+	private AircraftStatus		status;
 
 	@Optional
 	@ValidString(max = 255, message = "{acme.validation.aircraft.optional-details-length}")
@@ -65,5 +64,12 @@ public class Aircraft extends AbstractEntity {
 	@Valid
 	@ManyToOne
 	private Airline				airline;
+
+	//Enum
+
+
+	public enum AircraftStatus {
+		ACTIVE, MAINTENANCE
+	}
 
 }

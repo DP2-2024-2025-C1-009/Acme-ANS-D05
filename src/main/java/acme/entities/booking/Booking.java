@@ -24,7 +24,6 @@ import acme.constraints.ValidBooking;
 import acme.constraints.ValidLastCardNibble;
 import acme.constraints.ValidLocatorCode;
 import acme.entities.flight.Flight;
-import acme.features.customer.booking.BookingRepository;
 import acme.realms.customers.Customer;
 import lombok.Getter;
 import lombok.Setter;

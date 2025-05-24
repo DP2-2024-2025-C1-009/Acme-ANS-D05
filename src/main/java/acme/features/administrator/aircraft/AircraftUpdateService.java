@@ -11,6 +11,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
+import acme.entities.aircraft.Aircraft.AircraftStatus;
 import acme.entities.airline.Airline;
 import acme.features.administrator.airline.AirlineRepository;
 
@@ -21,34 +22,43 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 	private AircraftRepository	aircraftRepository;
 
 	@Autowired
-	private AirlineRepository	airlineRepository;
+	private AirlineRepository	airlinRepository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Aircraft aircraft;
+
+		masterId = super.getRequest().getData("id", int.class);
+		aircraft = this.aircraftRepository.findAircraftById(masterId);
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class) && aircraft != null;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
-		Aircraft aircraft = this.aircraftRepository.findAircraftById(id);
+		Aircraft aircraft;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		aircraft = this.aircraftRepository.findAircraftById(id);
+
 		super.getBuffer().addData(aircraft);
 	}
 
 	@Override
 	public void bind(final Aircraft aircraft) {
 		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
-		Integer airlineId = super.getRequest().getData("airline", Integer.class);
-		if (airlineId != null) {
-			Airline airline = this.airlineRepository.findAirlineById(airlineId);
-			aircraft.setAirline(airline);
-		}
+
 	}
 
 	@Override
 	public void validate(final Aircraft aircraft) {
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
@@ -59,14 +69,23 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void unbind(final Aircraft aircraft) {
-		Dataset data = super.unbindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
+		Dataset dataset;
+		Collection<Airline> airlines;
+		SelectChoices airlineChoices;
+		SelectChoices statusChoices;
 
-		Collection<Airline> airlines = this.airlineRepository.findAllAirlines();
-		SelectChoices choices = SelectChoices.from(airlines, "name", aircraft.getAirline());
+		airlines = this.airlinRepository.findAllAirlines();
+		airlineChoices = SelectChoices.from(airlines, "name", aircraft.getAirline());
 
-		data.put("airlines", choices);
-		data.put("airline", aircraft.getAirline() != null ? String.valueOf(aircraft.getAirline().getId()) : "");
+		statusChoices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
 
-		super.getResponse().addData(data);
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "details");
+		dataset.put("airline", airlineChoices.getSelected().getKey());
+		dataset.put("airlines", airlineChoices);
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statuses", statusChoices);
+		dataset.put("readOnly", true);
+
+		super.getResponse().addData(dataset);
 	}
 }

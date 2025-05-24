@@ -18,7 +18,7 @@ import acme.realms.customers.Customer;
 public class BookingUpdateService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
-	private BookingRepository bookingRepository;
+	private CustomerBookingRepository bookingRepository;
 
 
 	@Override
