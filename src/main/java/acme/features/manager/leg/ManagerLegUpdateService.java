@@ -38,6 +38,32 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 		leg = this.repository.findLegById(legId);
 		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getManager());
 
+		if (status) {
+			String method;
+			int arrivalAirportId, aircraftId, departureAirportId;
+			Airport departureAirport, arrivalAirport;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+
+				departureAirportId = super.getRequest().getData("departureAirport", int.class);
+				departureAirport = this.repository.findAirportById(departureAirportId);
+				status = status && (departureAirportId == 0 || departureAirport != null);
+
+				arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+				arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+				status = status && (arrivalAirportId == 0 || arrivalAirport != null);
+
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = status && (aircraftId == 0 || aircraft != null && aircraft.getIsActive());
+			}
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -54,7 +80,27 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+
+		int departureAirportId;
+		int arrivalAirportId;
+		int aircraftId;
+		Airport departureAirport;
+		Airport arrivalAirport;
+		Aircraft aircraft;
+
+		departureAirportId = super.getRequest().getData("departureAirport", int.class);
+		departureAirport = this.repository.findAirportById(departureAirportId);
+
+		arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+		arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftById(aircraftId);
+
+		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
+		leg.setDepartureAirport(departureAirport);
+		leg.setArrivalAirport(arrivalAirport);
+		leg.setAircraft(aircraft);
 	}
 
 	@Override
