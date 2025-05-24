@@ -77,4 +77,8 @@ acme.validation.claim.passenger-email-correct = Enter a valid email address.
 acme.validation.tracking-log.steps-length = The steps carried out must not exceed 50 characters.
 acme.validation.tracking-log.resolution-length = The resolution must not exceed 255 characters.
 
+acme.validation.manager.intitials.message = The first two or three letters must correspond to your initials
+acme.validation.manager.duplicated-identifier.message = Identifier number must be unique
+acme.validation.manager.birth-date.message = Date of birth must be in the past
+
 acme.validation.confirmation.message = You need to confirm the changes
