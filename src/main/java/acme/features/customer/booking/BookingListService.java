@@ -39,7 +39,7 @@ public class BookingListService extends AbstractGuiService<Customer, Booking> {
 		Dataset dataset;
 
 		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "draftMode");
-		dataset.put("bookingCost", booking.getBookingCost());
+		dataset.put("bookingCost", booking.getCost());
 
 		super.getResponse().addData(dataset);
 	}

@@ -17,11 +17,7 @@ import lombok.Setter;
 @Setter
 public class BookingRecord extends AbstractEntity {
 
-	// Serialisation version
-
 	private static final long	serialVersionUID	= 1L;
-
-	// Relations
 
 	@Mandatory
 	@Valid
