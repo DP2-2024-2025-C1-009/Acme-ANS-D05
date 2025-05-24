@@ -86,8 +86,8 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 		departureAirports = this.repository.findAllAirports();
 		arrivalAirports = this.repository.findAllAirports();
-		departureAirportChoices = SelectChoices.from(departureAirports, "name", leg.getDepartureAirport());
-		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "name", leg.getArrivalAirport());
+		departureAirportChoices = SelectChoices.from(departureAirports, "airportName", leg.getDepartureAirport());
+		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "airportName", leg.getArrivalAirport());
 
 		legStatusChoices = SelectChoices.from(LegStatus.class, leg.getStatus());
 
