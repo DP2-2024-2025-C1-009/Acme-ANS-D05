@@ -29,6 +29,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@validBooking
 public class Booking extends AbstractEntity {
 
 	// Serialisation identifier

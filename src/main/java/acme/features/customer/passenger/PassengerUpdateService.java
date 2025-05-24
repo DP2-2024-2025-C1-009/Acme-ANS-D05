@@ -25,7 +25,7 @@ public class PassengerUpdateService extends AbstractGuiService<Customer, Passeng
 
 	@Override
 	public void load() {
-		int id = super.getResponse().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class);
 		Passenger passenger = this.passengerRepository.findPassengerById(id);
 		super.getBuffer().addData(passenger);
 	}

@@ -1,8 +1,6 @@
 
 package acme.features.customer.booking;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -22,30 +20,29 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int id = super.getRequest().getData("id", int.class);
+		Booking booking = this.bookingRepository.findBookingById(id);
+
+		boolean notStored = booking.getLastNibble() == null;
+		super.getResponse().setAuthorised(notStored);
 	}
 
 	@Override
 	public void load() {
-		int id = super.getResponse().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class);
 		Booking booking = this.bookingRepository.findBookingById(id);
+
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseTime", "flightClass", "prize", "lastNibble");
+		super.bindObject(booking, "locatorCode", "flightClass", "prize", "lastNibble");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		Collection<Booking> res = this.bookingRepository.findAllBookings();
-
-		if (res.contains(booking))
-			super.state(false, "booking", "booking.already-exists");
-
-		boolean confirmation;
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
@@ -57,9 +54,18 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset data = super.unbindObject(booking, "locatorCode", "purchaseTime", "flightClass", "prize", "lastNibble");
-		data.put("flightclass", SelectChoices.from(FlightClass.class, booking.getFlightClass()));
+
+		SelectChoices choices = new SelectChoices();
+		for (FlightClass fc : FlightClass.values())
+			choices.add(fc.name(), fc.name(), fc == booking.getFlightClass());
+
+		data.put("flightclass", choices);
+
+		data.put("flightClass", choices);
+
 		data.put("confirmation", false);
-		data.put("readonly", false);
+		data.put("purchaseTimeReadonly", true);
+
 		super.getResponse().addData(data);
 	}
 

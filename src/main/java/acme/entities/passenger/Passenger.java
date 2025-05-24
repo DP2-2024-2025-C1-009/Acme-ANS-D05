@@ -9,6 +9,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -48,6 +50,7 @@ public class Passenger extends AbstractEntity {
 	@Mandatory
 	@Temporal(TemporalType.DATE)
 	@ValidMoment(past = true)
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date				birthDate;
 
 	@Optional
