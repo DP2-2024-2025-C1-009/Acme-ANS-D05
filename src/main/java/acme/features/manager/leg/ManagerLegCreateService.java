@@ -69,19 +69,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	public void validate(final Leg leg) {
 		assert leg != null;
 
-		Flight flight = leg.getFlight();
-		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
-
-		boolean correctSelfTransfer;
-
-		if (flight.isSelfTransfer())
-			correctSelfTransfer = legs.size() >= 0;
-		else
-			correctSelfTransfer = legs.size() == 0;
-
-		if (!correctSelfTransfer)
-			super.state(false, "*", "manager.leg.create.validSelfTransfer");
-
 		// Validación: Al crear un nuevo leg, la fecha de salida y de llegada debe ser en el futuro
 		// Nota: Se usa el reloj del sistema
 
