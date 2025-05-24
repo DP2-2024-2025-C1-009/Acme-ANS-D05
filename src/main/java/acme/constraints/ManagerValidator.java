@@ -48,18 +48,20 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 			{
 
 				DefaultUserIdentity identity = manager.getIdentity();
-				String iniciales = identity.getName().trim().substring(0, 1) + identity.getSurname().trim().substring(0, 1);
+				String initials = identity.getName().trim().substring(0, 1) + identity.getSurname().trim().substring(0, 1);
 
-				Boolean identificadorCorrecto = StringHelper.startsWith(manager.getIdentifierNumber(), iniciales, true);
+				Boolean correctIdentifier = StringHelper.startsWith(manager.getIdentifierNumber(), initials, true);
 
-				super.state(context, identificadorCorrecto, "identifierNumber", "acme.validation.manager.intitials.message");
+				super.state(context, correctIdentifier, "identifierNumber", "acme.validation.manager.intitials.message");
 			}
 			{
 				boolean pastDate;
 				Date present = MomentHelper.getBaseMoment();
 
-				pastDate = manager.getDateOfBirth().before(present);
-				super.state(context, pastDate, "dateOfBirth", "acme.validation.manager.birth-date");
+				if (manager.getDateOfBirth() != null) {
+					pastDate = manager.getDateOfBirth().before(present);
+					super.state(context, pastDate, "dateOfBirth", "acme.validation.manager.birth-date.message");
+				}
 			}
 		}
 
