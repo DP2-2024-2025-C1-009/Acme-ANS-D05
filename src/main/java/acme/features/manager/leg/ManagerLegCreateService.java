@@ -32,12 +32,37 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int flightId;
+		int masterId;
 		Flight flight;
 
-		flightId = super.getRequest().getData("masterId", int.class);
-		flight = this.repository.findFlightById(flightId);
-		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
+		masterId = super.getRequest().getData("masterId", int.class);
+		flight = this.repository.findFlightById(masterId);
+		status = flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager()) && flight != null;
+
+		if (status) {
+			String method;
+			int arrivalAirportId, aircraftId, departureAirportId;
+			Airport departureAirport, arrivalAirport;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+				departureAirportId = super.getRequest().getData("departureAirport", int.class);
+				departureAirport = this.repository.findAirportById(departureAirportId);
+				status = status && (departureAirportId == 0 || departureAirport != null);
+
+				arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+				arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+				status = status && (arrivalAirportId == 0 || arrivalAirport != null);
+
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = status && (aircraftId == 0 || aircraft != null && aircraft.getIsActive());
+			}
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
