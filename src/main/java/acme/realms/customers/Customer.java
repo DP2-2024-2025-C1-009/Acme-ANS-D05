@@ -1,8 +1,8 @@
 
-package acme.realms;
+package acme.realms.customers;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -10,6 +10,8 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidCustomer;
+import acme.constraints.ValidIdentifier;
 import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidCustomer
 public class Customer extends AbstractRole {
 
 	// Serialisation identifier
@@ -25,9 +28,8 @@ public class Customer extends AbstractRole {
 	//Attributes
 
 	@Mandatory
-	@ValidString(min = 8, max = 9)
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Customer Identificator " + "must have 2/3 letters followed by 6 numbers")
-	@Automapped
+	@ValidIdentifier
+	@Column(unique = true)
 	private String				identifier;
 
 	@Mandatory

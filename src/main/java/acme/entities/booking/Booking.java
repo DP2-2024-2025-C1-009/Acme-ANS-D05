@@ -5,31 +5,34 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
+
+import org.springframework.data.annotation.Transient;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
-import acme.realms.Customer;
+import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidBooking;
+import acme.constraints.ValidLastCardNibble;
+import acme.constraints.ValidLocatorCode;
+import acme.entities.flight.Flight;
+import acme.features.customer.booking.BookingRepository;
+import acme.realms.customers.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@validBooking
+@ValidBooking
 public class Booking extends AbstractEntity {
 
 	// Serialisation identifier
@@ -38,20 +41,17 @@ public class Booking extends AbstractEntity {
 	//Attributes
 
 	@Mandatory
-	@ValidString(min = 6, max = 8)
-	@Pattern(regexp = "^[A-Z0-9]{6,8}$")
+	@ValidLocatorCode
 	@Column(unique = true)
-	@Automapped
 	private String				locatorCode;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	@Automapped
 	private Date				purchaseTime;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private FlightClass			flightClass;
 
@@ -61,15 +61,45 @@ public class Booking extends AbstractEntity {
 	private Double				prize;
 
 	@Optional
-	@ValidNumber
-	@Min(1000)
-	@Max(9999)
+	@ValidLastCardNibble
 	@Automapped
-	private Integer				lastNibble;
+	private String				lastCardNibble;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	//Relations
+
+	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "customer")
 	private Customer			customer;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Flight				flight;
+
+
+	@Transient
+	public Money getCost() {
+		BookingRepository repository = SpringHelper.getBean(BookingRepository.class);
+
+		Double flightPrice = this.flight != null ? this.flight.getCost().getAmount() : 0.0;
+
+		String currency = this.flight != null ? this.flight.getCost().getCurrency() : "EUR";
+
+		Integer passengerCount = repository.countPassengersByLocatorCode(this.locatorCode);
+		passengerCount = passengerCount != null ? passengerCount : 0;
+
+		Money bookingCost = new Money();
+
+		bookingCost.setCurrency(currency);
+		bookingCost.setAmount(passengerCount * flightPrice);
+
+		return bookingCost;
+
+	}
 
 }

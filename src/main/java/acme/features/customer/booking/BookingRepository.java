@@ -3,33 +3,43 @@ package acme.features.customer.booking;
 
 import java.util.Collection;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.booking.Booking;
-import acme.realms.Customer;
+import acme.entities.booking.BookingRecord;
+import acme.entities.flight.Flight;
+import acme.entities.passenger.Passenger;
 
 @Repository
 public interface BookingRepository extends AbstractRepository {
 
-	@Query("SELECT a from Booking a where a.id = :id")
-	Booking findBookingById(int id);
+	@Query("select b from Booking b where b.customer.id = :customerId")
+	Collection<Booking> findBookingsByCustomerId(int customerId);
 
-	@Query("SELECT a from Booking a")
-	Collection<Booking> findAllBookings();
+	@Query("select b from Booking b where b.id = :masterId")
+	Booking findBookingById(int masterId);
 
-	@Query("SELECT a from Booking a where a.locatorCode = :locatorCode")
-	Booking findBookingByLocatorCode(@Param("locatorCode") String locatorCode);
+	@Query("select p from Passenger p")
+	Collection<Passenger> findAllPassengers();
 
-	@Query("SELECT b FROM Booking b WHERE b.customer.id = :customerId")
-	Collection<Booking> findBookingByCustomerId(@Param("customerId") int customerId);
+	@Query("SELECT br.passenger FROM BookingRecord br WHERE br.booking.customer.id = :customerId")
+	Collection<Passenger> findPassengersByCustomerId(@Param("customerId") int customerId);
 
-	@Query("select c from Customer c where c.id = :id")
-	Customer findCustomerById(int id);
+	@Query("SELECT br.passenger FROM BookingRecord br WHERE br.booking.id = :bookingId")
+	Collection<Passenger> findPassengersByBookingId(@Param("bookingId") int bookingId);
 
-	@Query("SELECT c FROM Customer c WHERE c.userAccount.id = :accountId")
-	Customer findCustomerByAccountId(int accountId);
+	@Query("SELECT f FROM Flight f WHERE f.draftMode = false")
+	Collection<Flight> findAllFlightsDraftModeFalse();
+
+	@Modifying
+	@Query("DELETE FROM BookingRecord br WHERE br.booking.id = :bookingId")
+	void deleteBookingRecordsByBookingId(@Param("bookingId") int bookingId);
+
+	@Query("SELECT br FROM BookingRecord br WHERE br.booking.id = :id")
+	Collection<BookingRecord> findBookingRecordsByBookingId(int id);
 
 }

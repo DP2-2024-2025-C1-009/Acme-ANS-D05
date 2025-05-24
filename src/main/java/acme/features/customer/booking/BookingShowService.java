@@ -1,6 +1,8 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -9,7 +11,8 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.FlightClass;
-import acme.realms.Customer;
+import acme.entities.flight.Flight;
+import acme.realms.customers.Customer;
 
 @GuiService
 public class BookingShowService extends AbstractGuiService<Customer, Booking> {
@@ -20,27 +23,45 @@ public class BookingShowService extends AbstractGuiService<Customer, Booking> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Booking booking;
+		Customer customer;
+
+		masterId = super.getRequest().getData("id", int.class);
+		booking = this.bookingRepository.findBookingById(masterId);
+		customer = booking == null ? null : booking.getCustomer();
+		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
-		Booking res = this.bookingRepository.findBookingById(id);
-		super.getBuffer().addData(res);
+		Booking booking;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		booking = this.bookingRepository.findBookingById(id);
+
+		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void unbind(final Booking booking) {
-		Dataset data = super.unbindObject(booking, "locatorCode", "purchaseTime");
+		Dataset dataset;
+		SelectChoices flightChoice;
+		SelectChoices classChoise;
+		Collection<Flight> flights;
 
-		SelectChoices choices = SelectChoices.from(FlightClass.class, booking.getFlightClass());
-		data.put("flightClass", choices);
+		flights = this.bookingRepository.findAllFlightsDraftModeFalse();
+		flightChoice = SelectChoices.from(flights, "id", booking.getFligth());
+		classChoise = SelectChoices.from(FlightClass.class, booking.getFlightClass());
 
-		data.put("prize", booking.getPrize() != null ? booking.getPrize() : "");
-		data.put("lastNibble", booking.getLastNibble() != null ? booking.getLastNibble() : "");
-		data.put("purchaseTimeReadonly", true);
-
-		super.getResponse().addData(data);
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight", "draftMode");
+		dataset.put("bookingCost", booking.getBookingCost());
+		dataset.put("classChoise", classChoise);
+		dataset.put("flightChoice", flightChoice);
+		super.getResponse().addData(dataset);
 	}
 }

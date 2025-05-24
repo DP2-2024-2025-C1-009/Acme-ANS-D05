@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.realms.Customer;
+import acme.realms.customers.Customer;
 import acme.realms.customers.CustomerRepository;
 
 @Validator

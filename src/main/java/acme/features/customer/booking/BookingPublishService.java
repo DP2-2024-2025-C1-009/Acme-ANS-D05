@@ -7,15 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.FlightClass;
 import acme.entities.flight.Flight;
+import acme.entities.passenger.Passenger;
 import acme.realms.customers.Customer;
 
 @GuiService
-public class BookingUpdateService extends AbstractGuiService<Customer, Booking> {
+public class BookingPublishService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
 	private BookingRepository bookingRepository;
@@ -24,12 +27,12 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int bookingId;
 		Booking booking;
 		Customer customer;
 
-		masterId = super.getRequest().getData("id", int.class);
-		booking = this.bookingRepository.findBookingById(masterId);
+		bookingId = super.getRequest().getData("id", int.class);
+		booking = this.bookingRepository.findBookingById(bookingId);
 		customer = booking == null ? null : booking.getCustomer();
 		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
 
@@ -49,36 +52,56 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "flightClass", "prize", "lastNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		int id = super.getRequest().getData("id", int.class);
+
+		Collection<Passenger> passengers = this.bookingRepository.findPassengersByBookingId(id);
+		if (passengers.isEmpty())
+			super.state(false, "*", "customer.booking.publish.non-published-passengers");
+		else
+			for (Passenger passenger : passengers)
+				if (passenger.isDraftMode()) {
+					super.state(false, "*", "customer.booking.publish.non-published-passengers");
+					break;
+				}
+
+		Collection<BookingRecord> bookingRecords = this.bookingRepository.findBookingRecordsByBookingId(id);
+		for (BookingRecord br : bookingRecords)
+			if (br.isDraftMode()) {
+				super.state(false, "*", "customer.booking.publish.non-published-bookingrecords");
+				break;
+			}
+
+		if (booking.getLastCardNibble() == null || booking.getLastCardNibble().trim().isEmpty())
+			super.state(false, "lastCardNibble", "customer.booking.form.error.last-card-nible-required");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
+		booking.setDraftMode(false);
+		booking.setPurchaseTime(MomentHelper.getCurrentMoment());
 		this.bookingRepository.save(booking);
 	}
 
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
-		SelectChoices classChoise;
 		SelectChoices flightChoice;
+		SelectChoices classChoise;
 		Collection<Flight> flights;
 
 		flights = this.bookingRepository.findAllFlightsDraftModeFalse();
 		flightChoice = SelectChoices.from(flights, "id", booking.getFligth());
 		classChoise = SelectChoices.from(FlightClass.class, booking.getFlightClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastCardNibble", "draftMode");
-		dataset.put("classChoise", classChoise);
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getBookingCost());
+		dataset.put("classChoise", classChoise);
 		dataset.put("flightChoice", flightChoice);
 		super.getResponse().addData(dataset);
 	}
-
 }
