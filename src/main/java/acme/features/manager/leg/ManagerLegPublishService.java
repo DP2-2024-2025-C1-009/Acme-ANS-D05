@@ -34,7 +34,8 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 		legId = super.getRequest().getData("id", int.class);
 		leg = this.repository.findLegById(legId);
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getManager());
+		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().equals(current);
 
 		if (status) {
 			String method;
