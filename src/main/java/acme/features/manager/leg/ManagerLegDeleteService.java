@@ -58,23 +58,11 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		boolean canDelete = true;
-		int legId = leg.getId();
-
-		boolean hasClaims = this.repository.countClaimsByLegId(legId) > 0;
-
-		if (hasClaims)
-			canDelete = false;
-
-		super.state(canDelete, "*", "manager.leg.delete.associated-claims");
+		;
 	}
 
 	@Override
 	public void perform(final Leg leg) {
-		boolean hasClaims = this.repository.countClaimsByLegId(leg.getId()) > 0;
-		if (hasClaims)
-			throw new IllegalStateException("No se puede eliminar el tramo porque hay reclamos asociados.");
-
 		this.repository.delete(leg);
 	}
 

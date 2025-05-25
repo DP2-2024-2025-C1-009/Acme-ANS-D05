@@ -62,7 +62,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 				aircraftId = super.getRequest().getData("aircraft", int.class);
 				aircraft = this.repository.findAircraftById(aircraftId);
-				status = status && (aircraftId == 0 || aircraft != null && aircraft.getIsActive());
+				status = status && (aircraftId == 0 || aircraft != null);
 			}
 		}
 
