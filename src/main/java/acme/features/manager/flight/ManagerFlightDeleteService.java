@@ -64,7 +64,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 			for (Leg leg : legs)
 				if (!leg.isDraftMode()) {
 					hasPublishedLegs = true;
-					break; // puedes salir del bucle en cuanto encuentres uno publicado
+					break;
 				}
 
 		if (hasPublishedLegs)
