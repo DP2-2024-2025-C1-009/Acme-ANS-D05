@@ -1,0 +1,18 @@
+customer.booking-record.form.title = Booking record form 
+customer.booking-record.list.title = Listing of relations
+
+customer.bookingRecord.form.label.booking.locatorCode = Booking:
+customer.bookingRecord.form.label.passenger.fullName = Passenger:
+
+customer.bookingRecord.form.button.update = Update
+customer.bookingRecord.form.button.publish = Publish
+customer.bookingRecord.form.button.create = Create
+
+customer.bookingRecord.list.label.booking.locatorCode = Booking
+customer.bookingRecord.list.label.passenger.fullName = Passenger
+customer.bookingRecord.list.label.draftMode = Draft Mode
+
+customer.bookingRecord.list.button.create = Create
+
+customer.booking-record.error.passenger-draft = The assigned passenger must be published.
+customer.booking-record.form.error.duplicate = This passenger is already associated with this reservation

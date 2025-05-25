@@ -92,12 +92,12 @@ public class Booking extends AbstractEntity {
 		Integer passengerCount = repository.countPassengersByLocatorCode(this.locatorCode);
 		passengerCount = passengerCount != null ? passengerCount : 0;
 
-		Money bookingCost = new Money();
+		Money cost = new Money();
 
-		bookingCost.setCurrency(currency);
-		bookingCost.setAmount(passengerCount * flightPrice);
+		cost.setCurrency(currency);
+		cost.setAmount(passengerCount * flightPrice);
 
-		return bookingCost;
+		return cost;
 
 	}
 

@@ -1,37 +1,37 @@
-key,model,number-registration,number-passengers,load-weight,is-active,optional-details,key:airline
-aircraft-01,Boeing 737,REG-700,180,30000,true,Standard aircraft,airline-01
-aircraft-02,A,REG-701,180,30000,true,Standard aircraft,airline-01
-aircraft-03,AB,REG-702,180,30000,true,Standard aircraft,airline-01
-aircraft-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,REG-703,180,30000,true,Standard aircraft,airline-01
-aircraft-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,REG-704,180,30000,true,Standard aircraft,airline-01
-aircraft-06,โลเร็ม อิปซัม,REG-705,180,30000,true,Standard aircraft,airline-01
-aircraft-07,لوريم إيبسوم,REG-706,180,30000,true,Standard aircraft,airline-01
-aircraft-08,洛伦·伊普森,REG-707,180,30000,true,Standard aircraft,airline-01
-aircraft-09,<marquee>Hacked</marquee>,REG-708,180,30000,true,Standard aircraft,airline-01
-aircraft-10,<script>alert('Hacked!');</script>,REG-709,180,30000,true,Standard aircraft,airline-01
-aircraft-11,' or 'A' = 'A,REG-710,180,30000,true,Standard aircraft,airline-01
-aircraft-12,Boeing 737,R,180,30000,true,Standard aircraft,airline-01
-aircraft-13,Boeing 737,AB,180,30000,true,Standard aircraft,airline-01
-aircraft-14,Boeing 737,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,180,30000,true,Standard aircraft,airline-01
-aircraft-15,Boeing 737,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,180,30000,true,Standard aircraft,airline-01
-aircraft-16,Boeing 737,โลเร็ม อิปซัม,180,30000,true,Standard aircraft,airline-01
-aircraft-17,Boeing 737,لوريم إيبسوم,180,30000,true,Standard aircraft,airline-01
-aircraft-18,Boeing 737,洛伦·伊普森,180,30000,true,Standard aircraft,airline-01
-aircraft-19,Boeing 737,<marquee>Hacked</marquee>,180,30000,true,Standard aircraft,airline-01
-aircraft-20,Boeing 737,<script>alert('Hacked!');</script>,180,30000,true,Standard aircraft,airline-01
-aircraft-21,Boeing 737,' or 'A' = 'A,180,30000,true,Standard aircraft,airline-01
-aircraft-22,Boeing 737,REG-711,1,30000,true,Standard aircraft,airline-01
-aircraft-23,Boeing 737,REG-712,2,30000,true,Standard aircraft,airline-01
-aircraft-24,Boeing 737,REG-713,180,2000,true,Standard aircraft,airline-02
-aircraft-25,Boeing 737,REG-714,180,2001,true,Standard aircraft,airline-02
-aircraft-26,Boeing 737,REG-715,180,49999,true,Standard aircraft,airline-02
-aircraft-27,Boeing 737,REG-716,254,50000,true,Standard aircraft,airline-02
-aircraft-28,Boeing 737,REG-718,255,30000,false,Standard aircraft,airline-03
-aircraft-29,Boeing 737,REG-719,180,30000,true,,airline-03
-aircraft-30,Boeing 737,REG-720,180,30000,true,<script>alert('Optional injection');</script>,airline-01
-aircraft-31,Boeing 737,REG-721,180,30000,true,لوريم إيبسوم,airline-01
-aircraft-32,Airbus A320,REG-A320,150,25000,true,Efficient short/medium haul,airline-01
-aircraft-33,Cessna Citation X,REG-CITX,12,8000,false,Luxury private jet,airline-01
-aircraft-34,Embraer E190,REG-E190,100,20000,false,Modern regional jet,airline-01
-aircraft-35,Bombardier CRJ700,REG-CRJ7,70,15000,false,Popular regional aircraft,airline-01
-aircraft-36,Sukhoi Superjet 100,REG-SSJ100,87,17000,false,Innovative Russian design,airline-01
+key,model,number-registration,number-passengers,load-weight,status,optional-details,key:airline
+aircraft-01,Boeing 737,REG-700,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-02,A,REG-701,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-03,AB,REG-702,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-04,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,REG-703,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-05,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,REG-704,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-06,โลเร็ม อิปซัม,REG-705,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-07,لوريم إيبسوم,REG-706,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-08,洛伦·伊普森,REG-707,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-09,<marquee>Hacked</marquee>,REG-708,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-10,<script>alert('Hacked!');</script>,REG-709,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-11,' or 'A' = 'A,REG-710,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-12,Boeing 737,R,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-13,Boeing 737,AB,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-14,Boeing 737,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-15,Boeing 737,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-16,Boeing 737,โลเร็ม อิปซัม,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-17,Boeing 737,لوريم إيبسوم,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-18,Boeing 737,洛伦·伊普森,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-19,Boeing 737,<marquee>Hacked</marquee>,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-20,Boeing 737,<script>alert('Hacked!');</script>,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-21,Boeing 737,' or 'A' = 'A,180,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-22,Boeing 737,REG-711,1,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-23,Boeing 737,REG-712,2,30000,ACTIVE,Standard aircraft,airline-01
+aircraft-24,Boeing 737,REG-713,180,2000,ACTIVE,Standard aircraft,airline-02
+aircraft-25,Boeing 737,REG-714,180,2001,ACTIVE,Standard aircraft,airline-02
+aircraft-26,Boeing 737,REG-715,180,49999,ACTIVE,Standard aircraft,airline-02
+aircraft-27,Boeing 737,REG-716,254,50000,ACTIVE,Standard aircraft,airline-02
+aircraft-28,Boeing 737,REG-718,255,30000,MAINTENANCE,Standard aircraft,airline-03
+aircraft-29,Boeing 737,REG-719,180,30000,ACTIVE,,airline-03
+aircraft-30,Boeing 737,REG-720,180,30000,ACTIVE,<script>alert('Optional injection');</script>,airline-01
+aircraft-31,Boeing 737,REG-721,180,30000,ACTIVE,لوريم إيبسوم,airline-01
+aircraft-32,Airbus A320,REG-A320,150,25000,ACTIVE,Efficient short/medium haul,airline-01
+aircraft-33,Cessna Citation X,REG-CITX,12,8000,MAINTENANCE,Luxury private jet,airline-01
+aircraft-34,Embraer E190,REG-E190,100,20000,MAINTENANCE,Modern regional jet,airline-01
+aircraft-35,Bombardier CRJ700,REG-CRJ7,70,15000,MAINTENANCE,Popular regional aircraft,airline-01
+aircraft-36,Sukhoi Superjet 100,REG-SSJ100,87,17000,MAINTENANCE,Innovative Russian design,airline-01

@@ -1,17 +1,27 @@
-administrator.aircraft.form.title = AirCraft Data
-administrator.aircraft.list.title = AirCrafts
-aircraft.form.label.model = Model
-aircraft.form.label.number-registration = Number Registration
-aircraft.list.label.is-active = Active?
-aircraft.form.label.load-weight = Enter the aircraft's load weight
-aircraft.form.label.is-active = Is the aircraft active?
-aircraft.form.label.airline = Enter the aircraft's airline
-aircraft.form.label.optional-details = Optional Details
-aircraft.form.label.confirmation = I confirm that the information is correct
-aircraft.form.button.create = Create aircraft
-aircraft.form.button.update = Update information
-aircraft.list.label.model = Model
-aircraft.list.label.number-registration = Number Registration
-aircraft.list.label.airline = Airline
-aircraft.form.label.number-passengers = Number Passengers
-aircraft.list.button.new = Add new aircraft
+administrator.aircraft.form.title = Aircraft form 
+administrator.aircraft.list.title = Listing of aircrafts
+
+administrator.aircraft.list.label.model = Model
+administrator.aircraft.list.label.numberRegistration = Registration Number
+administrator.aircraft.list.label.status = Status
+administrator.aircraft.list.label.airline = Airline
+
+administrator.aircraft.list.button.create = Create
+
+administrator.aircraft.form.label.model = Model
+administrator.aircraft.form.label.numberRegistration = Registration Number
+administrator.aircraft.form.label.numberPassengers = Capacity
+administrator.aircraft.form.label.loadWeight = Cargo Weight
+administrator.aircraft.form.label.status = Status
+administrator.aircraft.form.label.optionalDetails = Details
+administrator.aircraft.form.label.airline = Airline
+
+administrator.aircraft.form.button.update = Update
+administrator.aircraft.form.button.disable = Disable
+administrator.aircraft.form.button.create = Create
+
+administrator.aircraft.form.label.confirmation = Confirm that the action you are committing is correct
+
+acme.validation.range = Out of range
+acme.validation.iataCode.message = Not valid formatter
+administrator.aircraft.delete.published-legs= You can't delete aircrafts with published legs

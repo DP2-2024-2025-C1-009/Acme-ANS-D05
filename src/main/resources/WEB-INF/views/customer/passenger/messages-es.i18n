@@ -1,16 +1,22 @@
-administrator.passenger.form.title = Datos de los pasajeros
-administrator.passenger.list.title = Pasajeros
-passenger.form.label.full-name = Nombre completo del pasajero
-passenger.form.label.email = Email
-passenger.form.label.passport = Pasaporte
-passenger.form.label.birth-date = Fecha de nacimiento
-passenger.form.label.special-needs = Necesidades especiales
-passenger.form.label.confirmation = Confirmo que la información es correcta
-passenger.form.button.create = Crear pasajero
-passenger.form.button.update = Actualizar información
-passenger.list.label.full-name = Nombre completo del pasajero
-passenger.list.label.email = Email
-passenger.list.label.passport = Pasaporte
-passenger.list.label.birth-date = Fecha de nacimiento
-passenger.list.label.special-needs = Necesidades especiales
-passenger.list.button.new = Crear pasajero
+customer.passenger.form.title = Pasajeros
+customer.passenger.list.title = Pasajeros
+
+customer.passenger.form.label.fullName = Nombre
+customer.passenger.form.label.email = Email
+customer.passenger.form.label.passport = Pasaporte
+customer.passenger.form.label.birthDate = Fecha de nacimiento
+customer.passenger.form.label.specialNeeds = Necesidades especiales
+customer.passenger.form.label.draftMode = Borrador
+
+
+customer.passenger.form.button.update = Actualizar
+customer.passenger.form.button.publish = Publicar
+customer.passenger.form.button.create = Crear
+
+customer.passenger.list.label.fullName = Nombre
+customer.passenger.list.label.passport = Pasaporte
+customer.passenger.list.label.birthDate = Fecha de nacimiento
+customer.passenger.list.label.specialNeeds = Necesidades especiales
+customer.passenger.list.label.draftMode = Borrador
+
+customer.passenger.list.button.create = Crear

@@ -1,16 +1,28 @@
-administrator.booking.form.title = Booking Data
-administrator.booking.list.title = Bookings
-booking.form.label.locator-code = Locator Code
+booking.form.title = Booking Data
+booking.list.title = Bookings
+
+booking.form.label.locatorCode = Locator Code
 booking.form.label.purchase-time = Purchase Time
-booking.form.label.prize = Prize
-booking.form.label.flight-class = Select your flight class
-booking.form.label.last-nibble = Introduce your last nibble
+booking.form.label.flightClass = Select your flight class
+booking.form.label.lastNibble = Introduce your last nibble
+booking.form.label.draftMode = Draft Mode
+booking.form.label.cost = Booking cost
+
 booking.form.label.confirmation = I confirm that the information is correct
+
 booking.form.button.create = Create booking
 booking.form.button.update = Update information
-booking.list.label.locator-code = Locator Code
-booking.list.label.purchase-time = Purchase Time
-booking.list.label.flight-class = Flight Class
-booking.list.label.prize = Prize
-booking.list.label.last-nibble = Last Nibble
-booking.list.button.new = Add new booking
+booking.form.button.publish = Publish
+booking.form.button.passengers = See passengers
+
+booking.list.label.locatorCode = Locator Code
+booking.list.label.purchaseTime = Purchase Time
+booking.list.label.flightClass = Flight Class
+booking.lis.label.cost = Booking Cost
+
+booking.list.button.create = Add new booking
+
+booking.delete.published-passengers= You can't delete bookings with published passengers
+booking.publish.non-published-passengers= You can't publish bookings with unpublished passengers or none
+booking.publish.non-published-bookingrecords= All booking records associated with the booking must be published
+booking.form.error.last-card-nible-required = You must provide the last card nibble to publish this booking

@@ -70,3 +70,4 @@ master.menu.technician.maintenance = Mis Registros de Mantenimiento
 master.menu.customer = Cliente
 master.menu.customer.booking = Reservas
 master.menu.customer.passenger = Pasajeros
+master.menu.customer.bookingRecord = Relaciones

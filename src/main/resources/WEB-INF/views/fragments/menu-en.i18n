@@ -72,3 +72,4 @@ master.menu.technician.maintenance = My Maintenance Records
 master.menu.customer = Customer
 master.menu.customer.booking = Bookings
 master.menu.customer.passenger = Passengers
+master.menu.customer.bookingRecord = Booking Records
