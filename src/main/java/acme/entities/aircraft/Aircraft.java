@@ -65,9 +65,8 @@ public class Aircraft extends AbstractEntity {
 	@ManyToOne
 	private Airline				airline;
 
+
 	//Enum
-
-
 	public enum AircraftStatus {
 		ACTIVE, MAINTENANCE
 	}

@@ -13,16 +13,12 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.Aircraft.AircraftStatus;
 import acme.entities.airline.Airline;
-import acme.features.administrator.airline.AirlineRepository;
 
 @GuiService
 public class AircraftUpdateService extends AbstractGuiService<Administrator, Aircraft> {
 
 	@Autowired
-	private AircraftRepository	aircraftRepository;
-
-	@Autowired
-	private AirlineRepository	airlinRepository;
+	private AircraftRepository aircraftRepository;
 
 
 	@Override
@@ -50,7 +46,7 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
+		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "status", "optionalDetails");
 
 	}
 
@@ -74,18 +70,20 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 		SelectChoices airlineChoices;
 		SelectChoices statusChoices;
 
-		airlines = this.airlinRepository.findAllAirlines();
+		airlines = this.aircraftRepository.findAllAirline();
 		airlineChoices = SelectChoices.from(airlines, "name", aircraft.getAirline());
 
 		statusChoices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
 
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "details");
+		dataset = super.unbindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "optionalDetails");
 		dataset.put("airline", airlineChoices.getSelected().getKey());
 		dataset.put("airlines", airlineChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
 		dataset.put("statuses", statusChoices);
-		dataset.put("readOnly", true);
+
+		dataset.put("readOnly", Boolean.FALSE);
 
 		super.getResponse().addData(dataset);
 	}
+
 }

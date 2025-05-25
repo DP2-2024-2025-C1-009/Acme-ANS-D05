@@ -11,22 +11,21 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
+import acme.entities.aircraft.Aircraft.AircraftStatus;
 import acme.entities.airline.Airline;
-import acme.features.administrator.airline.AirlineRepository;
 
 @GuiService
 public class AircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
 
 	@Autowired
-	private AircraftRepository	aircraftRepository;
-
-	@Autowired
-	private AirlineRepository	airlineRepository;
+	private AircraftRepository aircraftRepository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -38,7 +37,7 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails", "airline");
+		super.bindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "status", "optionalDetails", "airline");
 	}
 
 	@Override
@@ -55,16 +54,24 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void unbind(final Aircraft aircraft) {
-		Dataset data = super.unbindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "isActive", "optionalDetails");
-		Collection<Airline> airlines = this.airlineRepository.findAllAirlines();
-		SelectChoices choices = SelectChoices.from(airlines, "name", aircraft.getAirline());
+		Dataset dataset;
+		Collection<Airline> airlines;
+		SelectChoices airlineChoices;
+		SelectChoices statusChoices;
 
-		data.put("airlines", choices);
-		data.put("airline", choices.getSelected().getKey());
+		airlines = this.aircraftRepository.findAllAirline();
+		airlineChoices = SelectChoices.from(airlines, "name", aircraft.getAirline());
 
-		data.put("confirmation", false);
-		data.put("readonly", false);
-		super.getResponse().addData(data);
+		statusChoices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
+
+		dataset = super.unbindObject(aircraft, "model", "numberRegistration", "numberPassengers", "loadWeight", "optionalDetails");
+		dataset.put("airline", airlineChoices.getSelected().getKey());
+		dataset.put("airlines", airlineChoices);
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statuses", statusChoices);
+		dataset.put("readOnly", false);
+
+		super.getResponse().addData(dataset);
 	}
 
 }
