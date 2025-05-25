@@ -1,5 +1,5 @@
-booking.form.title = Booking Data
-booking.list.title = Bookings
+customer.booking.form.title = Booking Data
+customer.booking.list.title = Bookings
 
 booking.form.label.locatorCode = Locator Code
 booking.form.label.purchase-time = Purchase Time
@@ -18,7 +18,7 @@ booking.form.button.passengers = See passengers
 booking.list.label.locatorCode = Locator Code
 booking.list.label.purchaseTime = Purchase Time
 booking.list.label.flightClass = Flight Class
-booking.lis.label.cost = Booking Cost
+booking.list.label.cost = Booking Cost
 
 booking.list.button.create = Add new booking
 

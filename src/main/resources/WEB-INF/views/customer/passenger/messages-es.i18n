@@ -1,5 +1,7 @@
-passenger.form.title = Pasajeros
-passenger.list.title = Pasajeros
+customer.passenger.form.title = Pasajeros
+customer.passenger.list.title = Pasajeros
+
+
 
 passenger.form.label.fullName = Nombre
 passenger.form.label.email = Email

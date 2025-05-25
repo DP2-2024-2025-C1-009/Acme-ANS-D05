@@ -12,6 +12,7 @@
 
     <jstl:choose>
         <jstl:when test="${acme:anyOf(_command, 'show|update')}">
+        <acme:input-checkbox code="passenger.form.label.confirmation" path="confirmation"/>
             <acme:submit code="passenger.form.button.update" action="/customer/passenger/update"/>
         </jstl:when>
 

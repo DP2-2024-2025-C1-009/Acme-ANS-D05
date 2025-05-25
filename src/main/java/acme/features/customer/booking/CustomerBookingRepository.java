@@ -32,7 +32,7 @@ public interface CustomerBookingRepository extends AbstractRepository {
 	@Query("SELECT br.passenger FROM BookingRecord br WHERE br.booking.id = :bookingId")
 	Collection<Passenger> findPassengersByBookingId(@Param("bookingId") int bookingId);
 
-	@Query("SELECT f FROM Flight f WHERE f.draftMode = false")
+	@Query("SELECT f FROM Flight f")
 	Collection<Flight> findAllFlightsDraftModeFalse();
 
 	@Modifying
