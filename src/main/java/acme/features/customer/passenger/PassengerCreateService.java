@@ -42,9 +42,7 @@ public class PassengerCreateService extends AbstractGuiService<Customer, Passeng
 
 	@Override
 	public void validate(final Passenger passenger) {
-		boolean confirmation;
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		;
 	}
 
 	@Override

@@ -4,9 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="customer.passenger.list.label.fullName" path="fullName" width="20%"/>
-	<acme:list-column code="customer.passenger.list.label.passport" path="passport" width="20%"/>
-	<acme:list-column code="customer.passenger.list.label.birthDate" path="birthDate" width="20%"/>
-	<acme:list-column code="customer.passenger.list.label.specialNeeds" path="specialNeeds" width="20%"/>
-	<acme:list-column code="customer.passenger.list.label.draftMode" path="draftMode" width="20%"/>
+	<acme:list-column code="passenger.list.label.fullName" path="fullName" width="20%"/>
+	<acme:list-column code="passenger.list.label.passport" path="passport" width="20%"/>
+	<acme:list-column code="passenger.list.label.birthDate" path="birthDate" width="20%"/>
+	<acme:list-column code="passenger.list.label.specialNeeds" path="specialNeeds" width="20%"/>
+	<acme:list-column code="passenger.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
