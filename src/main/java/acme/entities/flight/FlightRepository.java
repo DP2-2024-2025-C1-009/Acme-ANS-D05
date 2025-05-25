@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
@@ -30,5 +31,11 @@ public interface FlightRepository extends AbstractRepository {
 
 	@Query("select l from Leg l where l.flight.id = :flightId")
 	List<Leg> findAllLegs(int flightId);
+
+	@Query("select l from Leg l where l.flight.id = :id")
+	List<Leg> findLegsByFlight(Integer id);
+
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId AND l.draftMode = true")
+	List<Leg> findDraftLegsByFlight(@Param("flightId") int flightId);
 
 }
