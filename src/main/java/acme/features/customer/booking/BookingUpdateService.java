@@ -49,7 +49,7 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "flightClass", "prize", "lastNibble");
+		super.bindObject(booking, "locatorCode", "flightClass", "prize", "lastCardNibble");
 	}
 
 	@Override
@@ -66,18 +66,31 @@ public class BookingUpdateService extends AbstractGuiService<Customer, Booking> 
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
-		SelectChoices classChoise;
 		SelectChoices flightChoice;
+		SelectChoices classChoice;
 		Collection<Flight> flights;
 
 		flights = this.bookingRepository.findAllFlightsDraftModeFalse();
-		flightChoice = SelectChoices.from(flights, "id", booking.getFlight());
-		classChoise = SelectChoices.from(FlightClass.class, booking.getFlightClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseTime", "lastCardNibble", "draftMode");
-		dataset.put("classChoise", classChoise);
+		Flight selectedFlight = booking.getFlight();
+		if (selectedFlight != null && !flights.contains(selectedFlight))
+			flights.add(selectedFlight);
+
+		FlightClass selectedClass = booking.getFlightClass();
+		if (selectedClass == null) {
+			selectedClass = FlightClass.ECONOMY;
+			booking.setFlightClass(selectedClass);
+		}
+
+		flightChoice = SelectChoices.from(flights, "id", selectedFlight);
+		classChoice = SelectChoices.from(FlightClass.class, selectedClass);
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseTime", "flightClass", "prize", "lastCardNibble", "flight", "draftMode");
+
 		dataset.put("bookingCost", booking.getCost());
+		dataset.put("classChoice", classChoice);
 		dataset.put("flightChoice", flightChoice);
+
 		super.getResponse().addData(dataset);
 	}
 

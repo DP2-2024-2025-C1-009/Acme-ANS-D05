@@ -7,7 +7,6 @@
 	<acme:list-column code="booking.list.label.locatorCode" path="locatorCode" width="40%"/>
 	<acme:list-column code="booking.list.label.flightClass" path="flightClass" width="20%"/>
 	<acme:list-column code="booking.list.label.cost" path="cost" width="30%"/>
-	<acme:list-column code="booking.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">
