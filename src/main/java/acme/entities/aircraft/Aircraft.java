@@ -30,22 +30,22 @@ public class Aircraft extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 50, message = "{acme.validation.aircraft.model-length}")
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				model;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50, message = "{acme-validation.aircraft.number-registration-length}")
+	@ValidString(min = 1, max = 50)
 	@Column(unique = true)
 	private String				numberRegistration;
 
 	@Mandatory
-	@ValidNumber(min = 1, max = 255, message = "{acme.validation.aircraft.number-passengers-range}")
+	@ValidNumber(min = 1, max = 255)
 	@Automapped
 	private Integer				numberPassengers;
 
 	@Mandatory
-	@ValidNumber(min = 2000, max = 50000, message = "{acme.validation.aircraft.load-weigth-range}")
+	@ValidNumber(min = 2000, max = 50000)
 	@Automapped
 	private Integer				loadWeight;
 
@@ -55,7 +55,7 @@ public class Aircraft extends AbstractEntity {
 	private Boolean				isActive;
 
 	@Optional
-	@ValidString(max = 255, message = "{acme.validation.aircraft.optional-details-length}")
+	@ValidString(max = 255)
 	@Automapped
 	private String				optionalDetails;
 
