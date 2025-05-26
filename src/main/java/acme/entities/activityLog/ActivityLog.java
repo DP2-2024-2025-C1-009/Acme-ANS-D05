@@ -27,8 +27,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "draft_mode")
+	@Index(columnList = "draft_mode"), @Index(columnList = "activity_log_assignment_id")
 })
+
 @ValidActivityLog
 public class ActivityLog extends AbstractEntity {
 
@@ -56,7 +57,7 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@ValidNumber(min = 0, max = 10)
 	@Automapped
-	private int					severityLevel;
+	private Integer				severityLevel;
 
 	@Mandatory
 	@Automapped

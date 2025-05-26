@@ -20,7 +20,16 @@ public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember,
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
 		ActivityLog log = this.ActivityLogRepository.findActivityLogById(id);
-		boolean authorised = log != null && (log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId() || !log.getDraftMode());
+
+		boolean authorised = false;
+		if (log != null) {
+			var assignment = log.getActivityLogAssignment();
+			int currentUserId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			boolean isOwner = assignment.getCrewMember().getId() == currentUserId;
+			boolean isPublished = !assignment.getDraftMode();
+			authorised = isOwner || isPublished;
+		}
+
 		super.getResponse().setAuthorised(authorised);
 	}
 

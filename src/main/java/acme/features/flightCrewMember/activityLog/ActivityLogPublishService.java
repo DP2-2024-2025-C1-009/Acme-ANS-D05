@@ -57,9 +57,19 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 	public void unbind(final ActivityLog log) {
 		Dataset data = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode");
 
-		data.put("registrationMoment", log.getRegistrationMoment());
+		data.put("readonly", false);
+		data.put("moment", log.getRegistrationMoment());
+
+		data.put("incidentType", log.getIncidentType() != null ? log.getIncidentType() : "");
+		data.put("description", log.getDescription() != null ? log.getDescription() : "");
+		data.put("severityLevel", log.getSeverityLevel() != null ? log.getSeverityLevel() : "");
+
 		data.put("assignmentId", log.getActivityLogAssignment().getId());
-		data.put("draftMode", log.getActivityLogAssignment().getDraftMode());
+		data.put("draftMode", log.getDraftMode());
+		data.put("draftModeFlightAssignment", log.getActivityLogAssignment().getDraftMode());
+
+		// Botones disponibles en vista
+		data.put("showAction", true);
 
 		super.getResponse().addData(data);
 	}

@@ -77,24 +77,35 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 
 	@Override
 	public void unbind(final FlightAssignment assignment) {
-		Dataset data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode", "crewMember", "leg");
-
 		List<Leg> legs = this.assignmentRepository.findPlannedPublishedLegs(MomentHelper.getCurrentMoment());
-		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 
+		if (assignment.getLeg() != null && !legs.contains(assignment.getLeg()))
+			legs.add(assignment.getLeg());
+
+		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		SelectChoices dutyChoices = SelectChoices.from(Duty.class, assignment.getDuty());
 		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 
+		Dataset data = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode");
+
 		data.put("readonly", false);
 		data.put("moment", assignment.getLastUpdate());
-		data.put("duty", dutyChoices.getSelected().getKey());
+
+		data.put("duty", assignment.getDuty() != null ? assignment.getDuty().name() : "");
 		data.put("dutyChoices", dutyChoices);
-		data.put("assignmentStatus", statusChoices.getSelected().getKey());
+
+		data.put("assignmentStatus", assignment.getStatus() != null ? assignment.getStatus().name() : "");
 		data.put("statusChoices", statusChoices);
-		data.put("leg", legChoices.getSelected().getKey());
+
+		data.put("leg", assignment.getLeg() != null ? assignment.getLeg().getId() : "");
 		data.put("legChoices", legChoices);
-		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
+
+		data.put("crewMember", assignment.getCrewMember() != null ? assignment.getCrewMember().getIdentity().getFullName() : "N/A");
+
+		boolean legNotCompleted = assignment.getLeg() == null || !MomentHelper.isPast(assignment.getLeg().getScheduledArrival());
+		data.put("legNotCompleted", legNotCompleted);
 
 		super.getResponse().addData(data);
 	}
+
 }
