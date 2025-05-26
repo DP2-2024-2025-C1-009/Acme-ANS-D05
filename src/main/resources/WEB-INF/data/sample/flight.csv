@@ -10,7 +10,7 @@ flight-06,โลเร็ม อิปซัม,true,100.00 EUR,Lorem ipsum dolo
 flight-07,لوريم إيبسوم,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 flight-08,洛伦·伊普森,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 flight-09,<marquee>Hacked</marquee>,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
-flight-10,<script>alert('Hacked!');</script>,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
+flight-10,<script>alert('Hacked!');</script>,true,100.00 EUR,Lorem ipsum dolor sit amet,false,manager-01
 flight-11,'' or 'A' = 'A,true,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01
 #self-transfer,true
 flight-12,AVuelo12,false,100.00 EUR,Lorem ipsum dolor sit amet,true,manager-01

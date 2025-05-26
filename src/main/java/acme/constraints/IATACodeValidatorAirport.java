@@ -37,7 +37,7 @@ public class IATACodeValidatorAirport extends AbstractValidator<ValidAirport, Ai
 		long count = this.airportRepository.countByIataCodeExcludingId(iataCode, id);
 
 		if (count > 0) {
-			super.state(context, false, "iataCode", "acme.validation.airport.iata-code-pattern");
+			super.state(context, false, "iataCode", "acme.validation.airport.iata-code-unique");
 			return false;
 		}
 

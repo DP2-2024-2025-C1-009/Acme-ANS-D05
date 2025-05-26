@@ -39,7 +39,7 @@ public class NumberRegistrationValidator extends AbstractValidator<ValidNumberRe
 
 		Optional<Aircraft> aircraftWithSameRegistrationNumber = this.repository.findAircraftByNumberRegistration(numberRegistration);
 		if (aircraftWithSameRegistrationNumber.isPresent() && aircraftWithSameRegistrationNumber.get().getId() != aircraft.getId()) {
-			super.state(context, false, "registrationNumber", "Registration number must be unique" + numberRegistration);
+			super.state(context, false, "numberRegistration", "Registration number must be unique" + numberRegistration);
 			return false;
 		}
 

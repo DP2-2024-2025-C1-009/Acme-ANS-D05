@@ -8,22 +8,30 @@
 # purposes. The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-acme.validation.service.name-length = The name length must not exceed 50 characters.
+acme.validation.service.name-length = The name length must not exceed 50 characters
 acme.validation.service.photo-link-valid = Enter a valid URL.
 acme.validation.service.promotion-code-year = The last two digits must correspond to the current year.
 acme.validation.service.promotion-code-pattern = The promotion code must consist of 4 uppercase letters, a hyphen, and two digits, with the last two corresponding to the current year.
 
-acme.validation.airport.airport-name-length = The airport name length must not exceed 50 characters.
-acme.validation.airport.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters
-acme.validation.airport.city-length = The city name length must not exceed 50 characters.
-acme.validation.airport.country-length = The country name length must not exceed 50 characters.
-acme.validation.airport.phone-number-pattern = The phone number must contain between 6 and 15 digits, optionally starting with '+'.
-acme.validation.airport.website-valid = Enter a valid URL.
-acme.validation.airport.email-valid = Enter a valid email address.
+acme.validation.airport.airport-name-length = The airport name length must not exceed 50 characters
+acme.validation.airport.iata-code-pattern = The IATA code must contain exactly three uppercase letters
+acme.validation.airport.iata-code-unique = The IATA code must be unique
+acme.validation.airport.city-length = The city name length must not exceed 50 characters
+acme.validation.airport.country-length = The country name length must not exceed 50 characters
+acme.validation.airport.phone-number-pattern = The phone number must contain between 6 and 15 digits, optionally starting with '+'
+acme.validation.airport.website-valid = Enter a valid URL
+acme.validation.airport.email-valid = Enter a valid email address
 
 acme.validation.flight.validSelfTransfer = If flight is self transfer it must have more than one leg
 acme.validation.flight.correctTimeOrder = Departure time must be before arrival time
 
+acme.validation.leg.duplicated-flightNumber = The flight number must not be duplicated
+acme.validation.leg.scheduledArrival-departure = The arrival date cannot be earlier than the departure date
+acme.validation.leg.different-airport = The departure and arrival airports must be different
+acme.validation.leg.flightNumberIATA = The first three characters of the flight number must match the airline's IATA code of the flight's manager
+acme.validation.leg.aircraft-overlap = Aircraft is already in use during selected time
+acme.validation.leg.overlap-same-flight = This leg overlaps other leg in this flight
+acme.validation.leg.aircraft-inactive = You can't use an inactive aircraft
 
 acme.validation.airline.name-length = The airline name length must not exceed 50 characters.
 acme.validation.airline.iata-code-pattern = The IATA code must be unique and contain exactly three uppercase letters.
@@ -68,5 +76,9 @@ acme.validation.claim.passenger-email-correct = Enter a valid email address.
 
 acme.validation.tracking-log.steps-length = The steps carried out must not exceed 50 characters.
 acme.validation.tracking-log.resolution-length = The resolution must not exceed 255 characters.
+
+acme.validation.manager.intitials.message = The first two or three letters must correspond to your initials
+acme.validation.manager.duplicated-identifier.message = Identifier number must be unique
+acme.validation.manager.birth-date.message = Date of birth must be in the past
 
 acme.validation.confirmation.message = You need to confirm the changes

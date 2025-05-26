@@ -2,11 +2,13 @@
 package acme.features.manager.leg;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
@@ -34,7 +36,34 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 		legId = super.getRequest().getData("id", int.class);
 		leg = this.repository.findLegById(legId);
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getManager());
+		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().equals(current);
+
+		if (status) {
+			String method;
+			int arrivalAirportId, aircraftId, departureAirportId;
+			Airport departureAirport, arrivalAirport;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+
+				departureAirportId = super.getRequest().getData("departureAirport", int.class);
+				departureAirport = this.repository.findAirportById(departureAirportId);
+				status = status && (departureAirportId == 0 || departureAirport != null);
+
+				arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+				arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+				status = status && (arrivalAirportId == 0 || arrivalAirport != null);
+
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = status && (aircraftId == 0 || aircraft != null);
+			}
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -52,12 +81,46 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+
+		int departureAirportId;
+		int arrivalAirportId;
+		int aircraftId;
+		Airport departureAirport;
+		Airport arrivalAirport;
+		Aircraft aircraft;
+
+		departureAirportId = super.getRequest().getData("departureAirport", int.class);
+		departureAirport = this.repository.findAirportById(departureAirportId);
+
+		arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+		arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftById(aircraftId);
+
+		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
+		leg.setDepartureAirport(departureAirport);
+		leg.setArrivalAirport(arrivalAirport);
+		leg.setAircraft(aircraft);
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+
+		// Validación: Al crear un nuevo leg, la fecha de salida y de llegada debe ser en el futuro
+		// Nota: Se usa el reloj del sistema
+
+		Date now = MomentHelper.getCurrentMoment();
+
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
+
+			boolean departureInFuture = MomentHelper.isAfter(leg.getScheduledDeparture(), now);
+			boolean arrivalInFuture = MomentHelper.isAfter(leg.getScheduledArrival(), now);
+
+			super.state(departureInFuture, "scheduledDeparture", "manager.leg.create.departure-future");
+			super.state(arrivalInFuture, "scheduledArrival", "manager.leg.create.arrival-future");
+
+		}
 	}
 
 	@Override
@@ -99,7 +162,8 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("departureAirports", departureAirportChoices);
 		dataset.put("arrivalAirport", arrivalAirportChoices.getSelected().getKey());
 		dataset.put("arrivalAirports", arrivalAirportChoices);
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+
+		dataset.put("masterId", leg.getFlight().getId());
 
 		super.getResponse().addData(dataset);
 	}

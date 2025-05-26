@@ -38,19 +38,26 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 		boolean result;
 
 		if (flight == null)
+
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+
 		else {
-			boolean correctSelfTransfer;
-			List<Leg> legs = this.repository.findAllLegs(flight.getId());
-			if (flight.isDraftMode())
-				correctSelfTransfer = true;
-			else if (flight.isSelfTransfer())
-				correctSelfTransfer = legs.size() > 1;
-			else
-				correctSelfTransfer = legs.size() == 1;
+			boolean hasLegs;
 
-			super.state(context, correctSelfTransfer, "*", "acme.validation.flight.validSelfTransfer");
+			List<Leg> flightLegs = this.repository.findLegsByFlight(flight.getId());
 
+			hasLegs = flight.isDraftMode() ? true : !flightLegs.isEmpty();
+
+			super.state(context, hasLegs, "tag", "acme.validation.flight.no-legs.message");
+		}
+		{
+			boolean publishedLegs;
+
+			List<Leg> flightLegs = this.repository.findDraftLegsByFlight(flight.getId());
+
+			publishedLegs = flight.isDraftMode() ? true : flightLegs.isEmpty();
+
+			super.state(context, publishedLegs, "tag", "acme.validation.flight.unpublished-legs.message");
 		}
 		{
 			boolean correctTimeOrder = true;
