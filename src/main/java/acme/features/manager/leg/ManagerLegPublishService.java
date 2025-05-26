@@ -34,7 +34,33 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 		legId = super.getRequest().getData("id", int.class);
 		leg = this.repository.findLegById(legId);
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getManager());
+		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().equals(current);
+
+		if (status) {
+			String method;
+			int arrivalAirportId, aircraftId, departureAirportId;
+			Airport departureAirport, arrivalAirport;
+			Aircraft aircraft;
+
+			method = super.getRequest().getMethod();
+
+			if (method.equals("GET"))
+				status = true;
+			else {
+				departureAirportId = super.getRequest().getData("departureAirport", int.class);
+				departureAirport = this.repository.findAirportById(departureAirportId);
+				status = status && (departureAirportId == 0 || departureAirport != null);
+
+				arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+				arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+				status = status && (arrivalAirportId == 0 || arrivalAirport != null);
+
+				aircraftId = super.getRequest().getData("aircraft", int.class);
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = status && (aircraftId == 0 || aircraft != null);
+			}
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -52,7 +78,27 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+
+		int departureAirportId;
+		int arrivalAirportId;
+		int aircraftId;
+		Airport departureAirport;
+		Airport arrivalAirport;
+		Aircraft aircraft;
+
+		departureAirportId = super.getRequest().getData("departureAirport", int.class);
+		departureAirport = this.repository.findAirportById(departureAirportId);
+
+		arrivalAirportId = super.getRequest().getData("arrivalAirport", int.class);
+		arrivalAirport = this.repository.findAirportById(arrivalAirportId);
+
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftById(aircraftId);
+
+		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
+		leg.setDepartureAirport(departureAirport);
+		leg.setArrivalAirport(arrivalAirport);
+		leg.setAircraft(aircraft);
 	}
 
 	@Override
@@ -82,12 +128,12 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		manager = this.repository.findManagerById(managerId);
 		aircrafts = this.repository.findAircraftsByAirlineId(manager.getAirline().getId());
-		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
+		aircraftChoices = SelectChoices.from(aircrafts, "numberRegistration", leg.getAircraft());
 
 		departureAirports = this.repository.findAllAirports();
 		arrivalAirports = this.repository.findAllAirports();
-		departureAirportChoices = SelectChoices.from(departureAirports, "name", leg.getDepartureAirport());
-		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "name", leg.getArrivalAirport());
+		departureAirportChoices = SelectChoices.from(departureAirports, "airportName", leg.getDepartureAirport());
+		arrivalAirportChoices = SelectChoices.from(arrivalAirports, "airportName", leg.getArrivalAirport());
 
 		legStatusChoices = SelectChoices.from(LegStatus.class, leg.getStatus());
 

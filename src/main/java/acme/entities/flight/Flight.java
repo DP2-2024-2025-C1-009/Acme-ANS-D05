@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
@@ -28,6 +30,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "draftMode"), @Index(columnList = "manager_id")
+})
 @ValidFlight
 public class Flight extends AbstractEntity {
 
@@ -38,7 +43,7 @@ public class Flight extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				tag;
 
@@ -111,6 +116,8 @@ public class Flight extends AbstractEntity {
 		FlightRepository repository;
 		repository = SpringHelper.getBean(FlightRepository.class);
 		result = repository.findNumberOfLegs(this.getId());
+		if (result == 0)
+			return result;
 		return result - 1;
 	}
 

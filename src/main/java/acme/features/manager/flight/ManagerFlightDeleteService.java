@@ -28,12 +28,11 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		boolean status;
 		int masterId;
 		Flight flight;
-		Manager manager;
 
 		masterId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(masterId);
-		manager = flight == null ? null : flight.getManager();
-		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		status = flight != null && flight.isDraftMode() && flight.getManager().equals(current);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,21 +59,16 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		Collection<Leg> legs = this.repository.findLegsByFlightId(flightId);
 
 		boolean hasPublishedLegs = false;
-		boolean hasLegsWithClaims = false;
 
 		if (!legs.isEmpty())
-			for (Leg leg : legs) {
-				if (!leg.isDraftMode())
+			for (Leg leg : legs)
+				if (!leg.isDraftMode()) {
 					hasPublishedLegs = true;
-				if (this.repository.countClaimsByLegId(leg.getId()) > 0)
-					hasLegsWithClaims = true;
-			}
+					break;
+				}
 
 		if (hasPublishedLegs)
 			super.state(false, "*", "manager.flight.delete.published-legs");
-
-		if (hasLegsWithClaims)
-			super.state(false, "*", "manager.flight.delete.associated-claims");
 	}
 
 	@Override

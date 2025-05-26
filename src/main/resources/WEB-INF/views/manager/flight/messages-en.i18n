@@ -29,7 +29,7 @@ manager.flight.list.label.description = Description
 
 manager.flight.delete.published-legs= You can't delete flights with published legs
 manager.flight.publish.non-published-legs= You can't publish flights with unpublished legs or without legs
-manager.flight.delete.associated-claims = You cannot delete a flight with claims on any of its legs.
+manager.flight.delete.associated-claims = You cannot delete a flight with claims on any of its legs
 
 manager.flight.list.button.create = Create
 

@@ -22,7 +22,16 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Integer flightId;
+
+		if (super.getRequest().hasData("id")) {
+			flightId = super.getRequest().getData("id", int.class);
+			status = flightId == 0;
+		} else
+			status = true;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
