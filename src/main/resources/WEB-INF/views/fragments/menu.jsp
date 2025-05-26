@@ -36,6 +36,10 @@
 				action="https://www.formula1.com/" />
 
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.any.services" action="/any/service/list"/>
+		</acme:menu-option>
 
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
