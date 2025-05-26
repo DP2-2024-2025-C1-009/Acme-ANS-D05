@@ -1,0 +1,21 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.service.list.title= Listado de Servicios
+any.service.form.title= Detalles del Servicio
+
+any.service.list.label.name=Nombre
+any.service.list.label.averageDwellTime=Tiempo medio de estancia
+
+any.service.form.label.name=Nombre
+any.service.form.label.photo-link=Enlace de la foto
+any.service.form.label.average-dwell-time=Tiempo medio de estancia
+any.service.form.label.promotion-code=Código de promoción
+any.service.form.label.discounted-money=Importe con descuento

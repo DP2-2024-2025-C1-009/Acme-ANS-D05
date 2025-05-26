@@ -14,20 +14,20 @@ service-10,Standard Service,"http://www.lorem-ipsum.org/dolor/sit/amet,/consecte
 service-11,Standard Service,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/*",15.0,AAAL-25,EUR 500000.00
 ## Variantes para el campo averageDwellTime ##
 service-12,Standard Service,http://lorem.com/photo,1.00,AAAM-25,EUR 500000.00
-service-13,Standard Service,http://lorem.com/photo,1.01,AAAN-25,EUR 500000.00
-service-14,Standard Service,http://lorem.com/photo,99.99,HHHH-25,EUR 500000.00
-service-15,Standard Service,http://lorem.com/photo,100.00,FFFF-25,EUR 500000.00
+service-13,Standard Service,https://j9g7u6e4.delivery.rocketcdn.me/wp-content/uploads/2020/12/aero-vf.jpg,1.01,AAAN-25,EUR 500000.00
+service-14,Standard Service,https://j9g7u6e4.delivery.rocketcdn.me/wp-content/uploads/2020/12/aero-vf.jpg,99.99,HHHH-25,EUR 500000.00
+service-15,Standard Service,https://j9g7u6e4.delivery.rocketcdn.me/wp-content/uploads/2020/12/aero-vf.jpg,100.00,FFFF-25,EUR 500000.00
 ## Variantes para el campo promotionCode ##
 service-16,Standard Service,http://lorem.com/photo,15.0,AAAO-25,EUR 500000.00
-service-17,Standard Service,http://lorem.com/photo,15.0,AAAP-25,EUR 500000.00
-service-18,Standard Service,http://lorem.com/photo,15.0,ZZZZ-25,EUR 500000.00
-service-19,Standard Service,http://lorem.com/photo,15.0,,EUR 500000.00
+service-17,Standard Service,https://j9g7u6e4.delivery.rocketcdn.me/wp-content/uploads/2020/12/aero-vf.jpg,15.0,AAAP-25,EUR 500000.00
+service-18,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,ZZZZ-25,EUR 500000.00
+service-19,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,,EUR 500000.00
 ## Variantes para el campo discountedMoney ##
-service-20,Standard Service,http://lorem.com/photo,15.0,AAAQ-25,EUR 0.00
-service-21,Standard Service,http://lorem.com/photo,15.0,AAAR-25,EUR 0.01
-service-22,Standard Service,http://lorem.com/photo,15.0,AAAS-25,EUR 999999.99
-service-23,Standard Service,http://lorem.com/photo,15.0,AAAT-25,EUR 1000000.00
-service-24,Standard Service,http://lorem.com/photo,15.0,AAAU-25,
+service-20,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,AAAQ-25,EUR 0.00
+service-21,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,AAAR-25,EUR 0.01
+service-22,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,AAAS-25,EUR 999999.99
+service-23,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,AAAT-25,EUR 1000000.00
+service-24,Standard Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,15.0,AAAU-25,
 ## Filas inventadas (datos completos) ##
-service-25,Premium Service,https://premium.com/photo.jpg,30.5,DISC-25,EUR 750000.00
-service-26,Budget Service,http://budget.com/img.png,10.0,SAVE-25,EUR 10000.00
+service-25,Premium Service,https://www.mototok.com/hubfs/Blogbilder/groundhandlinga-z.png,30.5,DISC-25,EUR 750000.00
+service-26,Budget Service,https://j9g7u6e4.delivery.rocketcdn.me/wp-content/uploads/2020/12/aero-vf.jpg,10.0,SAVE-25,EUR 10000.00

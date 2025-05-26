@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="aircraft.form.label.model" path="model" />
-	<acme:input-textbox code="aircraft.form.label.number-registration" path="numberRegistration" placeholder="aircraft.form.placeholder.number-registration" />
+	<acme:input-textbox code="aircraft.form.label.number-registration" path="numberRegistration"/>
 	<acme:input-textbox code="aircraft.form.label.number-passengers" path="numberPassengers" />
 	<acme:input-textbox code="aircraft.form.label.load-weight" path="loadWeight"  />
 	<acme:input-checkbox code="aircraft.form.label.is-active" path="isActive" />

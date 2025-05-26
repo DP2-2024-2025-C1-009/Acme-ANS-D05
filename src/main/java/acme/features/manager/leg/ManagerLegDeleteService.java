@@ -34,7 +34,8 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 		legId = super.getRequest().getData("id", int.class);
 		leg = this.repository.findLegById(legId);
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(leg.getFlight().getManager());
+		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().equals(current);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,23 +58,11 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		boolean canDelete = true;
-		int legId = leg.getId();
-
-		boolean hasClaims = this.repository.countClaimsByLegId(legId) > 0;
-
-		if (hasClaims)
-			canDelete = false;
-
-		super.state(canDelete, "*", "manager.leg.delete.associated-claims");
+		;
 	}
 
 	@Override
 	public void perform(final Leg leg) {
-		boolean hasClaims = this.repository.countClaimsByLegId(leg.getId()) > 0;
-		if (hasClaims)
-			throw new IllegalStateException("No se puede eliminar el tramo porque hay reclamos asociados.");
-
 		this.repository.delete(leg);
 	}
 
