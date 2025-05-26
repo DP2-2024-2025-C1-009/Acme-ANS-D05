@@ -72,9 +72,11 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		Aircraft aircraft;
+		int aircraftId;
 		Date currentMoment;
 
-		aircraft = super.getRequest().getData("aircraft", Aircraft.class);
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftById(aircraftId);
 		currentMoment = MomentHelper.getCurrentMoment();
 
 		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueDate", "estimatedCost", "notes");
