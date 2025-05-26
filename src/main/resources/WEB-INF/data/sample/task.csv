@@ -18,3 +18,4 @@ task-11,TASK-11,INSPECTION,Valid duration,5,5.50,false,technician-01
 task-12,TASK-12,REPAIR,"<script>alert('Hacked!')</script>",5,3.50,false,technician-01
 task-13,TASK-13,REPAIR,"โลเร็ม อิปซัม",5,3.50,false,technician-01
 task-14,TASK-14,SYSTEM_CHECK,"Prueba",5,3.50,false,technician-01
+task-15,TASK-15,INSPECTION,Test,5,5.50,true,technician-02

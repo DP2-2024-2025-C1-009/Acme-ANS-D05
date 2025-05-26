@@ -59,12 +59,15 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 	}
 
 	@Override
-	public void bind(final FlightAssignment assignment) {
-		Integer legId = super.getRequest().getData("leg", int.class);
-		Leg leg = this.assignmentRepository.findLegById(legId);
+	public void bind(final FlightAssignment flightAssignment) {
+		Integer legId;
+		Leg leg;
 
-		super.bindObject(assignment, "duty", "status", "remarks");
-		assignment.setLeg(leg);
+		legId = super.getRequest().getData("leg", int.class);
+		leg = legId != null && legId != 0 ? this.assignmentRepository.findLegById(legId) : null;
+
+		super.bindObject(flightAssignment, "duty", "status", "remarks");
+		flightAssignment.setLeg(leg);
 	}
 
 	@Override
@@ -100,11 +103,14 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 		data.put("statusChoices", statusChoices);
 		data.put("assignmentStatus", statusChoices.getSelected().getKey());
 		data.put("legChoices", legChoices);
-		data.put("leg", legChoices.getSelected().getKey());
+		data.put("leg", legChoices.getSelected() != null ? legChoices.getSelected().getKey() : null);
 		data.put("crewMember", assignment.getCrewMember().getIdentity().getFullName());
 
 		data.put("draftMode", assignment.getDraftMode());
-		data.put("legNotCompleted", !MomentHelper.isPast(assignment.getLeg().getScheduledArrival()));
+		boolean legNotCompleted = true;
+		if (assignment.getLeg() != null)
+			legNotCompleted = !MomentHelper.isPast(assignment.getLeg().getScheduledArrival());
+		data.put("legNotCompleted", legNotCompleted);
 
 		super.getResponse().addData(data);
 	}

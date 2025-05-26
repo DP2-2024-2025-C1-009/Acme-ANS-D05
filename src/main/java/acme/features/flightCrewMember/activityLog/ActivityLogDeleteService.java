@@ -37,7 +37,7 @@ public class ActivityLogDeleteService extends AbstractGuiService<FlightCrewMembe
 
 	@Override
 	public void bind(final ActivityLog log) {
-		super.bindObject(log, "registrationMoment", "incidentType", "description", "severityLevel");
+		// No binding needed for delete
 	}
 
 	@Override
