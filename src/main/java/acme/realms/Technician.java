@@ -3,13 +3,15 @@ package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
+import acme.constraints.ValidPhoneNumber;
+import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,26 +25,34 @@ public class Technician extends AbstractRole {
 
 	// Attributes -------------------------------------------------------------
 
+	@Mandatory
+	@ValidString(min = 8, max = 9, pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
-	@NotBlank
 	private String				licenseNumber;
 
-	@NotBlank
-	@Pattern(regexp = "^\\+?\\d{6,15}$")
+	@Mandatory
+	@ValidPhoneNumber
+	@Column(unique = true)
 	private String				phoneNumber;
 
-	@NotBlank
-	@Length(max = 50)
-	@Column(length = 50)
+	@Mandatory
+	@ValidShortText
+	@Automapped
 	private String				specialisation;
 
+	@Mandatory
+	// @Valid por defecto
+	@Automapped
 	private boolean				healthTestPassed;
 
-	@Min(0)
+	@Mandatory
+	@ValidNumber(min = 0, max = 120)
+	@Automapped
 	private int					yearsExperience;
 
-	@Length(max = 255)
+	@Optional
+	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				certifications;
 
 }
