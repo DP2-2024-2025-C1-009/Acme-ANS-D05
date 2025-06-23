@@ -58,14 +58,11 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	public void bind(final MaintenanceRecord maintenanceRecord) {
 		Aircraft aircraft;
 		int aircraftId;
-		Date currentMoment;
 
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftById(aircraftId);
-		currentMoment = MomentHelper.getCurrentMoment();
 
-		super.bindObject(maintenanceRecord, "ticker", "nextInspectionDueDate", "estimatedCost", "notes");
-		maintenanceRecord.setMoment(currentMoment);
+		super.bindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueDate", "estimatedCost", "notes");
 		maintenanceRecord.setStatus(Status.PENDING);
 		maintenanceRecord.setAircraft(aircraft);
 	}
@@ -81,6 +78,11 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		validTicker = existMaintenanceRecord == null || existMaintenanceRecord.getId() == maintenanceRecord.getId();
 		if (!validTicker)
 			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
+
+		Date now = MomentHelper.getCurrentMoment();
+		// Maintenance moment must be in the past
+		boolean momentInPast = maintenanceRecord.getMoment() != null && MomentHelper.isBefore(maintenanceRecord.getMoment(), now);
+		super.state(momentInPast, "moment", "acme.validation.maintenance-record.moment.past.message");
 
 		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
 		validNextInspection = maintenanceRecord.getNextInspectionDueDate() == null ? //

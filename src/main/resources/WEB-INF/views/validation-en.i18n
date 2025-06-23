@@ -48,6 +48,7 @@ acme.validation.aircraft.optional-details-length = The length of optional detail
 acme.validation.aircraft.number-passengers-range = The number of passengers must be between 1 and 255.
 
 acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
+acme.validation.maintenance-record.moment.past.message = The moment of maintenance should be in the past.
 acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
 acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
 acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
