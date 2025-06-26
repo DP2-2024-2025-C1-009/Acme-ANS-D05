@@ -4,7 +4,6 @@ package acme.features.flightCrewMember.activityLog;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -22,13 +21,9 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 		int id = super.getRequest().getData("id", int.class);
 		ActivityLog log = this.activityLogRepository.findActivityLogById(id);
 
-		boolean correctCrew = log != null && log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean isCrew = log != null && log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		boolean assignmentPublished = log != null && !log.getActivityLogAssignment().getDraftMode();
-		boolean inPast = log != null && MomentHelper.isPast(log.getActivityLogAssignment().getLeg().getScheduledArrival());
-		boolean isDraft = log != null && log.getDraftMode();
-
-		super.getResponse().setAuthorised(correctCrew && assignmentPublished && inPast && isDraft);
+		super.getResponse().setAuthorised(isCrew);
 	}
 
 	@Override
@@ -45,6 +40,8 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 
 	@Override
 	public void validate(final ActivityLog log) {
+		if (log.getActivityLogAssignment().getDraftMode())
+			super.state(false, "activityLogAssignment", "{acme.validation.activityLog.assignment.must-be-published}");
 	}
 
 	@Override
@@ -68,7 +65,6 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 		data.put("draftMode", log.getDraftMode());
 		data.put("draftModeFlightAssignment", log.getActivityLogAssignment().getDraftMode());
 
-		// Botones disponibles en vista
 		data.put("showAction", true);
 
 		super.getResponse().addData(data);

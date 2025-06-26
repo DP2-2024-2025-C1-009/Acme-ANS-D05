@@ -57,8 +57,6 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final FlightAssignment assignment) {
-		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
@@ -90,7 +88,6 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 
 		Dataset data = super.unbindObject(assignment, "status", "remarks");
-		data.put("confirmation", false);
 		data.put("readonly", false);
 		data.put("moment", assignment.getLastUpdate());
 		data.put("duty", dutyChoices.getSelected().getKey());

@@ -82,3 +82,17 @@ acme.validation.manager.duplicated-identifier.message = El identificador debe se
 acme.validation.manager.birth-date.message = La fecha de nacimiento debe estar en pasado
 
 acme.validation.confirmation.message = Necesitas confirmar los cambios
+
+acme.validation.flightCrewMember.employeeCode= Formato inválido
+acme.validation.flightCrewMember.phoneNumber= Formato inválido
+acme.validation.activityLog.registrationMoment.afterArrival=El momento de registro debe ser posterior a la llegada programada del tramo.
+acme.validation.flightCrewMember.nullornotpattern.message=El código de empleado debe seguir el patrón requerido y no puede ser nulo ni demasiado corto.
+acme.validation.flightCrewMember.initials.mismatch=Las iniciales del código de empleado deben coincidir con el nombre y el apellido del usuario.
+acme.validation.flightCrewMember.employeeCode.not-unique=Ya existe otro tripulante con este código de empleado.
+acme.validation.null-entity=La entidad no debe ser nula.
+acme.validation.flightAssignment.crewMember.available=El tripulante debe estar disponible.
+acme.validation.flightAssignment.leg.overlap=Este tramo se solapa con otra asignación del mismo tripulante.
+acme.validation.flightAssignment.duty.pilot.taken=Ya hay un piloto asignado a este tramo.
+acme.validation.flightAssignment.duty.copilot.taken=Ya hay un copiloto asignado a este tramo.
+acme.validation.flightAssignment.leg.published= Esta leg no está publicada.
+acme.validation.activityLog.assignment.must-be-published=El flight assignment debe de estar publicado para poder publicar el activity log
