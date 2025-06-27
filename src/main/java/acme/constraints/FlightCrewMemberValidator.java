@@ -34,7 +34,7 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 		if (identifier == null)
 			return false;
 		if (identifier.length() < 2) {
-			super.state(context, false, "*", "{acme.validation.fightcrewMember.nullornotpattern.message}");
+			super.state(context, false, "*", "{acme.validation.flightCrewMember.nullornotpattern.message}");
 			return false;
 		}
 		UserAccount userAccount = member.getUserAccount();
@@ -53,13 +53,13 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 		String employeeCodeInitials = identifier.substring(0, 2);
 
 		if (!iniciales.equals(employeeCodeInitials)) {
-			super.state(context, false, "*", "No coinciden las iniciales");
+			super.state(context, false, "*", "{acme.validation.flightCrewMember.initials.mismatch}");
 			return false;
 		}
 
 		Optional<FlightCrewMember> memberWithSameCode = this.repository.findOneMemberByEmployeeCode(identifier);
 		if (memberWithSameCode.isPresent() && memberWithSameCode.get().getId() != member.getId()) {
-			super.state(context, false, "*", "No es unico este identificador: " + identifier);
+			super.state(context, false, "*", "{acme.validation.flightCrewMember.employeeCode.not-unique}");
 			return false;
 		}
 

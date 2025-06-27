@@ -19,7 +19,7 @@ import javax.validation.constraints.Pattern;
 @Pattern(regexp = "^\\+?\\d{6,15}$")
 public @interface ValidPhoneNumber {
 
-	String message() default "Phone number must contain between 6 and 15 digits, optionally starting with '+'";
+	String message() default "";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 

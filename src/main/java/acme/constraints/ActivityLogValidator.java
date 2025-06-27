@@ -21,12 +21,17 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 		if (activityLog == null)
 			return false;
 
-		final boolean fechaCorrecta = activityLog.getRegistrationMoment() != null && activityLog.getActivityLogAssignment() != null && activityLog.getActivityLogAssignment().getLeg() != null
+		boolean fechaCorrecta = activityLog.getRegistrationMoment() != null && activityLog.getActivityLogAssignment() != null && activityLog.getActivityLogAssignment().getLeg() != null
 			&& activityLog.getActivityLogAssignment().getLeg().getScheduledArrival() != null && MomentHelper.isAfter(activityLog.getRegistrationMoment(), activityLog.getActivityLogAssignment().getLeg().getScheduledArrival());
 
 		super.state(context, fechaCorrecta, "registrationMoment", "{acme.validation.activityLog.registrationMoment.afterArrival}");
 
+		boolean assignmentPublished = true;
+		if (!activityLog.getDraftMode())
+			assignmentPublished = activityLog.getActivityLogAssignment() != null && !activityLog.getActivityLogAssignment().getDraftMode();
+
+		super.state(context, assignmentPublished, "activityLogAssignment", "{acme.validation.activityLog.assignment.must-be-published}");
+
 		return !super.hasErrors(context);
 	}
-
 }

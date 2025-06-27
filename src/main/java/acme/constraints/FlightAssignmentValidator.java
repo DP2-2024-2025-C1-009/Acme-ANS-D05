@@ -35,6 +35,11 @@ public class FlightAssignmentValidator extends AbstractValidator<ValidFlightAssi
 			return false;
 		}
 
+		if (assignment.getLeg() != null) {
+			boolean legPublished = !assignment.getLeg().isDraftMode();
+			super.state(context, legPublished, "leg", "acme.validation.flightAssignment.leg.published");
+		}
+
 		if (assignment.getCrewMember() != null) {
 			boolean available = assignment.getCrewMember().getFlightCrewMemberStatus() == FlightCrewMemberStatus.AVAILABLE;
 			super.state(context, available, "crewMember", "acme.validation.flightAssignment.crewMember.available");

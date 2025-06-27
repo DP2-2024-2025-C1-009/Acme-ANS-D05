@@ -82,3 +82,18 @@ acme.validation.manager.duplicated-identifier.message = Identifier number must b
 acme.validation.manager.birth-date.message = Date of birth must be in the past
 
 acme.validation.confirmation.message = You need to confirm the changes
+
+acme.validation.flightCrewMember.employeeCode= Invalid format
+acme.validation.flightCrewMember.phoneNumber= Invalid format
+acme.validation.activityLog.registrationMoment.afterArrival=The registration moment must be after the scheduled arrival of the leg.
+acme.validation.flightCrewMember.nullornotpattern.message=The employee code must follow the required pattern and cannot be null or too short.
+acme.validation.flightCrewMember.initials.mismatch=The initials in the employee code must match the user's name and surname.
+acme.validation.flightCrewMember.employeeCode.not-unique=There is already another flight crew member with this employee code.
+acme.validation.null-entity=The entity must not be null.
+acme.validation.flightAssignment.crewMember.available=The flight crew member must be available.
+acme.validation.flightAssignment.leg.overlap=This leg overlaps with another assignment for the same crew member.
+acme.validation.flightAssignment.duty.pilot.taken=There is already a pilot assigned to this leg.
+acme.validation.flightAssignment.duty.copilot.taken=There is already a co-pilot assigned to this leg.
+acme.validation.flightAssignment.leg.published= This leg is not published.
+acme.validation.activityLog.assignment.must-be-published=The flight assignment must be published before publishing the activity log.
+

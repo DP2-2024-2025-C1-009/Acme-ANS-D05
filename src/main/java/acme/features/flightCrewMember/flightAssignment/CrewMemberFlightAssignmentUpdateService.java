@@ -25,28 +25,12 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		boolean canEdit;
-
 		int id = super.getRequest().getData("id", int.class);
 		FlightAssignment assignment = this.assignmentRepository.findById(id);
-
+		boolean correctCrew = assignment != null && assignment.getCrewMember() != null && super.getRequest().getPrincipal().hasRealm(assignment.getCrewMember());
 		boolean draft = assignment != null && assignment.getDraftMode();
-		boolean futureLeg = true;
-		boolean legPublished = true;
 
-		Integer legId = super.getRequest().getData("leg", int.class);
-		if (legId != 0) {
-			Leg leg = this.assignmentRepository.findLegById(legId);
-			futureLeg = leg != null && !MomentHelper.isPast(leg.getScheduledArrival());
-			legPublished = leg != null && !leg.isDraftMode();
-		}
-
-		FlightCrewMember crew = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-		boolean correctCrew = assignment != null && assignment.getCrewMember().getId() == crew.getId();
-
-		canEdit = draft && correctCrew && futureLeg && legPublished;
-
-		super.getResponse().setAuthorised(canEdit);
+		super.getResponse().setAuthorised(draft && correctCrew);
 	}
 
 	@Override

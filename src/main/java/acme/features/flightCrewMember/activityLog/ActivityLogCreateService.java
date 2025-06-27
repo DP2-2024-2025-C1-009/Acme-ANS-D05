@@ -25,10 +25,7 @@ public class ActivityLogCreateService extends AbstractGuiService<FlightCrewMembe
 
 		boolean isOwner = assignment != null && assignment.getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		boolean legHasOccurred = assignment != null && MomentHelper.isPast(assignment.getLeg().getScheduledArrival());
-
-		boolean status = isOwner && legHasOccurred;
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(isOwner);
 	}
 
 	@Override

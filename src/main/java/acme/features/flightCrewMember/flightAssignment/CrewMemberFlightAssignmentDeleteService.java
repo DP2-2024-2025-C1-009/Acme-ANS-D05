@@ -76,7 +76,6 @@ public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<
 
 		data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 
-		data.put("confirmation", false);
 		data.put("readonly", false);
 		data.put("moment", assignment.getLastUpdate());
 		data.put("dutyChoices", dutyChoices);
