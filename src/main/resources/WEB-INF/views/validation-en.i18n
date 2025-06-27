@@ -57,6 +57,7 @@ acme.validation.maintenance-record.moment-next-inspection.publish.messsage = Whe
 acme.validation.involves.draft-record.message = Published maintenance record. The involvements in tasks of a published maintenance record must not be modified
 acme.validation.technician.license-number.duplicated.message = The license number is already on use
 acme.validation.technician.phone-number.duplicated.message = The phone number is already on use
+acme.validation.maintenance-record.next-inspection.future.message = The next inspection due date must be in the future.
 
 acme.validation.review.alias-length = The alias/name length must not exceed 50 characters.
 acme.validation.review.moment-past = The review date must be in the past.

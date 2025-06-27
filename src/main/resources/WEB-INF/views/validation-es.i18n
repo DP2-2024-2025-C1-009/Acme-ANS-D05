@@ -58,6 +58,7 @@ acme.validation.maintenance-record.moment-next-inspection.publish.messsage = Al 
 acme.validation.involves.draft-record.message = Registro de mantenimiento publicado. El involucramiento en tareas de un registro de mantenimiento publicado no puede ser modificado
 acme.validation.technician.license-number.duplicated.message = El número de licencia ya está en uso
 acme.validation.technician.phone-number.duplicated.message = El número de teléfono ya está en uso
+acme.validation.maintenance-record.next-inspection.future.message = La fecha de la próxima inspección debe ser posterior al momento actual.
 
 acme.validation.review.alias-length = La longitud del nombre/alias no debe superar los 50 caracteres.
 acme.validation.review.moment-past = La fecha de la reseña debe ser una fecha en el pasado.

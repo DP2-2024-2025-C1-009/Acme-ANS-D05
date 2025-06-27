@@ -14,6 +14,7 @@ technician.maintenance-record.form.label.moment = Momento
 technician.maintenance-record.form.label.status = Estado
 technician.maintenance-record.form.label.next-inspection = Siguiente inspección
 technician.maintenance-record.form.label.aircraft = Avión
+technician.maintenance-record.list.label.draftMode = ¿Está en modo borrador?
 technician.maintenance-record.form.label.estimated-cost = Coste estimado
 technician.maintenance-record.form.label.notes = Notas
 technician.maintenance-record.form.placeholder.next-inspection = YYYY/MM/DD HH:MM
