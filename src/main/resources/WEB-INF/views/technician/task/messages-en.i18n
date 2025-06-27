@@ -1,10 +1,9 @@
-
-
 technician.task.list.title = Tasks
 technician.task.list.label.ticker = Ticker
 technician.task.list.label.type = Type
 technician.task.list.label.priority = Priority
 technician.task.list.button.create = Create
+technician.task.list.button.add = Add
 
 technician.task.form.title = Task form
 technician.task.form.label.ticker = Ticker
