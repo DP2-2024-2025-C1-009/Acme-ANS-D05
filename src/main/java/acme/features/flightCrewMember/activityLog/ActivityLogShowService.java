@@ -54,6 +54,7 @@ public class ActivityLogShowService extends AbstractGuiService<FlightCrewMember,
 		data.put("masterId", assignment.getId());
 		data.put("buttonsAvailable", showButtons);
 		data.put("publishAvailable", publishAvailable);
+		data.put("draftModeFlightAssignment", assignment.getDraftMode());
 
 		super.getResponse().addData(data);
 	}

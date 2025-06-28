@@ -21,7 +21,7 @@ import javax.validation.constraints.Pattern;
 @Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
 public @interface ValidIdentifier {
 
-	String message() default "Identifier not valid. Identifier must follow the correct pattern";
+	String message() default "";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 }
