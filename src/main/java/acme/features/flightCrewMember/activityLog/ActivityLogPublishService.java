@@ -23,7 +23,9 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 
 		boolean isCrew = log != null && log.getActivityLogAssignment().getCrewMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		super.getResponse().setAuthorised(isCrew);
+		boolean assignmentPublished = log != null && !log.getActivityLogAssignment().getDraftMode();
+
+		super.getResponse().setAuthorised(isCrew && assignmentPublished);
 	}
 
 	@Override
@@ -40,8 +42,7 @@ public class ActivityLogPublishService extends AbstractGuiService<FlightCrewMemb
 
 	@Override
 	public void validate(final ActivityLog log) {
-		if (log.getActivityLogAssignment().getDraftMode())
-			super.state(false, "activityLogAssignment", "{acme.validation.activityLog.assignment.must-be-published}");
+
 	}
 
 	@Override

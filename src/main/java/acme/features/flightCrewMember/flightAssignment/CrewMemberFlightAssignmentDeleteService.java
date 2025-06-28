@@ -71,7 +71,7 @@ public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<
 		SelectChoices dutyChoices = SelectChoices.from(Duty.class, assignment.getDuty());
 		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 
-		Collection<Leg> legs = this.assignmentRepository.findAllLegs(); // O usa findLegsByAirline(...) si tienes filtro por aerolínea
+		Collection<Leg> legs = this.assignmentRepository.findAllLegs();
 		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 
 		data = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
