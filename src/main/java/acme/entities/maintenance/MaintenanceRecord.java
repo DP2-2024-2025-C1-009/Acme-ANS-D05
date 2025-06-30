@@ -31,8 +31,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(indexes = {
-	@Index(columnList = "draftMode"), @Index(columnList = "ticker")
+@Table(name = "maintenance_record", indexes = {
+	@Index(columnList = "aircraft_id, nextInspectionDueDate"), @Index(columnList = "status"), @Index(columnList = "draftMode")
 })
 public class MaintenanceRecord extends AbstractEntity {
 
