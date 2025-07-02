@@ -13,3 +13,7 @@
 <jstl:if test="${_command == 'list'}">
 	<acme:button code="technician.task.list.button.create" action="/technician/task/create"/>
 </jstl:if>
+
+<jstl:if test="${_command == 'list-from-record'}">
+	<acme:button code="technician.task.list.button.add" action="/technician/involves/create"/>
+</jstl:if>

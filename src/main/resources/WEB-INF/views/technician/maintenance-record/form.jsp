@@ -7,9 +7,9 @@
 	
 	<acme:input-textbox code="technician.maintenance-record.form.label.ticker" path="ticker"/>
 	<jstl:if test="${_command != 'create'}">
-		<acme:input-moment code="technician.maintenance-record.form.label.moment" path="moment" readonly="true"/>
 		<acme:input-select path="status" code="technician.maintenance-record.form.label.status" choices="${statuses}"/>
 	</jstl:if>	
+	<acme:input-moment code="technician.maintenance-record.form.label.moment" path="moment"/>
 	<acme:input-moment code="technician.maintenance-record.form.label.next-inspection" path="nextInspectionDueDate" />
 	<acme:input-select code="technician.maintenance-record.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
 	<acme:input-money code="technician.maintenance-record.form.label.estimated-cost" path="estimatedCost" placeholder="technician.maintenance-record.form.placeholder.estimated-cost"/>

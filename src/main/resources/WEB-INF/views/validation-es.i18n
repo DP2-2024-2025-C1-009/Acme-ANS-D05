@@ -49,6 +49,7 @@ acme.validation.aircraft.optional-details-length = La longitud de los detalles o
 acme.validation.aircraft.number-passengers-range = El número de pasajeros debe ser entre 1 y 255.
 
 acme.validation.task-record.ticker.message = El ticker debe tener entre 5 y 15 caracteres y solo puede contener letras, números, subrayados y guiones
+acme.validation.maintenance-record.moment.past.message = El momento de la inspección debe ser en el pasado.
 acme.validation.nextInspection.message = La fecha de la próxima inspección debe ser, al menos, una hora después del momento del registro de mantenimiento
 acme.validation.task-record.ticker.duplicated.message = El ticker ya existe, utilice uno distinto
 acme.validation.maintenance-record.tasks.not-draft.message = El registro de mantenimiento debe tener, al menos, una tarea publicada y no debe tener ni una tarea que no esté publicada
@@ -57,6 +58,7 @@ acme.validation.maintenance-record.moment-next-inspection.publish.messsage = Al 
 acme.validation.involves.draft-record.message = Registro de mantenimiento publicado. El involucramiento en tareas de un registro de mantenimiento publicado no puede ser modificado
 acme.validation.technician.license-number.duplicated.message = El número de licencia ya está en uso
 acme.validation.technician.phone-number.duplicated.message = El número de teléfono ya está en uso
+acme.validation.maintenance-record.next-inspection.future.message = La fecha de la próxima inspección debe ser posterior al momento actual.
 
 acme.validation.review.alias-length = La longitud del nombre/alias no debe superar los 50 caracteres.
 acme.validation.review.moment-past = La fecha de la reseña debe ser una fecha en el pasado.

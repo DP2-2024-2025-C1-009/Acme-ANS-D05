@@ -20,6 +20,17 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void authorise() {
+		//		boolean status;
+		//		Task task;
+		//		int masterId;
+		//
+		//		masterId = super.getRequest().getData("id", int.class);
+		//		task = this.repository.findTaskById(masterId);
+		//		status = task != null && super.getRequest().getPrincipal().hasRealmOfType(Technician.class)
+		//			&& (task.getType() == TaskType.INSPECTION || task.getType() == TaskType.MAINTENANCE || task.getType() == TaskType.REPAIR || task.getType() == TaskType.SYSTEM_CHECK);
+		//
+		//		super.getResponse().setAuthorised(status);
+		//
 		boolean status;
 
 		status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);

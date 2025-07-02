@@ -23,8 +23,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(indexes = {
-	@Index(columnList = "ticker")
+@Table(name = "task", indexes = {
+	@Index(columnList = "technician_id")
 })
 public class Task extends AbstractEntity {
 
