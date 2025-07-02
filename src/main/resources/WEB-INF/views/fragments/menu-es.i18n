@@ -78,3 +78,8 @@ master.menu.customer.passengers = Pasajeros
 
 master.menu.any = Para todos los usuarios
 master.menu.any.services = Servicios
+
+# master.menu.assistance-agent ###################################################
+
+master.menu.assistance-agent 						= Agente de asistencia
+master.menu.assistance-agent.list-claims 			= Ver reclamaciones

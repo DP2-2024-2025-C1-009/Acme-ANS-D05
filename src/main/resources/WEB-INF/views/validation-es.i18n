@@ -96,3 +96,21 @@ acme.validation.flightAssignment.duty.pilot.taken=Ya hay un piloto asignado a es
 acme.validation.flightAssignment.duty.copilot.taken=Ya hay un copiloto asignado a este tramo.
 acme.validation.flightAssignment.leg.published= Esta leg no está publicada.
 acme.validation.activityLog.assignment.must-be-published=El flight assignment debe de estar publicado para poder publicar el activity log
+
+# Mensajes de validación para Claim
+acme.validation.claim.isPublished.message = No se puede publicar una reclamación que no está completada
+acme.validation.claim.leg.message = Una reclamación no puede estar enlazada a un tramo no publicado
+acme.validation.claim.registrationMoment.message = El momento de registro de una reclamación no puede ser anterior a la fecha de llegada del tramo al que está asociada
+acme.validation.claim.cIsAccepted.message = No se puede publicar una reclamación que no está completada
+
+# Mensajes de validación para TrackingLog
+acme.validation.trackingLog.notPendingStatus.message = El estado no puede ser pendiente si el porcentaje de resolución ha llegado al 100%
+acme.validation.trackingLog.pendingStatus.message = El estado debe ser pendiente si el porcentaje de resolución no ha llegado al 100%
+acme.validation.trackingLog.resolution.message = La resolución es obligatoria si la reclamación ha sido aceptada o rechazada
+acme.validation.trackingLog.resolutionPercentage.message = El porcentaje de resolución debe aumentar monotónicamente
+acme.validation.trackingLog.lastUpdateMoment.message = El momento de última actualización no puede ser anterior al momento de creación
+acme.validation.trackingLog.isPublished.message = No se puede publicar hasta que la reclamación asociada no esté publicada
+acme.validation.trackingLog.reclaimed.noCompletedLog.message = Debe haber un registro publicado para una reclamación para poder reclamarla
+acme.validation.trackingLog.creationMoment.message = El momento de creación de un registro no puede ser anterior al de la reclamación a la que está asociado
+acme.validation.trackingLog.reclaimed.status.message = Un registro reclamado debe tener el mismo estado que el registro completado anterior
+acme.validation.trackingLog.completedNumber.message = No pueden haber más de dos registros completados para la misma reclamación

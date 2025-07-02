@@ -9,14 +9,15 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Constraint(validatedBy = AgenteCodeValidator.class)
-@Target({
-	ElementType.TYPE
-})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidAgentCode {
+@Constraint(validatedBy = TrackingLogValidator.class)
+
+public @interface ValidTrackingLog {
 
 	String message() default "";
+
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
+
 }
