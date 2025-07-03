@@ -99,3 +99,21 @@ acme.validation.flightAssignment.duty.copilot.taken=There is already a co-pilot 
 acme.validation.flightAssignment.leg.published= This leg is not published.
 acme.validation.activityLog.assignment.must-be-published=The flight assignment must be published before publishing the activity log.
 
+
+# Claim validation messages
+acme.validation.claim.isPublished.message = You cannot publish a claim that has not been completed
+acme.validation.claim.leg.message = A claim cannot be linked to an unpublished leg
+acme.validation.claim.registrationMoment.message = A claim's registration moment cannot be before the arrival of the leg to which it is associated
+acme.validation.claim.cIsAccepted.message = You cannot publish a claim that has not been completed
+
+# TrackingLog validation messages
+acme.validation.trackingLog.notPendingStatus.message = The status must not be pending if the resolution percentage has reached 100%
+acme.validation.trackingLog.pendingStatus.message = The status must be pending if the resolution percentage has not reached 100%
+acme.validation.trackingLog.resolution.message = The resolution is mandatory if the claim has already been accepted or rejected
+acme.validation.trackingLog.resolutionPercentage.message = The resolution percentage must be monotonically increasing
+acme.validation.trackingLog.lastUpdateMoment.message = The last update moment must not be before the creation moment
+acme.validation.trackingLog.isPublished.message = The tracking log cannot be published until its associated claim has been published
+acme.validation.trackingLog.reclaimed.noCompletedLog.message = There must be a published completed tracking log for a claim before reclaiming it
+acme.validation.trackingLog.creationMoment.message = The creation moment of a tracking log cannot be before that of the claim to which it is associated
+acme.validation.trackingLog.reclaimed.status.message = A reclaimed tracking log must have the same status as the previous completed tracking log
+acme.validation.trackingLog.completedNumber.message = There cannot be more than two completed tracking logs for the same claim
