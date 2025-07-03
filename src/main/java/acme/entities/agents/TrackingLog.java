@@ -16,12 +16,18 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTrackingLog;
+import acme.datatypes.ClaimStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidTrackingLog
+//@Table(indexes = {
+//	@Index(columnList = "tracking_steps_id, id"), @Index(columnList = "tracking_steps_id, creationMoment"), @Index(columnList = "tracking_steps_id, status")
+//})
 public class TrackingLog extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -36,6 +42,11 @@ public class TrackingLog extends AbstractEntity {
 	private Date				updateMoment;
 
 	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				creationMoment;
+
+	@Mandatory
 	@ValidString(min = 1, max = 50, message = "{acme.validation.tracking-log.steps-length}")
 	@Automapped
 	private String				steps;
@@ -43,17 +54,22 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@ValidScore
 	@Automapped
-	private double				resolutionPercentage;
+	private Double				resolutionPercentage;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private TrackingLogStatus	status;
+	private ClaimStatus			status;
 
 	@Optional
 	@ValidString(min = 0, max = 255, message = "{acme.validation.tracking-log.resolution-length}")
 	@Automapped
 	private String				resolution;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				isPublished;
 
 	// Relationships ----------------------------------------------------------
 
@@ -61,12 +77,5 @@ public class TrackingLog extends AbstractEntity {
 	@Valid
 	@Mandatory
 	private Claim				trackingSteps;
-
-	// Tracking Log Status Type -------------------------------------------------------------
-
-
-	public enum TrackingLogStatus {
-		PENDING, ACCEPTED, REJECTED
-	}
 
 }

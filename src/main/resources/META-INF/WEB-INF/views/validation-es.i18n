@@ -52,7 +52,7 @@ acme.validation.agent.bio-length = La biografía no debe superar los 255 caracte
 
 acme.validation.claim.registration-moment-date = La fecha del registro del claim debe ser una fecha en el pasado.
 acme.validation.claim.description-length = La descripción no debe superar los 255 caracteres.
-acme.validation.claim.passenger-email-correct = Introduce una diorección de correo válida.
+acme.validation.claim.passenger-email-correct = Introduce una dirección de correo válida.
 
 acme.validation.tracking-log.steps-length = Los pasos llevados a cabo no debe superar los 50 caracteres.
 acme.validation.tracking-log.resolution-length = La resolución no debe superar los 255 caracteres.
